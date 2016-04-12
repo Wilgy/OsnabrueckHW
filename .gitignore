@@ -1,0 +1,7 @@
+CL/template/*.aux
+CL/template/*.log
+CL/template/*.pdf
+
+CL/HW01/submission/*.aux
+CL/HW01/submission/*.log
+CL/HW01/submission/*.pdf
