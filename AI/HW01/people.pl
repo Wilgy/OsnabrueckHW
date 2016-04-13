@@ -130,20 +130,6 @@ parent(anni,rolf).
 parent(rolf,joerg).
 parent(erika,joerg).
 
-%
-% ------------------------------------------------------
-% relationship - the definitions for different types of relationships
-relationship(father).
-relationship(mother).
-relationship(son).
-relationship(daughter).
-relationship(brother).
-relationship(sister).
-relationship(grandfather).
-relationship(grandmother).
-relationship(cousin).
-relationship(grandchild).
-
 % --------------------
 % Rules
 
@@ -218,6 +204,9 @@ foo(A,B) :-
         male(A).
 
 % a) (1 point) Add a rule grandchild(Grandchild, Grandparent)
+
+% Grandchild is the 'grandchild' of Grandparent if Grandchild's parent is the
+% child of Grandparent
 grandchild(Grandchild, Grandparent) :- 
         parent(Grandparent, X), 
         parent(X, Grandchild).
@@ -255,17 +244,21 @@ male_cousin_of_manuel(C) :-
 %    You shall be able to ask:
 %    ?- relation(bernd, tobias, X)
 %    X = grandfather
-relation(P1, P2, R) :- 
-        (father(P1, P2), R=father);
-        (mother(P1, P2), R=mother);
-        (son(P1, P2), R=son);
-        (daughter(P1, P2), R=daughter);
-        (brother(P1, P2), R=brother);
-        (sister(P1, P2), R=sister);
-        (grandfather(P1, P2), R=grandfather);
-        (grandmother(P1, P2), R=grandmother);
-        (cousin(P1, P2), R=cousin);
-        (grandchild(P1, P2), R=grandchild).
+
+% To solve this program, the relation rule has a different rule for each 
+% type of relationship.  When two people are found to have a particular 
+% relationship, a symbol representing that relationship is returned
+relation(P1, P2, father) :- father(P1, P2).
+relation(P1, P2, mother) :- mother(P1, P2).
+relation(P1, P2, son) :- son(P1, P2).
+relation(P1, P2, daughter) :- daughter(P1, P2).
+relation(P1, P2, brother) :- brother(P1, P2).
+relation(P1, P2, sister) :- sister(P1, P2).
+relation(P1, P2, grandfather) :- grandfather(P1, P2).
+relation(P1, P2, grandmother) :- grandmother(P1, P2).
+relation(P1, P2, cousin) :- cousin(P1, P2).
+relation(P1, P2, grandchild) :- grandchild(P1, P2).
+
 
 % d) (3 Points) It would be nice to have a relation yca (youngest common
 %    ancestor). yca(X,Y,Z) should be true if Z is the youngest common ancestor
@@ -284,3 +277,24 @@ relation(P1, P2, R) :-
 %
 %   ?- common_ancestor(tobias, joerg, Z).
 %   Z = nikolaus
+
+% To determine common ancestors of two people, we set up a recursive rule
+% that climbs up the family tree of each person and then checks if the parents 
+% each are the same; if so they are considered an ancestor
+
+
+% Base case: When X and Y have the same parent (Z), we have found a common 
+% ancestor of both
+common_ancestor(X, Y, Z) :- 
+        parent(Z, X),
+        parent(Z, Y).
+
+% Recursive call: Find the parent of X and call common_ancestor on that parent
+common_ancestor(X, Y, Z) :-
+        parent(P1, X),
+        common_ancestor(P1, Y, Z).
+
+% Recursive call: Find the parent of Y and call common_ancestor on that parent
+common_ancestor(X, Y, Z) :-
+        parent(P2, Y),
+        common_ancestor(X, P2, Z).
