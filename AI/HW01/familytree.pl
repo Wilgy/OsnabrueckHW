@@ -105,10 +105,9 @@ query3(
 
 query4(
    'Which Individuals have common children?',
-   (parent(X, C1)) ,
-   (parent(Y, C2)) , 
+   (parent(X, C)) ,
+   (parent(Y, C)) , 
    (X\=Y) ,
-   (C1=C2), 
    (X=kronos, Y=rhea;
     X=zeus, Y=hera;
     X=poseidon, Y=amphitrite) ).
