@@ -2,7 +2,7 @@
  family tree
  http://en.wikipedia.org/wiki/Family_tree_of_the_Greek_gods
 
- Author: T. Wilgenbusch
+ Author: T. Wilgenbusch, T. Fairman, K. Hipkin, B. Dell
 */
 
 
@@ -82,7 +82,7 @@ father(F, C) :- male(F), parent(F, C).
 
 
 % example
-query1(                           
+query(                           
    'Who is the mother of whom?',
    (mother(M,C)),
    (M=rhea, C=hades;
@@ -92,18 +92,18 @@ query1(
     M=amphitrite, C=rhode) ).   % more variables connected by ','
                                  % alternatives connected by ';'
                                  % if there is no answer enter 'false' here
-query2(
+query(
    'Which are the children of Zeus?',
    (father(zeus, C)) ,
    (C=hebe) ).  
 
-query3(
+query(
    'Do Hades and Zeus have both the same father?',
    (father(X, hades)) ,
    (father(X, zeus)) ,
    (X=kronos) ).
 
-query4(
+query(
    'Which Individuals have common children?',
    (parent(X, C)) ,
    (parent(Y, C)) , 
@@ -112,7 +112,7 @@ query4(
     X=zeus, Y=hera;
     X=poseidon, Y=amphitrite) ).
 
-query5(
+query(
    'Which men have more than one child?',
    (father(X, C1)) ,
    (father(X, C2)) ,
@@ -120,7 +120,7 @@ query5(
    (X=kronos;
     X=poseidon) ).  
 
-query6(
+query(
    'Who has no ancestor?',
    (parent(P, X)),
    (not(P)),

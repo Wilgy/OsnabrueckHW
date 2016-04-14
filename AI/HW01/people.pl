@@ -1,3 +1,7 @@
+% people.pl - file to solve HW01 Problem 2 questions
+%
+% Author: T. Wilgenbusch, T. Fairman, K. Hipkin
+
 % -------------------------------------------------------------
 %
 % male(X).  % X is male.
@@ -245,7 +249,7 @@ male_cousin_of_manuel(C) :-
 %    ?- relation(bernd, tobias, X)
 %    X = grandfather
 
-% To solve this program, the relation rule has a different rule for each 
+% To solve this problem, the relation rule has a different rule for each 
 % type of relationship.  When two people are found to have a particular 
 % relationship, a symbol representing that relationship is returned
 relation(P1, P2, father) :- father(P1, P2).
