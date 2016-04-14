@@ -4,6 +4,7 @@
 %% bear in mind that if you need to define your command then you will have to make sure that it is not in conflict to my pre-defined command. Otherwise you will need to either use
 %% commands defined by me or edit the style file appropriately.
 \usepackage{aahomework}
+\usepackage{graphicx}
 \usepackage{tikz}
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
             \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
@@ -38,7 +39,14 @@
 %% In my style file aahomework.sty I have defined two environments "problem" and "solution" that can be used to type in your question and answer respectively as shown below.%%
 
 \begin{problem}{1}
-Description for Problem \#1
+\textbf{Regular expressions \& FSAs}
+\begin{description}
+	\item[a.]Write a RE accepting the language that consists of the set comprising all 4 different forms of Peter Bosch's UOS email address: \\
+	\textsf{ \{pbosch@uos.de, peter.bosch@uos.de, pbosch@uni‐osnabrueck.de, peter.bosch@uni‐osnabrueck.de\} }
+ 
+	\item[b.] Find an FSA for the language given by the RE /(ab*)+/ . Define this FSA in the format of a formal definition as a 5-tuple, as e.g. on slide 35 of the 2nd lecture.
+	\item[c.] Define the same language by means of a regular grammar, as e.g. on slide 37 of lecture 2.
+\end{description}
 \end{problem}
 
 \begin{solution}
@@ -48,7 +56,96 @@ Solution for Problem \#1
 \vspace*{0.5cm} %% this is to put some vertical space betwen the next problem and the previous solution. You can change the value to something more appropriate.
 
 \begin{problem}{2}
-Description for Problem \#2
+\textbf{English consonants} \\
+If your native language is not English, or you are uncertain as to your pronounciation, you are advised to
+consult the phonetic transcriptions in a dictionary. In any case of doubt, the intended pronunciation is RP
+(i.e., "BBC English"). 
+\newpage
+
+\begin{description}
+	\item[a.] The words in the left-hand column below \textit{begin} with 22 different consonants. The words in the right-hand columns begin with the same 22 consonants, but in a different order. Match each word on the left with the word on the right which has the same initial consonant (sound, not letter), and write down the solutions as pairs of letters and numbers, e.g."k2".
+
+	\begin{tabular}{l p{6cm} | r l}
+		a & tomato & 1 & bag \\
+		b & Czech & 2 & cat \\
+		c & yacht & 3 & cent \\
+		d & loose & 4 & check \\
+		e & there & 5 & dude \\
+		f & guess & 6 & fan \\
+		g & chef & 7 & gas \\
+		h & dare & 8 & gem \\
+		i & vote & 9 & leap \\
+		j & kneel & 10 & meek \\
+		k & kite & 11 & nail \\
+		l & holy & 12 & pain \\
+		m & pest & 13 & ptomaine \\
+		n & phone & 14 & room \\
+		o & jest & 15 & shave \\
+		p & zest & 16 & then \\
+		q & send & 17 & thick \\
+		r & rhyme & 18 & vest \\
+		s & main & 19 & weight \\
+		t & thin & 20 & whole \\
+		u & boom & 21 & young \\
+		v & wild & 22 & zoom 
+	\end{tabular}
+	\newpage
+	\item[b.] The words in the left-hand columns below \textit{end} with 21 different consonants. The words in the right-hand columns have the same final consonants, but in a different order. Match each word on the left with the word on the right which has the same final consonant and write down the solutions as pairs of letters and numbers, e.g. "c4".
+	
+	\begin{tabular}{l p{6cm} | r l}
+		a & love & 1 & both \\
+		b & rogue & 2 & car \\
+		c & dome & 3 & clothe \\
+		d & grub & 4 & dumb \\
+		e & smooth & 5 & fate \\
+		f & ridge & 6 & globe \\
+		g & sane & 7 & graph \\
+		h & beige & 8 & lace \\
+		i & lung & 9 & look \\
+		j & gruff & 10 & odd \\
+		k & eight & 11 & phrase \\
+		l & fade & 12 & pole \\
+		m & toll & 13 & rage \\
+		n & daze & 14 & rich \\
+		o & lock & 15 & rouge \\
+		p & loss & 16 & rug \\
+		q & hope & 17 & save \\
+		r & youth & 18 & sign \\
+		s & care & 19 & soap \\
+		t & ash & 20 & tongue \\
+		u & witch & 21 & wash
+	\end{tabular}
+
+	\newpage
+	\item[c.] This time match the \textit{final} consonant of each word in the left-hand columns with the \textit{initial} consonant of a word in the right-hand columns - \textbf{if there is such a match}. Write down the solutions as pairs of letters and numbers, e.g., "a3". If there is no match write "x -".
+
+	\begin{tabular}{l p{6cm} | r l}
+		a & pitch &   1 & beige \\
+		b & team & 2 & breathe \\  
+		c & kill & 3 & chip \\  
+		d & bad & 4 & coach \\  
+		e & dame & 5 & comb \\  
+		f & goal & 6 & cough \\  
+		g & choke & 7 & door \\  
+		h & jell & 8 & face \\  
+		i & fun & 9 & lane \\  
+		j & think & 10 & ledge \\  
+		k & safe & 11 & lick \\  
+		l & vain & 12 & maid \\  
+		m & they & 13 & meat \\  
+		n & zone & 14 & nave \\  
+		o & mode & 15 & nose \\  
+		p & name & 16 & robe \\  
+		q & lace & 17 & rogue \\  
+		r & rake & 18 & rung \\  
+		s & yell & 19 & rush \\  
+		t & wet & 20 & Ruth \\  
+		u & head & 21 & sail \\  
+		v & shift &  & 
+	\end{tabular}
+
+\end{description}
+
 \end{problem}
 
 \begin{solution}
