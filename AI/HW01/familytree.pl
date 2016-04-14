@@ -36,18 +36,25 @@
 
  Use predicate names from the set: {father, mother, parent, male, female}
 */
+
+% The males of the above family tree
+%------------------------------------------------------------------------------
 male(kronos).
 male(hades).
 male(zeus).
 male(poseidon).
 male(triton).
 
+% The females in the above family tree
+%------------------------------------------------------------------------------
 female(rhea).
 female(hera).
 female(hebe).
 female(amphitrite).
 female(rode).
 
+% The various parent relationships of the above family tree
+%------------------------------------------------------------------------------
 parent(kronos, hades).
 parent(kronos, zeus).
 parent(kronos, poseidon).
@@ -75,11 +82,12 @@ Pose at least these queries:
 Add the queries and answers as arguments of the following predicate.
 */
 
+% Rule added to handle the example query
+% Determines if M is the mother of C
 mother(M, C) :- female(M), parent(M, C).
 
-
+% Determines is F is the father of the C
 father(F, C) :- male(F), parent(F, C).
-
 
 % example
 query(                           
@@ -92,17 +100,26 @@ query(
     M=amphitrite, C=rhode) ).   % more variables connected by ','
                                  % alternatives connected by ';'
                                  % if there is no answer enter 'false' here
+
+% To solve this query, the father rule was created above, and calls it with 
+% the 'zeus' symbol as the father variable; The only solution is the 'hebe'
+% symbol
 query(
    'Which are the children of Zeus?',
    (father(zeus, C)) ,
    (C=hebe) ).  
 
+% This query will return true when the X variable unifies with the 'kronos'
+% symbol
 query(
    'Do Hades and Zeus have both the same father?',
    (father(X, hades)) ,
    (father(X, zeus)) ,
    (X=kronos) ).
 
+% Given two unique symbols, X and Y, this query returns true when they both
+% have the same child symbol C at least once;  This returns true for the pairs
+% (kronos, rhea), (zeus, hera), and (poseidon, amphitrite)
 query(
    'Which Individuals have common children?',
    (parent(X, C)) ,
@@ -112,6 +129,8 @@ query(
     X=zeus, Y=hera;
     X=poseidon, Y=amphitrite) ).
 
+% This query will return true when a father symbol X has two unique child
+% symbols C1 and C2; This is true for X=kronos and X=poseidon
 query(
    'Which men have more than one child?',
    (father(X, C1)) ,
@@ -120,6 +139,8 @@ query(
    (X=kronos;
     X=poseidon) ).  
 
+% This returns true when a parent symbol P cannot be proven to exist for a 
+% given X variable; this is true for kronos and rhea
 query(
    'Who has no ancestor?',
    (parent(P, X)),

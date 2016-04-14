@@ -208,7 +208,7 @@ foo(A,B) :-
         male(A).
 
 % a) (1 point) Add a rule grandchild(Grandchild, Grandparent)
-
+%------------------------------------------------------------------------------
 % Grandchild is the 'grandchild' of Grandparent if Grandchild's parent is the
 % child of Grandparent
 grandchild(Grandchild, Grandparent) :- 
@@ -220,7 +220,7 @@ grandchild(Grandchild, Grandparent) :-
 %   Explain why all names are listed more than once.
 %   Change the rules such that Manuel is not cousin
 %   of himself and the names will only occur once.
-
+%------------------------------------------------------------------------------
 % Two problems:
 % 1.    The brother and sister rules were not checking if B, G and 
 %       S, G (respectively) were UNIQUE; i.e. a person could be the brother
@@ -230,7 +230,8 @@ grandchild(Grandchild, Grandparent) :-
 %       E value n brother and sister could be matched more than once, first 
 %       with E being the mother, and then with E being the father.  Ensuring 
 %       that B, G and S,G had the same mother and father removed this problem
-% NOTE: The requirement in the cousin rule that C be male was removed
+% NOTE: The requirement in the cousin rule that C be male was removed to make 
+% the rule more flexible
 male_cousin_of_manuel(C) :-  
         male(C),
         cousin(manuel, C).
@@ -248,10 +249,14 @@ male_cousin_of_manuel(C) :-
 %    You shall be able to ask:
 %    ?- relation(bernd, tobias, X)
 %    X = grandfather
-
+%------------------------------------------------------------------------------
 % To solve this problem, the relation rule has a different rule for each 
 % type of relationship.  When two people are found to have a particular 
 % relationship, a symbol representing that relationship is returned
+%
+% The reason that our current database is unsuited for this task is that there 
+% is no concrete definition of the relationships between people in our 
+% database; so we need to create symbols to represent these relationships 
 relation(P1, P2, father) :- father(P1, P2).
 relation(P1, P2, mother) :- mother(P1, P2).
 relation(P1, P2, son) :- son(P1, P2).
@@ -281,11 +286,10 @@ relation(P1, P2, grandchild) :- grandchild(P1, P2).
 %
 %   ?- common_ancestor(tobias, joerg, Z).
 %   Z = nikolaus
-
+%------------------------------------------------------------------------------
 % To determine common ancestors of two people, we set up a recursive rule
 % that climbs up the family tree of each person and then checks if the parents 
 % each are the same; if so they are considered an ancestor
-
 
 % Base case: When X and Y have the same parent (Z), we have found a common 
 % ancestor of both
