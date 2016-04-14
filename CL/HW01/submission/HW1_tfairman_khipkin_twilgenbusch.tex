@@ -41,7 +41,7 @@
 \begin{problem}{1}
 \textbf{Regular expressions \& FSAs}
 \begin{description}
-	\item[a.]Write a RE accepting the language that consists of the set comprising all 4 different forms of Peter Bosch's UOS email address: \\
+	\item[a.] Write a RE accepting the language that consists of the set comprising all 4 different forms of Peter Bosch's UOS email address: \\
 	\textsf{ \{pbosch@uos.de, peter.bosch@uos.de, pbosch@uni‐osnabrueck.de, peter.bosch@uni‐osnabrueck.de\} }
  
 	\item[b.] Find an FSA for the language given by the RE /(ab*)+/ . Define this FSA in the format of a formal definition as a 5-tuple, as e.g. on slide 35 of the 2nd lecture.
@@ -50,7 +50,38 @@
 \end{problem}
 
 \begin{solution}
-Solution for Problem \#1
+\begin{description}
+	\item[a.] \begin{verbatim}p(eter\.)?bosch@u(ni-)?os(nabrueck)?\.de\end{verbatim}
+	\item[b.] The FSA $F$ for /(ab*)+/ can be defined with the following 5-tuple:\\
+	Let $F = <Q, \Sigma, q_{0}, F, \delta(q, i)>$, such that:
+
+	\begin{tabular}{l | l}
+		$Q$ & $\{ q_{0}, q_{1}\}$ \\
+		$\Sigma$ & $\{a, b\}$ \\
+		$q_{0}$ & $q_{0}$ \\
+		$F$ & $\{ q_{1} \}$ \\
+		$\delta(q, i)$ &  $\{ (q_{0},a,q_{1}), (q_{1}, b, q_{1}), (q_{1}, \epsilon, q_{0}) \}$
+	\end{tabular}
+
+	TODO: Add image here
+	\item[c.] The regular grammer $G$ for /(ab*)+/ can be defined with the following 4-tuple: \\
+	Let $G = <N, \Sigma, S, P>$ such that:
+
+	\begin{tabular}{l | l}
+		$N$ & $\{ S, A\}$ \\
+		$\Sigma$ & $\{a, b\}$ \\
+		$S$ & $S$ \\
+		$P$ & 
+		\begin{tabular}{| l c l |} \hline 
+			$S$ & $\rightarrow$ & $aA$ \\ 
+			$A$ & $\rightarrow$ & $bA$ \\ 
+			$A$ & $\rightarrow$ & $S$  \\
+			\hline
+		\end{tabular}
+	\end{tabular}
+
+\end{description}
+
 \end{solution}
 
 \vspace*{0.5cm} %% this is to put some vertical space betwen the next problem and the previous solution. You can change the value to something more appropriate.
