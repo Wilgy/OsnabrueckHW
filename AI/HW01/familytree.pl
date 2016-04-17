@@ -143,7 +143,6 @@ query(
 % given X variable; this is true for kronos and rhea
 query(
    'Who has no ancestor?',
-   (parent(P, X)),
-   (not(P)),
-   (X=kronos;
-    X=rhea) ).
+   (not(parent(P, X))),
+   (C=kronos;
+    C=rhea) ).
