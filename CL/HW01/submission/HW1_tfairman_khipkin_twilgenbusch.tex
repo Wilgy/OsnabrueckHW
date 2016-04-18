@@ -8,9 +8,12 @@
 \graphicspath{ {images/} }
 \usepackage{tikz}
 \usepackage{tipa}
+\usepackage{color}
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
             \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
 %%%the \circled command has been used to create text inside circle for grading table.
+
+\newcommand{\redx}{\textcolor{red}{X}}
 
 %%%\geometry{letterpaper, textwidth=17cm, textheight=22cm}
 
@@ -255,32 +258,39 @@ The correct pairings are as follows:
 
 	\newpage
 
-	\item[c.] Pairings of initial consonants of left column with final consonants of right column:
+	\item[c.] Pairings of \textbf{final} consonants of the words in the \textbf{left-hand} column with \textbf{initial} consonants of the words in the \textbf{right-hand} column:
 
 	\begin{tabular}{l l | l}
 	\textbf{Pairs} & \textbf{Words} & \textbf{English Phoneme} \\ \hline
-	a,  & pitch,  & /\textipa{}/ \\
-	b,  & team,  & /\textipa{}/ \\
-	c,  & kill,  & /\textipa{}/ \\
-	d,  & bad,  & /\textipa{}/ \\
-	e,  & dame,  & /\textipa{}/ \\
-	f,  & goal,  & /\textipa{}/ \\
-	g,  & choke,  & /\textipa{}/ \\
-	h,  & jell,  & /\textipa{}/ \\
-	i,  & fun,  & /\textipa{}/ \\
-	j,  & think,  & /\textipa{}/ \\
-	k,  & safe,  & /\textipa{}/ \\
-	l,  & vain,  & /\textipa{}/ \\
-	m,  & they,  & /\textipa{}/ \\
-	n,  & zone,  & /\textipa{}/ \\
-	o,  & mode,  & /\textipa{}/ \\
-	p,  & name,  & /\textipa{}/ \\
-	q,  & lace,  & /\textipa{}/ \\
-	r,  & rake,  & /\textipa{}/ \\
-	s,  & yell,  & /\textipa{}/ \\
-	t,  & wet,  & /\textipa{}/ \\
-	u,  & head,  & /\textipa{}/ \\
-	v,  & shift,  & /\textipa{}/ \\
+	a, 3 & pitch, chip & /\textipa{tS}/ \\
+	b, 12 & team, maid & /\textipa{m}/ \\
+	e, 13 & dame, meat & /\textipa{m}/ \\
+	p, \redx & name, \redx & /\textipa{m}/ \\
+	c, 9 & kill, lane & /\textipa{l}/ \\
+	f, 10 & goal, ledge & /\textipa{l}/ \\
+	h, 11 & jell, lick & /\textipa{l}/ \\
+	s, \redx & yell, \redx & /\textipa{l}/ \\
+	d, 7 & bad, door & /\textipa{d}/ \\
+	o, \redx & mode, \redx & /\textipa{d}/ \\
+	u, \redx & head, \redx & /\textipa{d}/ \\
+	g, 4 & choke, coach & /\textipa{k}/ \\
+	j, 5 & think, comb & /\textipa{k}/ \\
+	r, 6 & rake, cough & /\textipa{k}/ \\
+	i, 14 & fun, nave & /\textipa{n}/ \\
+	l, 15 & vain, nose & /\textipa{n}/ \\
+	n, \redx & zone, \redx & /\textipa{n}/ \\
+	k, 8 & safe, face & /\textipa{f}/ \\
+	m, \redx & they, \redx & /\textipa{D}/ \\
+	q, 21 & lace, sail & /\textipa{s}/ \\
+	t, \redx & wet, \redx & /\textipa{t}/ \\
+	v, \redx & shift, \redx & /\textipa{t}/ \\
+	\redx, 1 & \redx, beige & /\textipa{b}/ \\
+	\redx, 2 & \redx, breathe & /\textipa{b}/ \\
+	\redx, 16 & \redx, robe & /\textipa{r}/ \\
+	\redx, 17 & \redx, rogue & /\textipa{r}/ \\
+	\redx, 18 & \redx, rung & /\textipa{r}/ \\
+	\redx, 19 & \redx, rush & /\textipa{r}/ \\
+	\redx, 20 & \redx, Ruth & /\textipa{r}/ \\
 	\hline
 	\end{tabular}
 
