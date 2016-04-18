@@ -5,6 +5,7 @@
 %% commands defined by me or edit the style file appropriately.
 \usepackage{aahomework}
 \usepackage{graphicx}
+\graphicspath{ {images/} }
 \usepackage{tikz}
 \usepackage{tipa}
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
@@ -50,6 +51,8 @@
 \end{description}
 \end{problem}
 
+\newpage
+
 \begin{solution}
 \begin{description}
 	\item[a.] \begin{verbatim}p(eter\.)?bosch@u(ni-)?os(nabrueck)?\.de\end{verbatim}
@@ -64,7 +67,11 @@
 		$\delta(q, i)$ &  $\{ (q_{0},a,q_{1}), (q_{1}, b, q_{1}), (q_{1}, \varepsilon, q_{0}) \}$
 	\end{tabular}
 
-	TODO: Add image here
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=7cm, height=5cm]{fsa} \\
+		\caption{FSA for /(ab*)+/}
+	\end{figure}
 	\item[c.] The regular grammer $G$ for /(ab*)+/ can be defined with the following 4-tuple: \\
 	Let $G = <N, \Sigma, S, P>$ such that:
 
@@ -87,13 +94,13 @@
 \end{solution}
 
 \vspace*{0.5cm} %% this is to put some vertical space betwen the next problem and the previous solution. You can change the value to something more appropriate.
+\newpage
 
 \begin{problem}{2}
 \textbf{English consonants} \\
 If your native language is not English, or you are uncertain as to your pronounciation, you are advised to
 consult the phonetic transcriptions in a dictionary. In any case of doubt, the intended pronunciation is RP
 (i.e., "BBC English"). 
-\newpage
 
 \begin{description}
 	\item[a.] The words in the left-hand column below \textit{begin} with 22 different consonants. The words in the right-hand columns begin with the same 22 consonants, but in a different order. Match each word on the left with the word on the right which has the same initial consonant (sound, not letter), and write down the solutions as pairs of letters and numbers, e.g."k2".
