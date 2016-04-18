@@ -144,5 +144,7 @@ query(
 query(
    'Who has no ancestor?',
    (not(parent(P, X))),
-   (C=kronos;
-    C=rhea) ).
+   (X=kronos;
+    X=rhea;
+    X=here;
+    X=amphitrite) ).
