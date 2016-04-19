@@ -5,6 +5,8 @@
 %% commands defined by me or edit the style file appropriately.
 \usepackage{aahomework}
 \usepackage{tikz}
+\usepackage{tcolorbox}
+
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
             \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
 %%%the \circled command has been used to create text inside circle for grading table.
@@ -38,17 +40,46 @@
 %% In my style file aahomework.sty I have defined two environments "problem" and "solution" that can be used to type in your question and answer respectively as shown below.%%
 
 \begin{problem}{1}
-Description for Problem \#1
+\textbf{Morphological Parsing}
+
+Give a morphological analysis of the following words,
+\begin{tcolorbox}
+	\textbf{English}: printer, underdetermination, incremental \\
+	\textbf{German}: Versprecher, Ansprechpartner, übergezogener
+\end{tcolorbox}
+
+The morphological analysis should be broken down as follows:
+\begin{itemize}
+	\item Say of each simplex morpheme whether it is a stem, a base, a root, a prefix, a derivational, or an inflectional suffix.
+	\item Give the order of composition, indicating at each level which morpheme is the base.
+	\item Mark each base for its POS.
+
+\end{itemize}
+
+
+Example: \textbf{unabsehbar}
+\begin{itemize}
+	\item Verbal Root (=base): \textbf{seh-} combines with derivational prefix \textbf{ab-} to yield complex \textit{verbal base} \textbf{abseh-}
+
+	\item Verbal Base: \textbf{abseh-} combines with derivational suffix \textbf{-bar} to yield adjective (or \textit{adjectival base}) \textbf{absehbar}
+
+	\item Adjectival Base: \textbf{absehbar} combines with prefix \textbf{un-} to yield \textit{adjective} \textbf{unabsehbar}. 
+\end{itemize}
+
 \end{problem}
 
 \begin{solution}
 Solution for Problem \#1
+
+NOTE: Could probably add an image associated with each breakdown of each word (might be a bit overkill)
 \end{solution}
 
 \vspace*{0.5cm} %% this is to put some vertical space betwen the next problem and the previous solution. You can change the value to something more appropriate.
 
 \begin{problem}{2}
-Description for Problem \#2
+\textbf{Plurals}
+
+Is the English plural formation really completely regular? List the allomorphs of the regular English plural morpheme and give three plural forms that are not formed regularly.
 \end{problem}
 
 \begin{solution}
@@ -58,7 +89,14 @@ Solution for Problem \#2
 \vspace*{0.5cm}
 
 \begin{problem}{3}
-Description for Problem \#3
+\textbf{Words}
+
+Give short definitions (at most 2 lines of text each) for the following terms:
+\begin{itemize}
+	\item Word form
+	\item Grammatical word
+	\item Lexeme
+\end{itemize}
 
 \end{problem}
 
@@ -69,11 +107,93 @@ Solution for Problem \#3
 \vspace*{0.5cm}
 
 \begin{problem}{4}
-Description for Problem \#4
+\textbf{Productivity}
+
+Describe briefly the relation between productivity, rule, and blocking in morphology (at most
+5 lines of text).
+
 \end{problem}
 
 \begin{solution}
 Solution for Problem \#4
+\end{solution}
+
+\vspace*{0.5cm}
+
+\begin{problem}{5}
+\textbf{Forms of Derivation}
+
+Give 2 German and 2 English examples each for the following types of derivation:
+\begin{itemize}
+	\item Compounding
+	\item Conversion
+	\item Clipping
+\end{itemize}
+
+Do \textbf{not} use examples from the lecture slides.
+
+\end{problem}
+
+\begin{solution}
+Solution for Problem \#5
+\end{solution}
+
+\vspace*{0.5cm}
+
+\begin{problem}{6}
+\textbf{X-language Verbal Morphology}
+
+X-language is a variant of a language spoken somewhere in Africa. As the following example shows, X-language's verbs are so complex that they can sometimes convey the meaning of an entire sentence on their own.
+
+\begin{tabular}{l l | l l} 
+\hline atalopenda & ``he will like me'' & atalopiga & ``he will beat me'' \\
+atakupenda & ``he will like you'' & atakupiga & ``he will beat you'' \\
+atampenda & ``he will like him'' & atampiga & ``he will beat him'' \\
+atanipenda & ``he will like us'' & analopiga & ``he is beating me'' \\
+atawapenda & ``he will like them'' & anakupiga & ``he is beating you'' \\
+lotakupenda & ``I will like you'' & anampiga & ``he is beating him'' \\
+lotampenda & ``I will like him'' & amekupiga & ``he has beaten you'' \\
+lotawapenda & ``I will like them'' & amelopiga & ``he has beaten me'' \\
+utalopenda & ``you will like me'' & amempiga & ``he has beaten him'' \\
+utampenda & ``you will like him'' & alilopiga & ``he beat me'' \\
+nitampenda & ``we will like him'' & alikupiga & ``he beat you'' \\
+watampenda & ``they will like him'' & alimpiga & ``he beat him'' \\
+atakusumbau & ``he will annoy you'' & wamenilipa & ``they have paid us'' \\
+unamsumbau & ``you are annoying him'' & nilikulipa & ``we paid you'' \\ \hline
+\end{tabular}
+
+\begin{description}
+	\item[a.] Give the X-language morphemes corresponding to the following English morphemes: I, me, us, you (as subject), you (as object), he, him, they, them, -ed (past tense), will (future), is+-ing (present progressive), has+ -en (present perfect), and the verbal roots like, annoy, beat, and pay.
+	\item[b.] Illustrate how the morphemes combine by giving all inflected forms of the X-language equivalent of the verb annoy for past and future in the 1 st , 2 nd , and 3 rd person singular and plural subject and 2 nd person object, with their translation into English.
+\end{description}
+
+\end{problem}
+
+\begin{solution}
+Solution for Problem \#6
+\end{solution}
+
+\vspace*{0.5cm}
+
+\begin{problem}{7}
+\textbf{Two-level Morphology for Regular English Past Tense.}
+
+Suppose the grammatical form for the past tense of the English verb \underline{gaze} is $<$gaze,+V,+Past$>$ and for the verb \underline{walk} $<$walk,+V,+Past$>$, etc. while the surface forms are \textit{gazed} and \textit{walked}.
+
+\begin{description}
+	\item[a.] What would be the \textbf{underlying form} (showing morpheme and word boundaries) for these two past tense forms?
+	
+	\item[b.] What could an \textbf{FST for the lexical mapping} look like, i.e., an FST that transforms the grammatical form into the underlying form for all regular English verbs? Give the FST in the form of a graph, as in the lecture slides for the plural English FST.
+	
+	\item[c.] What could an \textbf{FST for the surface mapping} look like, i.e., an FST that transforms the underlying form into the surface form for all regular English verbs? Give the FST in the form of a graph, as in the lecture slides for the plural English FST.
+\end{description}
+
+Hint: The regular English past tense is formed by adding –ed to the base, unless the base ends in e; in the latter case only –d is added.
+
+\end{problem}
+
+\begin{solution}
+Solution for Problem \#7
 \end{solution}
 
 \end{document}

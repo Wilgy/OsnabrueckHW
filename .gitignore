@@ -2,6 +2,6 @@ CL/template/*.aux
 CL/template/*.log
 CL/template/*.pdf
 
-CL/HW01/submission/*.aux
-CL/HW01/submission/*.log
-CL/HW01/submission/*.pdf
+CL/HW*/submission/*.aux
+CL/HW*/submission/*.log
+CL/HW*/submission/*.pdf
