@@ -37,10 +37,40 @@
 % - use upper case symbols for variables (Prolog style variables)
 % - use < or > to compare numbers (like in X < 6 or X > Y)
 %
+disk(a).
+disk(b).
+disk(c).
+disk(d).
+
+size_of(a, 4).
+size_of(b, 3).
+size_of(c, 2).
+size_of(d, 1).
+
+size_of(rod1, 5).
+size_of(rod2, 5).
+size_of(rod3, 5).
+
+is_on(a, rod1).
+is_on(d, a).
+is_on(b, rod3).
+is_on(c, b).
+
+clear_top(d).
+clear_top(rod2).
+clear_top(c).
+
 
 % 2. specify a predicate is_above(A,B) which is true
 %    if A is on B or if A is on C and C is above B, etc.
 %
+
+is_above(A, B) :-
+    is_on(A, B).
+
+is_above(A, B) :-
+    is_on(A, X),
+    is_above(X, B).
 
 % 3. specify a predicate move(A,B,C) which is true
 %    if the top of A is clear
@@ -55,7 +85,15 @@
 
 % your solution goes here:
 
-
+% Move A from B to C
+move(A, B, C) :-
+    disk(A),
+    size_of(A, SA),
+    size_of(C, SC),
+    clear_top(A),
+    clear_top(C),
+    is_on(A, B),
+    SC > SA.
 
 
 % use this 'predicate' to print all legal moves
