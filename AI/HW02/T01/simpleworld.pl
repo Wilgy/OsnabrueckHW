@@ -47,6 +47,7 @@ size_of(b, 3).
 size_of(c, 2).
 size_of(d, 1).
 
+% Rods should always be considered 'bigger' than disks
 size_of(rod1, 5).
 size_of(rod2, 5).
 size_of(rod3, 5).

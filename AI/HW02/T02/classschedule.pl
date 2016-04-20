@@ -97,4 +97,76 @@ and all possible rooms (again only those occurring in one the lectures).
 
 --------------------------------------------------------------*/
 
-% your code goes here:
+lecture_db(lecture(
+  'Multi-Agent Systems', 
+  'Kühnberger', 
+  time_room('Thu 16-18','31/147'))).
+
+lecture_db(lecture(
+  'Functional Programming', 
+  'Gust', 
+  time_room('Thu 12-14','69/E23'))).
+
+lecture_db(lecture(
+  'Aspects of knowledge representation in artificial general intelligence', 
+  'Kühnberger', 
+  time_room('Thu 16-18','31/147'))).
+
+lecture_db(lecture(
+  'Entscheidungs- und Spieltheorie für Studierende der Kognitionswissenschaft', 
+  'Gaertner', 
+  time_room('Thu 14-16','69/E23'))).
+
+lecture_db(lecture(
+  'Modal Logic',
+  'Martinez Baldares',
+  time_room('Tue 14-16', '31/449'))).
+
+lecture_db(lecture(
+  'Introduction to Algebraic Logic',
+  and('Martinez Baldares',  'Kühnberger'),
+  time_room('Mon 14-16', '31/423'))).
+
+lecture_db(lecture(
+  'Artificial Intelligence',
+  and('Gust', 'Kühnberger'),
+  and(time_room('Mon 14-16, 31/449'), time_room('Tue 14-16', '31/449')))).
+
+lecture_db(lecture(
+  'Tutorials Artificial Intelligence',
+  and('Gust', 'Kühnberger'), 
+  and(time_room('Tue 16-18', '69/118'), 
+    and(time_room('Wed 12-14', '69/E15'), 
+      and(time_room('Thu 10-12', '32/372'), 
+        time_room('Fri 12:00-14:00', '32/107') ) ) ) ) ).
+
+lecture_db(lecture(
+  'testname',
+  and('testt1', and('testt2', and('testt3', 'testt4')) ), 
+  and(time_room('Tue 16-18', '69/118'), 
+    and(time_room('Wed 12-14', '69/E15'), 
+      and(time_room('Thu 10-12', '32/372'), 
+        time_room('Fri 12:00-14:00', '32/107') ) ) ) ) ).
+
+in_and(E, and(E, _RA)).
+in_and(E, and(_HA, and(RAH, RA))) :-
+  in_and(E, and(RAH, RA)).
+in_and(E, and(_HA, E)):-
+  E\=and(_X, _Y).
+
+lecture_name(lecture(N, T, TR), N)  :-
+  lecture_db(lecture(N, T, TR)).
+
+teacher(lecture(N, and(T, OT), TR), X) :- 
+  lecture_db(lecture(N, and(T, OT), TR)),
+  in_and(X, and(T, OT)).
+
+teacher(lecture(N, TR, TR), T) :-
+  lecture_db(lecture(N, T, TR)).
+
+time_room(lecture(N, T, and(TR, OTR)), X) :- 
+  lecture_db(lecture(N, T, and(TR, OTR))),
+  in_and(X, and(TR, OTR)).
+
+time_room(lecture(N, T, TR), TR) :-
+  lecture_db(lecture(N, T, TR)).
