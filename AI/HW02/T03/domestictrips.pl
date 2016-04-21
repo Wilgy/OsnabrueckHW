@@ -44,13 +44,13 @@ city(barcelona, spain).
 %  the predicate is provable if all cities
 %  are located in the same country.
 %
-% ...your definition goes here...
 
-% Base case occurs when there are no more countries to check (will return true)
-domestic_trip([], _Country).
+% Base case occurs when the list contains only one city.
+domestic_trip([H|[]], C) :-
+    city(H, C).
 
-% Recursively moves through the list, ensuring that all cities are from the 
-% same country (otherwise return false)
-domestic_trip([H | T], Country) :-
-    city(H, Country),
-    domestic_trip(T, Country).
+% Recursively moves through the list, proving that all cities
+% are in the same country.
+domestic_trip([H|T], C) :-
+    city(H, C),
+    domestic_trip(T, C).
