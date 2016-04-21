@@ -37,11 +37,19 @@
 % - use upper case symbols for variables (Prolog style variables)
 % - use < or > to compare numbers (like in X < 6 or X > Y)
 %
+
+% -----------------------------------------------------------------------------
+% Database for the the initial state of the Towers of Hanoi board
+% -----------------------------------------------------------------------------
+
+% Define disks so that we can distinguish between them and rods in the 'move' 
+% predicate
 disk(a).
 disk(b).
 disk(c).
 disk(d).
 
+% Determine the size of each disk
 size_of(a, 4).
 size_of(b, 3).
 size_of(c, 2).
@@ -52,6 +60,7 @@ size_of(rod1, 5).
 size_of(rod2, 5).
 size_of(rod3, 5).
 
+% The initial state of the 'board'
 is_on(a, rod1).
 is_on(d, a).
 is_on(b, rod3).
@@ -66,6 +75,13 @@ clear_top(c).
 %    if A is on B or if A is on C and C is above B, etc.
 %
 
+%%
+% is_above - determines if A is above B; will use recursive calls to 
+% check if there is anything in between A and B
+% 
+% A - the item on top
+% B - the item on bottom
+%%
 is_above(A, B) :-
     is_on(A, B).
 
@@ -86,7 +102,13 @@ is_above(A, B) :-
 
 % your solution goes here:
 
-% Move A from B to C
+%%
+% move - move disk A from B to C
+%
+% A - the disk to move
+% B - the disk or rod to move from
+% C - the disk or rod to move to
+%%
 move(A, B, C) :-
     disk(A),
     size_of(A, SA),
