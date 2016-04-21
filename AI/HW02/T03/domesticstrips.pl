@@ -45,3 +45,12 @@ city(barcelona, spain).
 %  are located in the same country.
 %
 % ...your definition goes here...
+
+% Base case occurs when there are no more countries to check (will return true)
+domestic_trip([], _Country).
+
+% Recursively moves through the list, ensuring that all cities are from the 
+% same country (otherwise return false)
+domestic_trip([H | T], Country) :-
+    city(H, Country),
+    domestic_trip(T, Country).
