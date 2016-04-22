@@ -138,9 +138,9 @@ the representations of time slots like 'Thu 12-14')
 conflict(TR, L1, L2) :-
   lecture_db(L1),
   lecture_db(L2),
+  L1 \= L2, % necessary because a lecture cannot conflict with itself
   time_room(L1, TR),
-  time_room(L2, TR),
-  L1 \= L2. % necessary because a lecture cannot conflict with itself
+  time_room(L2, TR). 
 
 /*--------------------------------------------------------------
 
@@ -156,16 +156,15 @@ and all possible rooms (again only those occurring in one the lectures).
 
 --------------------------------------------------------------*/
 
-time(T) :-
-  lecture_db(L),
+time(T, L) :-
   time_room(L, time_room(T,_)).
 
-room(R) :-
-  lecture_db(L),
+room(R, L) :-
   time_room(L, time_room(_,R)).
 
 free_room(T,R) :-
-  time(T),
-  room(R),
-  lecture_db(L),
-  not(time_room(L,time_room(T,R))).
+  lecture_db(L1),
+  lecture_db(L2),
+  time(T, L1),
+  room(R, L2),
+  not(time_room(L1, time_room(T,R))).
