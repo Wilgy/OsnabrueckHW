@@ -156,15 +156,21 @@ and all possible rooms (again only those occurring in one the lectures).
 
 --------------------------------------------------------------*/
 
-time(T, L) :-
+time(T) :-
+  lecture_db(L),
   time_room(L, time_room(T,_)).
 
-room(R, L) :-
-  time_room(L, time_room(_,R)).
+room(R) :-
+  lecture_db(L),
+  time_room(L, time_room(_, R)).
 
-free_room(T,R) :-
-  lecture_db(L1),
-  lecture_db(L2),
-  time(T, L1),
-  room(R, L2),
-  not(time_room(L1, time_room(T,R))).
+occupied_room(T, R) :-
+  time(T),
+  room(R),
+  lecture_db(L),
+  time_room(L, time_room(T, R)).
+
+free_room(T, R) :-
+  time(T),
+  room(R),
+  not(occupied_room(T, R)).
