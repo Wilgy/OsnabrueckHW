@@ -3,11 +3,14 @@
 %% aahomework is the style file I have used to typeset many commands, feel free to use them in your solutions.
 %% bear in mind that if you need to define your command then you will have to make sure that it is not in conflict to my pre-defined command. Otherwise you will need to either use
 %% commands defined by me or edit the style file appropriately.
+\usepackage[dvipsnames]{xcolor}
 \usepackage{aahomework}
 \usepackage{tikz}
 \usepackage{tipa}
 \usepackage{color}
 \usepackage{tcolorbox}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
 
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
             \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
@@ -70,8 +73,11 @@ Example: \textbf{unabsehbar}
 
 \end{problem}
 
+\newpage
+
 \begin{solution}
-English: \\
+
+\textbf{English}:
 \begin{enumerate}
 	\item \textbf{printer}
 		\begin{itemize}
@@ -90,7 +96,7 @@ English: \\
 		\end{itemize}
 \end{enumerate}
 
-German:
+\textbf{German}:
 \begin{enumerate}
 	\item \textbf{Versprecher}
 		\begin{itemize}
@@ -139,6 +145,7 @@ Three words that have irregular plural forms are: \underline{mice} (plural of mo
 \end{solution}
 
 \vspace*{0.5cm}
+\newpage
 
 \begin{problem}{3}
 \textbf{Words}
@@ -175,6 +182,7 @@ In terms of morphology, \textit{productivity} is process that can be applied to 
 \end{solution}
 
 \vspace*{0.5cm}
+\newpage
 
 \begin{problem}{5}
 \textbf{Forms of Derivation}
@@ -211,6 +219,7 @@ Do \textbf{not} use examples from the lecture slides.
 \end{solution}
 
 \vspace*{0.5cm}
+\newpage
 
 \begin{problem}{6}
 \textbf{X-language Verbal Morphology}
@@ -241,52 +250,54 @@ unamsumbau & ``you are annoying him'' & nilikulipa & ``we paid you'' \\ \hline
 
 \end{problem}
 
+\newpage
+
 \begin{solution}
 
 \begin{description}
 \item[a.] The X-language ``sentence'' structure is broken up into 4 major, distinct parts: \\
-Subject - Tense - Object - Verb Root \\
+\textcolor{red}{Subject} - \textcolor{OliveGreen}{Tense} - \textcolor{blue}{Object} - \textcolor{BurntOrange}{Verb Root} \\
 The X-language morphemes are mapped to the English morphemes as follows:
 
 \begin{tabular}{l l | l l | l l}
 English Pronoun & X-language & English Tense & X-language & English Verb & X-language \\ \hline 
-I & ``lo'' & Past (-ed) & ``li'' & like & ``penda'' \\
-me & ``lo'' & Future (will) & ``ta'' & annoy & ``sumbau'' \\
-we & ``ni'' & Present Pro. & ``na'' & beat & ``piga'' \\
-us & ``ni'' & Present Per. & ``me'' & pay & ``lipa'' \\
-you (Sub.) & ``u'' & & & &  \\
-you (Obj.) & ``ku'' & & & & \\
-he & ``a'' & & & & \\
-him & ``m'' & & & & \\
-they & ``wa'' & & & & \\
-them & ``wa'' & & & & \\
+I & ``\textcolor{red}{lo}'' & Past (-ed) & ``\textcolor{OliveGreen}{li}'' & like & ``\textcolor{BurntOrange}{penda}'' \\
+me & ``\textcolor{blue}{lo}'' & Future (will) & ``\textcolor{OliveGreen}{ta}'' & annoy & ``\textcolor{BurntOrange}{sumbau}'' \\
+we & ``\textcolor{red}{ni}'' & Present Pro. & ``\textcolor{OliveGreen}{na}'' & beat & ``\textcolor{BurntOrange}{piga}'' \\
+us & ``\textcolor{blue}{ni}'' & Present Per. & ``\textcolor{OliveGreen}{me}'' & pay & ``\textcolor{BurntOrange}{lipa}'' \\
+you (Sub.) & ``\textcolor{red}{u}'' & & & &  \\
+you (Obj.) & ``\textcolor{blue}{ku}'' & & & & \\
+he & ``\textcolor{red}{a}'' & & & & \\
+him & ``\textcolor{blue}{m}'' & & & & \\
+they & ``\textcolor{red}{wa}'' & & & & \\
+them & ``\textcolor{blue}{wa}'' & & & & \\
 \end{tabular}
 
 \textbf{NOTE}: The plural forms of ``you'' ($2^{nd}$ person subject/object) are the same as the singular forms in both the X-language and English.
 
-\item[b.] The following two tables both use the $2^{nd}$ person object in (you/``ku'') in their translations.
+\item[b.] The following two tables both use the $2^{nd}$ person object in (you/``\textcolor{blue}{ku}'') in their translations.
 
-Inflection tables for ANNOY (``sumbua''):
+Inflection tables for ANNOY (``\textcolor{BurntOrange}{sumbua}''):
 
 \begin{tabular}{l l | l l}
-Case & Subject & Past Tense(``li'') & Translation \\ \hline
-$1^{st}$ Person Singular & I/``lo'' & lolikusumbau & I annoyed you \\
-$1^{st}$ Person Plural & we/``ni'' & nilikusumbau & we annoyed you \\
-$2^{nd}$ Person Singular & you/``u'' & ulikusumbau & you annoyed you \\
-$2^{nd}$ Person Plural & you/``u'' & ulikusumbau & you annoyed you \\
-$3^{rd}$ Person Singular & he/``a'' & alikusumbau & he annoyed you  \\
-$3^{rd}$ Person Plural & they/``wa'' & walikusumbau & they annoyed you \\ \hline
+Case & Subject & Past Tense(``\textcolor{OliveGreen}{li}'') & Translation \\ \hline
+$1^{st}$ Person Singular & I/``\textcolor{red}{lo}'' & \textcolor{red}{lo}\textcolor{OliveGreen}{li}\textcolor{blue}{ku}\textcolor{BurntOrange}{sumbau} & I annoyed you \\
+$1^{st}$ Person Plural & we/``\textcolor{red}{ni}'' & \textcolor{red}{ni}\textcolor{OliveGreen}{li}\textcolor{blue}{ku}\textcolor{BurntOrange}{sumbau} & we annoyed you \\
+$2^{nd}$ Person Singular & you/``\textcolor{red}{u}'' & \textcolor{red}{u}\textcolor{OliveGreen}{li}\textcolor{blue}{ku}\textcolor{BurntOrange}{sumbau} & you annoyed you \\
+$2^{nd}$ Person Plural & you/``\textcolor{red}{u}'' & \textcolor{red}{u}\textcolor{OliveGreen}{li}\textcolor{blue}{ku}\textcolor{BurntOrange}{sumbau} & you annoyed you \\
+$3^{rd}$ Person Singular & he/``\textcolor{red}{a}'' & \textcolor{red}{a}\textcolor{OliveGreen}{li}\textcolor{blue}{ku}\textcolor{BurntOrange}{sumbau} & he annoyed you  \\
+$3^{rd}$ Person Plural & they/``\textcolor{red}{wa}'' & \textcolor{red}{wa}\textcolor{OliveGreen}{li}\textcolor{blue}{ku}\textcolor{BurntOrange}{sumbau} & they annoyed you \\ \hline
 \end{tabular}
 
 \begin{tabular}{l l | l l}
  
-Case & Subject & Future Tense(``ta'') & Translation \\
-$1^{st}$ Person Singular & I/``lo'' & lotakusumbau & I will annoy you \\
-$1^{st}$ Person Plural & we/``ni'' & nitakusumbau & we will annoy you \\
-$2^{nd}$ Person Singular & you/``u'' & utakusumbau & you will annoy you \\
-$2^{nd}$ Person Plural & you/``u'' & utakusumbau & you will annoy you \\
-$3^{rd}$ Person Singular & he/``a'' & atakusumbau & he will annoy you  \\
-$3^{rd}$ Person Plural & they/``wa'' & watakusumbau & they will annoy you \\ \hline
+Case & Subject & Future Tense(``\textcolor{OliveGreen}{ta}'') & Translation \\
+$1^{st}$ Person Singular & I/``\textcolor{red}{lo}'' & \textcolor{red}{lo}\textcolor{OliveGreen}{ta}\textcolor{blue}{ku}\textcolor{BurntOrange}{sumbau} & I will annoy you \\
+$1^{st}$ Person Plural & we/``\textcolor{red}{ni}'' & \textcolor{red}{ni}\textcolor{OliveGreen}{ta}\textcolor{blue}{ku}\textcolor{BurntOrange}{sumbau} & we will annoy you \\
+$2^{nd}$ Person Singular & you/``\textcolor{red}{u}'' & \textcolor{red}{u}\textcolor{OliveGreen}{ta}\textcolor{blue}{ku}\textcolor{BurntOrange}{sumbau} & you will annoy you \\
+$2^{nd}$ Person Plural & you/``\textcolor{red}{u}'' & \textcolor{red}{u}\textcolor{OliveGreen}{ta}\textcolor{blue}{ku}\textcolor{BurntOrange}{sumbau} & you will annoy you \\
+$3^{rd}$ Person Singular & he/``\textcolor{red}{a}'' & \textcolor{red}{a}\textcolor{OliveGreen}{ta}\textcolor{blue}{ku}\textcolor{BurntOrange}{sumbau} & he will annoy you  \\
+$3^{rd}$ Person Plural & they/``\textcolor{red}{wa}'' & \textcolor{red}{wa}\textcolor{OliveGreen}{ta}\textcolor{blue}{ku}\textcolor{BurntOrange}{sumbau} & they will annoy you \\ \hline
 \end{tabular}
 
 \end{description}
@@ -320,6 +331,7 @@ Hint: The regular English past tense is formed by adding –ed to the base, unle
 			\item \underline{walk} $\rightarrow$ \textbf{walk$\wedge$d\#}
 		\end{itemize}
 		Where ``$\wedge$'' is the \textit{morpheme boundary} and ``\#'' is the \textit{word boundary}.
+
 	\item[b.] The \textbf{FST for lexical mapping} for English regular past tense can be defined with the 7-tuple:
 	Let $F = <Q, \Sigma, \Delta, q_{0}, F, \delta(q, w)>, \sigma(q, w)$, such that:
 
@@ -333,7 +345,11 @@ Hint: The regular English past tense is formed by adding –ed to the base, unle
 		$\sigma(q, w)$ & $\{ (q_{0},\{a, \ldots, z\},\{a, \ldots, z\}), (q_{0}, +V, \varepsilon), (q_{1}, +Past, \wedge d\#) \}$
 	\end{tabular}
 
-	TODO: Add image of FST
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=10cm, height=5cm]{problem07partb} \\
+		\caption{Lexical Mapping FST for English Past Tense}
+	\end{figure}
 
 	\item[c.] The \textbf{FST for surface mapping} for English regular past tense can be defined with the 7-tuple:
 	Let $F = <Q, \Sigma, \Delta, q_{0}, F, \delta(q, w)>, \sigma(q, w)$, such that:
@@ -351,7 +367,11 @@ Hint: The regular English past tense is formed by adding –ed to the base, unle
 		 &  $(q_{1},\{a, \ldots, z\} \cup \{\#\},\{a, \ldots, z\} \cup \{\#\}), (q_{1}, \wedge , e), (q_{2}, d, d), (q_{3}, \#, \varepsilon)\}$\\
 	\end{tabular}
 
-	TODO: Add image of FST
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=13cm, height=6cm]{problem07partc} \\
+		\caption{Surface Mapping FST for English Past Tense}
+	\end{figure}
 
 \end{description}
 
