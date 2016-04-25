@@ -5,6 +5,8 @@
 %% commands defined by me or edit the style file appropriately.
 \usepackage{aahomework}
 \usepackage{tikz}
+\usepackage{tipa}
+\usepackage{color}
 \usepackage{tcolorbox}
 
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
@@ -45,7 +47,7 @@
 Give a morphological analysis of the following words,
 \begin{tcolorbox}
 	\textbf{English}: printer, underdetermination, incremental \\
-	\textbf{German}: Versprecher, Ansprechpartner, übergezogener
+	\textbf{German}: Versprecher, Ansprechpartner, {\"u}bergezogener
 \end{tcolorbox}
 
 The morphological analysis should be broken down as follows:
@@ -83,7 +85,15 @@ Is the English plural formation really completely regular? List the allomorphs o
 \end{problem}
 
 \begin{solution}
-Solution for Problem \#2
+The English morpheme for regular plurals ($<$+Pl$>$) is realised by 3 different allomorphs:
+\begin{itemize}
+	\item $[$\textipa{z}$]$ : dog\textcolor{red}{s}
+	\item $[$\textipa{s}$]$ : cat\textcolor{red}{s}
+	\item $[$\textipa{iz}$]$ : fox\textcolor{red}{es}
+\end{itemize}
+
+Three words that have irregular plural forms are: \underline{mice} (plural of mouse), \underline{geese} (plural of goose), and \underline{die} (plural of dice). 
+
 \end{solution}
 
 \vspace*{0.5cm}
@@ -101,7 +111,11 @@ Give short definitions (at most 2 lines of text each) for the following terms:
 \end{problem}
 
 \begin{solution}
-Solution for Problem \#3
+\begin{itemize}
+	\item Word form - A sequence of phonemes or graphemes that one particular lexeme can take.  For example, the lexeme TALK can have the word forms \textbf{talk} and \textbf{talks}.
+	\item Grammatical word - A pair of phonemes or graphemes and a grammatical classification (i.e. how that word can be used in a sentence grammatically).
+	\item Lexeme - The root element of a word which is stored in the mental lexicon.  This is the part of the word that we attach \textit{meaning} to.
+\end{itemize}
 \end{solution}
 
 \vspace*{0.5cm}
@@ -114,8 +128,8 @@ Describe briefly the relation between productivity, rule, and blocking in morpho
 
 \end{problem}
 
-\begin{solution}
-Solution for Problem \#4
+\begin{solution} \\
+In terms of morphology, \textit{productivity} is process that can be applied to arbitrary new words that appear in a language; i.e. the conjugation \textit{inflection} of regular of new verbs that appear in a language.  A \textit{rule} is used when creating new lexemes or words with a different meanings.  Rules are typically seen when adding suffixes or prefixes to existing words to create new ones with different meanings. \textit{Blocking} is simply the ``blocking'' of a regular word form by an irregular one; i.e. using the irregular plural ``mice'' instead of ``mouses''.
 \end{solution}
 
 \vspace*{0.5cm}
@@ -135,7 +149,23 @@ Do \textbf{not} use examples from the lecture slides.
 \end{problem}
 
 \begin{solution}
-Solution for Problem \#5
+\begin{itemize}
+	\item Compounding : occurs when two free morphemes are put together to form one word.
+	\begin{itemize}
+		\item English : \textbf{bittersweet}, \textbf{smalltalk} 
+		\item German : \textbf{Schlafzimmer}, \textbf{Spielplatz}
+	\end{itemize}
+	\item Conversion : occurs when a word changes syntactic category, with a possible stem change.
+	\begin{itemize}
+		\item English : salt(Noun) $\rightarrow$ \textbf{salty}(Adjective), fun(Noun) $\rightarrow$ \textbf{funny}(Adjective)
+		\item German : lesen(Verb) $\rightarrow$ \textbf{Leser}(Noun), fahren(Verb) $\rightarrow$ \textbf{Fahrer}(Noun)
+	\end{itemize}
+	\item Clipping : occurs when a word is shortened and the new word becomes part of the lexicon.
+	\begin{itemize}
+		\item English : \textbf{exam}(ination), \textbf{lab}(oratory)
+		\item German : \textbf{Pils}(ner), \textbf{U}(ntersee)\textbf{-boat}
+	\end{itemize}
+\end{itemize}
 \end{solution}
 
 \vspace*{0.5cm}
@@ -163,14 +193,62 @@ unamsumbau & ``you are annoying him'' & nilikulipa & ``we paid you'' \\ \hline
 \end{tabular}
 
 \begin{description}
-	\item[a.] Give the X-language morphemes corresponding to the following English morphemes: I, me, us, you (as subject), you (as object), he, him, they, them, -ed (past tense), will (future), is+-ing (present progressive), has+ -en (present perfect), and the verbal roots like, annoy, beat, and pay.
-	\item[b.] Illustrate how the morphemes combine by giving all inflected forms of the X-language equivalent of the verb annoy for past and future in the 1 st , 2 nd , and 3 rd person singular and plural subject and 2 nd person object, with their translation into English.
+	\item[a.] Give the X-language morphemes corresponding to the following English morphemes: \textit{I}, \textit{me}, \textit{us}, \textit{you} (as subject), \textit{you} (as object), \textit{he}, \textit{him}, \textit{they}, \textit{them}, \textit{-ed} (past tense), \textit{will} (future), \textit{is+ -ing} (present progressive), \textit{has+ -en} (present perfect), and the verbal roots \textit{like}, \textit{annoy}, \textit{beat}, and \textit{pay}.
+	\item[b.] Illustrate how the morphemes combine by giving all inflected forms of the X-language equivalent of the verb \textbf{annoy} for past and future in the $1^{st}$, $2^{nd}$, and $3^{rd}$ person singular and plural subject and $2^{nd}$ person object, with their translation into English.
 \end{description}
 
 \end{problem}
 
 \begin{solution}
-Solution for Problem \#6
+
+\begin{description}
+\item[a.] The X-language ``sentence'' structure is broken up into 4 major, distinct parts: \\
+Subject - Tense - Object - Verb Root \\
+The X-language morphemes are mapped to the English morphemes as follows:
+
+\begin{tabular}{l l | l l | l l}
+English Pronoun & X-language & English Tense & X-language & English Verb & X-language \\ \hline 
+I & ``lo'' & Past (-ed) & ``li'' & like & ``penda'' \\
+me & ``lo'' & Future (will) & ``ta'' & annoy & ``sumbau'' \\
+we & ``ni'' & Present Pro. & ``na'' & beat & ``piga'' \\
+us & ``ni'' & Present Per. & ``me'' & pay & ``lipa'' \\
+you (Sub.) & ``u'' & & & &  \\
+you (Obj.) & ``ku'' & & & & \\
+he & ``a'' & & & & \\
+him & ``m'' & & & & \\
+they & ``wa'' & & & & \\
+them & ``wa'' & & & & \\
+\end{tabular}
+
+\textbf{NOTE}: The plural forms of ``you'' ($2^{nd}$ person subject/object) are the same as the singular forms in both the X-language and English.
+
+\item[b.] The following two tables both use the $2^{nd}$ person object in (you/``ku'') in their translations.
+
+Inflection tables for ANNOY (``sumbua''):
+
+\begin{tabular}{l l | l l}
+Case & Subject & Past Tense(``li'') & Translation \\ \hline
+$1^{st}$ Person Singular & I/``lo'' & lolikusumbau & I annoyed you \\
+$1^{st}$ Person Plural & we/``ni'' & nilikusumbau & we annoyed you \\
+$2^{nd}$ Person Singular & you/``u'' & ulikusumbau & you annoyed you \\
+$2^{nd}$ Person Plural & you/``u'' & ulikusumbau & you annoyed you \\
+$3^{rd}$ Person Singular & he/``a'' & alikusumbau & he annoyed you  \\
+$3^{rd}$ Person Plural & they/``wa'' & walikusumbau & they annoyed you \\ \hline
+\end{tabular}
+
+\begin{tabular}{l l | l l}
+ 
+Case & Subject & Future Tense(``ta'') & Translation \\
+$1^{st}$ Person Singular & I/``lo'' & lotakusumbau & I will annoy you \\
+$1^{st}$ Person Plural & we/``ni'' & nitakusumbau & we will annoy you \\
+$2^{nd}$ Person Singular & you/``u'' & utakusumbau & you will annoy you \\
+$2^{nd}$ Person Plural & you/``u'' & utakusumbau & you will annoy you \\
+$3^{rd}$ Person Singular & he/``a'' & atakusumbau & he will annoy you  \\
+$3^{rd}$ Person Plural & they/``wa'' & watakusumbau & they will annoy you \\ \hline
+\end{tabular}
+
+\end{description}
+
 \end{solution}
 
 \vspace*{0.5cm}
