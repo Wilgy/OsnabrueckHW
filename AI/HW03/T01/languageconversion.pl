@@ -1,4 +1,4 @@
-% languageconversion.pl - Prolog file for HW03, task 1
+% languageconversion.pl - Prolog file for HW03, Task 1
 % Series of questions for converting a natural language sentence into 
 % predicate, clausal, and prolog sentences
 %
@@ -14,13 +14,9 @@ b) into clausal form (conjuctive normal form without quantifiers).
 c) if possible, try to formulate the statements as prolog programs
 
 d) check if the programs will work properly or not.
-   state assumptions which ensure correct solutions,
-   if necessary.
-   State possible problems or explain why it's
-   not possible represent a problem as a prolog program.
-
-(sorry but the English translations are not always 
- very good)
+   State assumptions which ensure correct solutions, if necessary.
+   State possible problems or explain why it's not possible to
+      represent a problem as a prolog program.
 
 use the symbols:
 
@@ -32,7 +28,7 @@ ex x : - for existential quantification
 
 Try to use the close world assumption and the
 unique name assumption if suitable.
-(if so note it in a comment)
+(If so, note it in a comment.)
 
 closed world assumption:
    there are only those individuals in the model
@@ -40,18 +36,16 @@ closed world assumption:
    ground literals, which are not provable, are false.
 
 unique name assumption:
-   different names refer to different individuals
+   different names refer to different individuals.
 
 clark completion:
-   for equivalences use one direction of the implication
-   (the one you need).
+   for equivalences, use one direction of the implication
+   (the one you need);
    the other direction is added by the clark completion
    (but it will not be evaluated by prolog;
-   so if both direction are needed,
-   it will not work)
+   so if both directions are needed, it will not work).
 
-if possible, add clauses with test data,
-to run the programs
+If possible, add clauses with test data for running the programs.
 */
 
 % Example:
@@ -78,7 +72,7 @@ over(tt2,p2).
 over(tt2,p3).
 
 %-----------------------------------------------
-% 1. If it is raining and freezing then it is slippery (1 point)
+% 1. If it is raining and freezing then it is slippery. (1 point)
 
 
 %-----------------------------------------------
@@ -98,20 +92,19 @@ over(tt2,p3).
 
 
 %-----------------------------------------------
-% 6. Every human being has exactly one mother (2 points)
+% 6. Every human being has exactly one mother. (2 points)
 
 
 %-----------------------------------------------
-% 7.  A thing is exactly then a railway station if it has
-%     tracks,
-%     a load ticket window, a departure plan
+% 7.  A thing is a railway station if it has tracks,
+%     a load ticket window, a departure plan,
 %     and a waiting room. (2 points)
 
 %-----------------------------------------------
 % 8.  The Introduction to AI and logical programming
 %     course has five examination parts: homeworks for block 1,
-%     homeworks for block 2, exam 1, exam 2 and an additional
+%     homeworks for block 2, exam 1, exam 2, and an additional
 %     exam. Students who pass all the homeworks and exam 1 and 
 %     exam 2 pass the entire course. Students who fail at exactly
-%     one of the first two exams can substitute that exam by 
+%     one of the first two exams can substitute that exam with
 %     the additional exam. (3 points)

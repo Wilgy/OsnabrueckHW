@@ -17,11 +17,10 @@ Example:
    zip_list(L,[1,2,3],[a,b,c]).
        L=[1, a, 2, b, 3, c]
 
-L1 and L2 need not to be of equal length.
+L1 and L2 need not be of equal length.
 If 'zip_list' is called with uninstantiated L,
-the elements of the longer list of L1 and L2 should be
-all present in L.
-This has effects to calls with L instantiated.
+the elements of the longer list of L1 and L2 should all be present in L.
+This affects calls with L instantiated.
 Which?
 
 Examples:
@@ -34,11 +33,11 @@ Examples:
 
 
 Hints:
-Use two predicates which call each other alternately
-if one of L1 or L2 is empty return the other
-else add the element to L and call the other predicate
+Use two predicates which call each other alternately.
+If one of L1 or L2 is empty, return the other.
+Else add the element to L and call the other predicate.
 
-to see the problems with instantiated first argument try 
+To see the problems with instantiated first argument, try:
 
       zip_list([1,2,3,4,5],X,Y)
 

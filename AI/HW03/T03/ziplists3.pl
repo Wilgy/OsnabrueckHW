@@ -10,8 +10,8 @@ Define a predicate:
    zip_lists3(L, L1, L2)
 
 - L1 and L2 contain together all elements of L,
-  but L1 (at least) three times as many as L2.
-  (|L2|*3>=|L1|)
+  but L1 contains (at least) three times as many elements as L2.
+  ( |L2| * 3 >= |L1| )
 
 - the sequential order should be maintained
 
@@ -39,6 +39,6 @@ and
    zip_lists3(L,L1,L2).
 
 Hint:
-you have to consider all cases where the number
-of elements of L cannot be divided by 4 without rest, too!
+You must also consider all cases where the number of elements in L
+cannot be divided by 4 without a remainder!
 */
