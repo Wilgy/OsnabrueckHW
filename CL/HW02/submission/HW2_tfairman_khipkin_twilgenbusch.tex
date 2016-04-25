@@ -71,9 +71,51 @@ Example: \textbf{unabsehbar}
 \end{problem}
 
 \begin{solution}
-Solution for Problem \#1
+English: \\
+\begin{enumerate}
+	\item \textbf{printer}
+		\begin{itemize}
+			\item Verbal Root (=base): \textbf{print} combines with the suffix \textbf{-er} to produce the \textit{noun} \textbf{printer}
+		\end{itemize}
+	\item \textbf{underdetermination}
+		\begin{itemize}
+			\item Verbal Root (=base):\textbf{determin}(e) combines with the derivational suffix \textbf{-ate} to yield the \textit{adjectival base} \textbf{determinate}
+			\item Adjectival Base: \textbf{determina}(te) combines with the derivational suffix \textbf{-tion} to yield the \textit{noun base} \textbf{determination}
+			\item Noun Base: \textbf{determination} combines with the prefix \textbf{under-} to yield the \textit{noun} \textbf{underdetermination} 
+		\end{itemize}
+	\item \textbf{incremental}
+		\begin{itemize}
+			\item Verbal Root (=base): \textbf{incre}(ase) combines with the derivational suffix \textbf{-ment} to produce the \textit{noun} \textbf{increment}
+			\item Noun Base: \textbf{increment} combines with the suffix \textbf{-al} to produce the \textit{adjective} \textbf{incremental}
+		\end{itemize}
+\end{enumerate}
 
-NOTE: Could probably add an image associated with each breakdown of each word (might be a bit overkill)
+German:
+\begin{enumerate}
+	\item \textbf{Versprecher}
+		\begin{itemize}
+			\item Verbal Root (=base): \textbf{sprech}(en) combines with the derivational suffix \textbf{-er} to yield the \textit{noun base} \textbf{Sprecher}
+			\item Noun base: \textbf{Sprecher} combines with the prefix \textbf{Ver-} to produce the \textit{noun} \textbf{Versprecher}
+		\end{itemize}
+	\item \textbf{Ansprechpartner}: A \textit{compound word} compose of two words: \textbf{ansprech}(en) and \textbf{Partner}
+		\begin{enumerate}
+			\item \textbf{ansprech}(en)
+				\begin{itemize}
+					\item Verbal Root (=base): \textbf{sprech}(en) combines with the suffix \textbf{an-} to yield the verb \textbf{ansprech}(en)
+				\end{itemize}
+			\item \textbf{Partner}
+				\begin{itemize}
+					\item Noun Root (=base): \textbf{part} combines with the prefix \textbf{-er} to yield the \textit{noun} \textbf{Partner}
+				\end{itemize}
+			The \textit{verbal base} \textbf{ansprech}(en) combines with the \textit{noun base} \textbf{Partner} to yield the noun \textbf{Ansprecherpartner}
+		\end{enumerate}
+	\item \textbf{{\"u}bergezogener}
+		\begin{itemize}
+			\item Verbal Root (=base): \textbf{zeihen} combines its \textit{past tense form} with the derivational derivational prefix \textbf{ge-} to yield the \textit{verbal base} \textbf{gezogen}
+			\item Verbal Base: \textbf{gezogen} combines with the derivational prefix \textbf{{\"u}ber-} to form the \textit{verbal base} \textbf{{\"u}bergezogen}
+			\item Verbal Base: \textbf{{\"u}bergezogen} combines with the suffix \textbf{-er} to yield the \textit{adjective} \textbf{{\"u}bergezogener} 
+		\end{itemize}
+\end{enumerate}
 \end{solution}
 
 \vspace*{0.5cm} %% this is to put some vertical space betwen the next problem and the previous solution. You can change the value to something more appropriate.
@@ -271,7 +313,48 @@ Hint: The regular English past tense is formed by adding –ed to the base, unle
 \end{problem}
 
 \begin{solution}
-Solution for Problem \#7
+\begin{description}
+	\item[a.] The \textbf{underlying forms} of these two words after going through lexical mapping would be:
+		\begin{itemize}
+			\item \underline{gaze} $\rightarrow$ \textbf{gaze$\wedge$d\#}
+			\item \underline{walk} $\rightarrow$ \textbf{walk$\wedge$d\#}
+		\end{itemize}
+		Where ``$\wedge$'' is the \textit{morpheme boundary} and ``\#'' is the \textit{word boundary}.
+	\item[b.] The \textbf{FST for lexical mapping} for English regular past tense can be defined with the 7-tuple:
+	Let $F = <Q, \Sigma, \Delta, q_{0}, F, \delta(q, w)>, \sigma(q, w)$, such that:
+
+	\begin{tabular}{l | l}
+		$Q$ & $\{ q_{0}, q_{1}, q_{2}\}$ \\
+		$\Sigma$ & $\{a, \ldots, z, +V, +Past\}$ \\
+		$\Delta$ & $\{a, \ldots, z, \wedge, \# \}$ \\
+		$q_{0}$ & $q_{0}$ \\
+		$F$ & $\{ q_{2} \}$ \\
+		$\delta(q, w)$ &  $\{ (q_{0},\{a, \ldots, z\},q_{0}), (q_{0}, +V, q_{1}), (q_{1}, +Past, q_{2}) \}$ \\
+		$\sigma(q, w)$ & $\{ (q_{0},\{a, \ldots, z\},\{a, \ldots, z\}), (q_{0}, +V, \varepsilon), (q_{1}, +Past, \wedge d\#) \}$
+	\end{tabular}
+
+	TODO: Add image of FST
+
+	\item[c.] The \textbf{FST for surface mapping} for English regular past tense can be defined with the 7-tuple:
+	Let $F = <Q, \Sigma, \Delta, q_{0}, F, \delta(q, w)>, \sigma(q, w)$, such that:
+
+	\begin{tabular}{l | l}
+		$Q$ & $\{ q_{0}, q_{1}, q_{2}, q_{3}, q_{4}\}$ \\
+		$\Sigma$ & $\{a, \ldots, z, \wedge, \# \}$ \\
+		$\Delta$ & $\{a, \ldots, z\}$ \\
+		$q_{0}$ & $q_{0}$ \\
+		$F$ & $\{ q_{4} \}$ \\
+		$\delta(q, w)$ &  $\{(q_{0},e,q_{0}), (q_{0}, \{a, \ldots\, z\} \cap \{e\}, q_{1}), (q_{0},\wedge, q_{2}), $ \\
+		 &  $(q_{1},\{a, \ldots, z\} \cup \{\#\},q_{0}), (q_{1}, \wedge , q_{2}), (q_{2}, d, q_{3}), (q_{3}, \#, q_{4})\}$\\
+		 & \\
+		$\sigma(q, w)$ & $\{(q_{0},e,e), (q_{0}, \{a, \ldots\, z\} \cap \{e\},\{a, \ldots\, z\} \cap \{e\}), (q_{0},\wedge, \varepsilon), $ \\
+		 &  $(q_{1},\{a, \ldots, z\} \cup \{\#\},\{a, \ldots, z\} \cup \{\#\}), (q_{1}, \wedge , e), (q_{2}, d, d), (q_{3}, \#, \varepsilon)\}$\\
+	\end{tabular}
+
+	TODO: Add image of FST
+
+\end{description}
+
 \end{solution}
 
 \end{document}
