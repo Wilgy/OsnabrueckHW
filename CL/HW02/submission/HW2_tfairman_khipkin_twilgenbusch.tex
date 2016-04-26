@@ -76,50 +76,66 @@ Example: \textbf{unabsehbar}
 \newpage
 
 \begin{solution}
+The definitions for the various symbols for the \textit{subscripts} are as follows:
+\begin{itemize}
+	\item $N$ : Noun
+	\item $V$ : Verb
+	\item $Adj.$ : Adjective
+	\item $root$ : The root of a word; i.e. the minimal free morpheme of the word
+	\item $base$ : A base of the word; i.e. a possibly complex free morpheme of the word
+	\item $stem$ : A stem of the word; i.e. an \textit{inflected form} of another base
+	\item $der. suf.$ : A derivational suffix of a word/base/stem
+	\item $der. pre.$ : A derivational prefix of a word/base/stem
+	\item $inf. suf.$ : An inflectional suffix of a word/base/stem
+	\item $inf. pre.$ : An inflectional prefix of a word/base/stem
+	\item $inf. cir.$ : An inflectional circumfix of a word/base/stem
+\end{itemize}
 
 \textbf{English}:
 \begin{enumerate}
 	\item \textbf{printer}
 		\begin{itemize}
-			\item Verbal Root (=base): \textbf{print} combines with the suffix \textbf{-er} to produce the \textit{noun} \textbf{printer}
+			\item \textbf{print}$_{(V|root, base)}$ + \textbf{-er}$_{(der. suf.)}$ yields \textbf{printer}$_{(N)}$
 		\end{itemize}
 	\item \textbf{underdetermination}
 		\begin{itemize}
-			\item Verbal Root (=base):\textbf{determin}(e) combines with the derivational suffix \textbf{-ate} to yield the \textit{adjectival base} \textbf{determinate}
-			\item Adjectival Base: \textbf{determina}(te) combines with the derivational suffix \textbf{-tion} to yield the \textit{noun base} \textbf{determination}
-			\item Noun Base: \textbf{determination} combines with the prefix \textbf{under-} to yield the \textit{noun} \textbf{underdetermination} 
+			\item \textbf{determin}(e)$_{(V|root, base)}$ + \textbf{-ate}$_{(der. suf.)}$ yields \textbf{determina}(te)$_{(Adj.|base)}$
+			\item \textbf{determina}(te)$_{(Adj.| base)}$ + \textbf{-tion}$_{(der. suf.)}$ yields \textbf{determination}$_{(N|base,stem)}$
+			\item \textbf{under-}$_{(inf. pre.)}$ + \textbf{determination}$_{(N| base,stem)}$  yields \textbf{underdetermination}$_{(N)}$
 		\end{itemize}
 	\item \textbf{incremental}
 		\begin{itemize}
-			\item Verbal Root (=base): \textbf{incre}(ase) combines with the derivational suffix \textbf{-ment} to produce the \textit{noun} \textbf{increment}
-			\item Noun Base: \textbf{increment} combines with the suffix \textbf{-al} to produce the \textit{adjective} \textbf{incremental}
+			\item \textbf{incre}(ase)$_{(V|root, base)}$ + \textbf{-ment}$_{(der. suf.)}$ yields \textbf{increment}$_{(N|base)}$
+			\item \textbf{increment}$_{(N|base)}$ + \textbf{-al}$_{(der. suf.)}$ yields \textbf{incremental}$_{(Adj)}$
 		\end{itemize}
 \end{enumerate}
+
+\newpage
 
 \textbf{German}:
 \begin{enumerate}
 	\item \textbf{Versprecher}
 		\begin{itemize}
-			\item Verbal Root (=base): \textbf{sprech}(en) combines with the derivational suffix \textbf{-er} to yield the \textit{noun base} \textbf{Sprecher}
-			\item Noun base: \textbf{Sprecher} combines with the prefix \textbf{Ver-} to produce the \textit{noun} \textbf{Versprecher}
+			\item \textbf{sprech}(en)$_{(V|root, base)}$ + \textbf{-er}$_{(der. suf.)}$ yields \textbf{Sprecher}$_{(N|base, stem)}$
+			\item \textbf{Ver-}$_{(inf. pre.)}$ + \textbf{Sprecher}$_{(N|base, stem)}$ yields \textbf{Versprecher}$_{(N)}$
 		\end{itemize}
 	\item \textbf{Ansprechpartner}: A \textit{compound word} compose of two words: \textbf{ansprech}(en) and \textbf{Partner}
 		\begin{enumerate}
 			\item \textbf{ansprech}(en)
 				\begin{itemize}
-					\item Verbal Root (=base): \textbf{sprech}(en) combines with the suffix \textbf{an-} to yield the verb \textbf{ansprech}(en)
+					\item \textbf{an-}$_{(inf. pre.)}$ + \textbf{sprech}(en)$_{(V|root, base, stem)}$  yields \textbf{ansprech}(en)$_{(V|base)}$
 				\end{itemize}
 			\item \textbf{Partner}
 				\begin{itemize}
-					\item Noun Root (=base): \textbf{part} combines with the prefix \textbf{-er} to yield the \textit{noun} \textbf{Partner}
+					\item \textbf{part}$_{(V|root, base)}$ + \textbf{-ner}$_{(der. suf.)}$ yields \textbf{Partner}$_{(N|base, stem)}$
 				\end{itemize}
-			The \textit{verbal base} \textbf{ansprech}(en) combines with the \textit{noun base} \textbf{Partner} to yield the noun \textbf{Ansprecherpartner}
+			The \textit{verbal base} \textbf{ansprech}(en) combines with the \textit{noun base} \textbf{Partner} to yield the \textit{noun} \textbf{Ansprechpartner}
 		\end{enumerate}
 	\item \textbf{{\"u}bergezogener}
 		\begin{itemize}
-			\item Verbal Root (=base): \textbf{zeihen} combines its \textit{past tense form} with the derivational derivational prefix \textbf{ge-} to yield the \textit{verbal base} \textbf{gezogen}
-			\item Verbal Base: \textbf{gezogen} combines with the derivational prefix \textbf{{\"u}ber-} to form the \textit{verbal base} \textbf{{\"u}bergezogen}
-			\item Verbal Base: \textbf{{\"u}bergezogen} combines with the suffix \textbf{-er} to yield the \textit{adjective} \textbf{{\"u}bergezogener} 
+			\item \textbf{ge-}$_{(inf. cir.)}$ + \textbf{zieh}(en)$_{(V|root, base, stem)}$ + \textbf{-en}$_{(inf. cir.)}$ yields \textbf{gezogen}$_{(V|base, stem)}$
+			\item \textbf{{\"u}ber-}$_{(inf. pre.)}$ + \textbf{gezogen}$_{(V|base)}$  yields \textbf{{\"u}bergezogen}$_{(V|base)}$
+			\item \textbf{{\"u}bergezogen}$_{(V|base)}$ + \textbf{-er}$_{(der. suf.)}$ yields \textbf{{\"u}bergezogener}$_{(Adj.)}$
 		\end{itemize}
 \end{enumerate}
 \end{solution}
@@ -134,18 +150,14 @@ Is the English plural formation really completely regular? List the allomorphs o
 
 \begin{solution}
 The English morpheme for regular plurals ($<$+Pl$>$) is realised by 3 different allomorphs:
-\begin{itemize}
-	\item $[$\textipa{z}$]$ : dog\textcolor{red}{s}
-	\item $[$\textipa{s}$]$ : cat\textcolor{red}{s}
-	\item $[$\textipa{iz}$]$ : fox\textcolor{red}{es}
-\end{itemize}
-
+\begin{center}
+$[$\textipa{z}$]$ : dog\textcolor{red}{s}; $[$\textipa{s}$]$ : cat\textcolor{red}{s}; $[$\textipa{iz}$]$ : fox\textcolor{red}{es}
+\end{center}
 Three words that have irregular plural forms are: \underline{mice} (plural of mouse), \underline{geese} (plural of goose), and \underline{die} (plural of dice). 
 
 \end{solution}
 
 \vspace*{0.5cm}
-\newpage
 
 \begin{problem}{3}
 \textbf{Words}
@@ -275,7 +287,7 @@ them & ``\textcolor{blue}{wa}'' & & & & \\
 
 \textbf{NOTE}: The plural forms of ``you'' ($2^{nd}$ person subject/object) are the same as the singular forms in both the X-language and English.
 
-\item[b.] The following two tables both use the $2^{nd}$ person object in (you/``\textcolor{blue}{ku}'') in their translations.
+\item[b.] The following two tables both use the $2^{nd}$ person object (you/``\textcolor{blue}{ku}'') in their translations.
 
 Inflection tables for ANNOY (``\textcolor{BurntOrange}{sumbua}''):
 
@@ -333,7 +345,7 @@ Hint: The regular English past tense is formed by adding –ed to the base, unle
 		Where ``$\wedge$'' is the \textit{morpheme boundary} and ``\#'' is the \textit{word boundary}.
 
 	\item[b.] The \textbf{FST for lexical mapping} for English regular past tense can be defined with the 7-tuple:
-	Let $F = <Q, \Sigma, \Delta, q_{0}, F, \delta(q, w)>, \sigma(q, w)$, such that:
+	Let $F = <Q, \Sigma, \Delta, q_{0}, F, \delta(q, w), \sigma(q, w)>$, such that:
 
 	\begin{tabular}{l | l}
 		$Q$ & $\{ q_{0}, q_{1}, q_{2}\}$ \\
@@ -352,7 +364,7 @@ Hint: The regular English past tense is formed by adding –ed to the base, unle
 	\end{figure}
 
 	\item[c.] The \textbf{FST for surface mapping} for English regular past tense can be defined with the 7-tuple:
-	Let $F = <Q, \Sigma, \Delta, q_{0}, F, \delta(q, w)>, \sigma(q, w)$, such that:
+	Let $F = <Q, \Sigma, \Delta, q_{0}, F, \delta(q, w), \sigma(q, w)>$, such that:
 
 	\begin{tabular}{l | l}
 		$Q$ & $\{ q_{0}, q_{1}, q_{2}, q_{3}, q_{4}\}$ \\
