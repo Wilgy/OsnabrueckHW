@@ -105,9 +105,12 @@ freezing(rochester).
 % (not w or v) and (not v or w)
 %
 % c) Prolog Code
+% Since we require BOTH w implies v AND v implies w, we cannot use the clark 
+% completion for only one of those implications. So there is no valid way to  
+% represent the above in Prolog.
 %
 % d) Verification of Prolog Code
-
+% Cannot verify without Prolog code
 
 %-----------------------------------------------
 % 3. A man exists who is wiser than all other men. (2 points)
@@ -121,33 +124,40 @@ freezing(rochester).
 % c) Prolog Code
 %
 % d) Verification of Prolog Code
-
+man(brucelee).
+man(jackiechan).
+man(chucknorris).
+man(jetli).
 
 %-----------------------------------------------
 % 4. No man is wiser than he himself. (2 points)
 %
 % a) Predicate Logic Form
-% all x: man(x) ->
-%  not(wiser(x, x))
+% all x: man(x) and not(wiser(x, x))
 %
 % b) Conjuctive Normal Form
+% man(x) and not(wiser(x, x))
 %
 % c) Prolog Code
-%
-% d) Verification of Prolog Code
 
+not_wiser(X, X) :- man(X).
+
+% d) Verification of Prolog Code
+% See the database of man() for Problem 3
 
 %----------------------------------------------- 
 % 5. It exists exactly one Kilimandscharo. (1 point)
 %
 % a) Predicate Logic Form
-% ex x -> kilimandscharo(x) and all y: not(x=y) -> not(kilmandscharo(y))
+% ex x: kilimandscharo(x) and all y: not(x=y) and not(kilmandscharo(y))
 %
 % b) Conjuctive Normal Form
-%
+% kilmandscharo(thing) and not(thing=Y) and not(kilmandscharo(y))
+
 % c) Prolog Code
-%
+
 kilmandscharo.
+
 % d) Verification of Prolog Code
 
 
@@ -155,10 +165,11 @@ kilmandscharo.
 % 6. Every human being has exactly one mother. (2 points)
 %
 % a) Predicate Logic Form
-% all h: human(h) -> ex x: mother(x, h) and (all y: mother(y, x) -> (y = h))
+% all h: human(h) and ex x: mother(x, h) and (all y: mother(y, x) and (y = h))
+% human(H) and mother(sx(H), H) and mother(Y, sx(H)) and (Y = H)
 %
 % b) Conjuctive Normal Form
-%
+% 
 % c) Prolog Code
 %
 % d) Verification of Prolog Code
