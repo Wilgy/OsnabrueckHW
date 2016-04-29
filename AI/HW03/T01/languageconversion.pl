@@ -73,32 +73,109 @@ over(tt2,p3).
 
 %-----------------------------------------------
 % 1. If it is raining and freezing then it is slippery. (1 point)
+%
+% a) Predicate Logic Form
+% all x: (raining(x) and freezing(x)) -> slippery(x) 
+%
+% b) Conjuctive Normal Form
+% (raining(x) and freezing(x)) or not slippery(x)
+%
+% c) Prolog Code
+is_slippery(X) :- raining(X), freezing(X).
+
+% d) Verification of Prolog Code
+raining(osnabrueck).
+raining(rochester).
+freezing(osnabrueck).
+freezing(rochester).
 
 
 %-----------------------------------------------
 % 2. w is true if and only if v is true. (2 points)
+%
+% a) Predicate Logic Form
+% w -> v and v -> w
+%
+% b) Conjuctive Normal Form
+% not w and v and not v and w
+%
+% c) Prolog Code
+%
+% d) Verification of Prolog Code
 
 
 %-----------------------------------------------
 % 3. A man exists who is wiser than all other men. (2 points)
+% 
+% a) Predicate Logic Form
+% ex x: man(x) ->
+%  (all y: man(y) and x\=y -> wiser(x, y))
+%
+% b) Conjuctive Normal Form
+%
+% c) Prolog Code
+%
+% d) Verification of Prolog Code
 
 
 %-----------------------------------------------
 % 4. No man is wiser than he himself. (2 points)
+%
+% a) Predicate Logic Form
+% all x: man(x) ->
+%  not(wiser(x, x))
+%
+% b) Conjuctive Normal Form
+%
+% c) Prolog Code
+%
+% d) Verification of Prolog Code
 
 
 %----------------------------------------------- 
 % 5. It exists exactly one Kilimandscharo. (1 point)
+%
+% a) Predicate Logic Form
+% ex x -> kilimandscharo(x) and all y: not(x=y) -> not(kilmandscharo(y))
+%
+% b) Conjuctive Normal Form
+%
+% c) Prolog Code
+%
+kilmandscharo.
+% d) Verification of Prolog Code
 
 
 %-----------------------------------------------
 % 6. Every human being has exactly one mother. (2 points)
+%
+% a) Predicate Logic Form
+% all h: human(h) -> ex x: mother(x, h) and (all y: mother(y, x) -> (y = h))
+%
+% b) Conjuctive Normal Form
+%
+% c) Prolog Code
+%
+% d) Verification of Prolog Code
 
 
 %-----------------------------------------------
 % 7.  A thing is a railway station if it has tracks,
 %     a load ticket window, a departure plan,
 %     and a waiting room. (2 points)
+%
+% a) Predicate Logic Form
+% all x: has_tracks(x) and 
+%        has_ticket_window(x) and
+%        has_departure_plan(x) and 
+%        has_waiting_room(x) -> 
+%           railway_station(x)
+%
+% b) Conjuctive Normal Form
+%
+% c) Prolog Code
+%
+% d) Verification of Prolog Code
 
 %-----------------------------------------------
 % 8.  The Introduction to AI and logical programming
@@ -108,3 +185,22 @@ over(tt2,p3).
 %     exam 2 pass the entire course. Students who fail at exactly
 %     one of the first two exams can substitute that exam with
 %     the additional exam. (3 points)
+%
+% a) Predicate Logic Form
+% all x:( ( student(x) and 
+%           pass(x, exam1) and 
+%           pass(x, exam2) and 
+%           pass(x, homework1) and 
+%           pass(x, homework2) -> pass(x, intro_to_ai)) 
+%          )
+%          or
+%          ( ( not(pass(x, exam1)) and pass(x, exam2) ) -> replace(exam1, additional_exam) or 
+%            ( pass(x, exam1) and not(pass(x, exam2)) ) -> replace(exam2, additional_exam) 
+%          )
+% 
+%
+% b) Conjuctive Normal Form
+%
+% c) Prolog Code
+%
+% d) Verification of Prolog Code

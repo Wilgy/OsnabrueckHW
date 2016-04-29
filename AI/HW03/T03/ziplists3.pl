@@ -42,3 +42,14 @@ Hint:
 You must also consider all cases where the number of elements in L
 cannot be divided by 4 without a remainder!
 */
+
+zip_lists3(L, L1, L2 ) :-
+    zip_list_left(L, L1, L2).
+
+zip_list_left(L, L, []).
+zip_list_left([H11, H12, H13 |R],  [H11, H12, H13 |R1], [H2|R2]) :-
+    zip_list_right(R, R1, [H2|R2]).
+
+zip_list_right(L, [], L).
+zip_list_right([H2|R], L1, [H2|R2]) :-
+    zip_list_left(R, L1, R2).

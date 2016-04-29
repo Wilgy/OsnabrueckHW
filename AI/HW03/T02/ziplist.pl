@@ -43,3 +43,15 @@ To see the problems with instantiated first argument, try:
 
 and discuss the result
 */
+
+
+zip_list(L, L1, L2 ) :-
+    zip_list_left(L, L1, L2).
+
+zip_list_left(L, L, []).
+zip_list_left([H1|R],  [H1|R1], L2) :-
+    zip_list_right(R, R1, L2).
+
+zip_list_right(L, [], L).
+zip_list_right([H2|R], L1, [H2|R2]) :-
+    zip_list_left(R, L1, R2).
