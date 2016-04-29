@@ -78,26 +78,31 @@ over(tt2,p3).
 % all x: (raining(x) and freezing(x)) -> slippery(x) 
 %
 % b) Conjuctive Normal Form
-% (raining(x) and freezing(x)) or not slippery(x)
+% not(raining(x)) or not(freezing(x)) or slippery(x)
 %
 % c) Prolog Code
+
+%%
+% is_slippery(+X) - determines if a given location is slippery
+% +X : the area being determined
+%%
 is_slippery(X) :- raining(X), freezing(X).
 
 % d) Verification of Prolog Code
 raining(osnabrueck).
 raining(rochester).
+raining(rainforest). % Should NOT be slippery in the rainforest
 freezing(osnabrueck).
 freezing(rochester).
-
 
 %-----------------------------------------------
 % 2. w is true if and only if v is true. (2 points)
 %
 % a) Predicate Logic Form
-% w -> v and v -> w
+% (w -> v) and (v -> w)
 %
 % b) Conjuctive Normal Form
-% not w and v and not v and w
+% (not w or v) and (not v or w)
 %
 % c) Prolog Code
 %
