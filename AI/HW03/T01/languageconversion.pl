@@ -168,15 +168,23 @@ kilmandscharo.
 % 6. Every human being has exactly one mother. (2 points)
 %
 % a) Predicate Logic Form
-% all h: human(h) and ex x: mother(x, h) and (all y: mother(y, x) and (y = h))
-% human(H) and mother(sx(H), H) and mother(Y, sx(H)) and (Y = H)
+% all h: human(h) and ex x: mother(x, h) and (all y: mother(y, x) -> (y = h))
 %
 % b) Conjuctive Normal Form
+% (not(human(h)) or not(mother(m(h), h)) or mother(y, h)) and human(h) and mother(m(h)) 
 % 
 % c) Prolog Code
+mother(Y, H) :-  human(H), Y = mother1(H), mother(mother1(H), H).
+
 %
 % d) Verification of Prolog Code
 
+% mother1 is a skolemized function representing the mother
+mother(mother1(child1), child1).
+mother(mother1(child2), child2).
+
+human(child1).
+human(child2).
 
 %-----------------------------------------------
 % 7.  A thing is a railway station if it has tracks,
@@ -273,14 +281,14 @@ has_waiting_room(flughofen).
 %
 % c) Prolog Code
 
-pass(x, intro_to_ai) :-
-   student(x), pass(x, homework1), pass(x, homework2), pass(x, exam1), pass(x, exam2).
+pass(X, intro_to_ai) :-
+   student(X), pass(X, homework1), pass(X, homework2), pass(X, exam1), pass(X, exam2).
    
-pass(x, intro_to_ai) :-
-   student(x), pass(x, homework1), pass(x, homework2), pass(x, exam1), pass(x, alternate_exam).
+pass(X, intro_to_ai) :-
+   student(X), pass(X, homework1), pass(X, homework2), pass(X, exam1), pass(X, alternate_exam).
    
-pass(x, intro_to_ai) :-
-   student(x), pass(x, homework1), pass(x, homework2), pass(x, exam2), pass(x, alternate_exam).
+pass(X, intro_to_ai) :-
+   student(X), pass(X, homework1), pass(X, homework2), pass(X, exam2), pass(X, alternate_exam).
 
 %
 % d) Verification of Prolog Code
