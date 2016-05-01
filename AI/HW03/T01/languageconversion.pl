@@ -184,17 +184,40 @@ kilmandscharo.
 %     and a waiting room. (2 points)
 %
 % a) Predicate Logic Form
-% all x: has_tracks(x) and 
-%        has_ticket_window(x) and
-%        has_departure_plan(x) and 
-%        has_waiting_room(x) -> 
-%           railway_station(x)
+% all x: (has_tracks(x) and
+%         has_ticket_window(x) and
+%         has_departure_plan(x) and
+%         has_waiting_room(x)) ->
+%            railway_station(x)
 %
 % b) Conjuctive Normal Form
+% not has_tracks(x) or not has_ticket_window(x) or not has_departure_plan(x)
+%     or not has_waiting_room(x) or railway_station(x)
 %
 % c) Prolog Code
-%
+
+railway_station(X) :-   has_tracks(X),
+                        has_ticket_window(X),
+                        has_departure_plan(X),
+                        has_waiting_room(X).
+
 % d) Verification of Prolog Code
+%        bahnhof has tracks, a ticket window, a departure plan, a waiting room --> railway_station(bahnhof)
+%        kino has a ticket window --> not railway_station(kino)
+%        flughofen has a ticket window, a departure plan, a waiting room --> not railway_station(flughofen)
+%        krankenhaus has a waiting room --> not railway_station(krankenhaus)
+has_tracks(bahnhof).
+
+has_ticket_window(bahnhof).
+has_ticket_window(kino).
+has_ticket_window(flughofen).
+
+has_departure_plan(bahnhof).
+has_departure_plan(flughofen).
+
+has_waiting_room(bahnhof).
+has_waiting_room(krankenhaus).
+has_waiting_room(flughofen).
 
 %-----------------------------------------------
 % 8.  The Introduction to AI and logical programming
