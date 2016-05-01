@@ -117,18 +117,20 @@ freezing(antarctica). % Should NOT be slippery in antarctica
 % 3. A man exists who is wiser than all other men. (2 points)
 % 
 % a) Predicate Logic Form
-% ex x: man(x) ->
-%  (all y: man(y) and x\=y -> wiser(x, y))
+% ex x: all y: (man(x) and man(y) and x\=y) -> wiser(x,y)
 %
 % b) Conjuctive Normal Form
+% not man(Sx) or not man(y) or Sx=y or wiser(Sx,y)
 %
 % c) Prolog Code
-%
+
+wiser(sx, Y) :- man(sx), man(Y), sx\=Y.
+
 % d) Verification of Prolog Code
-man(brucelee).
-man(jackiechan).
-man(chucknorris).
-man(jetli).
+man(sx).
+man(dummy).
+man(idiot).
+man(smartass).
 
 %-----------------------------------------------
 % 4. No man is wiser than he himself. (2 points)
