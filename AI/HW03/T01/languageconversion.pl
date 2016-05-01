@@ -136,10 +136,10 @@ man(smartass).
 % 4. No man is wiser than he himself. (2 points)
 %
 % a) Predicate Logic Form
-% all x: man(x) and not(wiser(x, x))
+% all x: man(x) -> not(wiser(x, x))
 %
 % b) Conjuctive Normal Form
-% man(x) and not(wiser(x, x))
+% not man(x) or not(wiser(x, x))
 %
 % c) Prolog Code
 
