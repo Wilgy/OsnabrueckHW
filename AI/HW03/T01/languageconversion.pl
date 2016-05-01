@@ -252,29 +252,29 @@ has_waiting_room(flughofen).
 % 
 %
 % b) Conjuctive Normal Form
-% (   
-%     not(pass(x, homework1)) or 
-%     not(pass(x, homework2)) or 
-%     not(pass(x, exam1)) or 
-%     not(pass(x, exam2)) or 
+% (
+%     not(pass(x, homework1)) or
+%     not(pass(x, homework2)) or
+%     not(pass(x, exam1)) or
+%     not(pass(x, exam2)) or
 %     not(student(x)) or
 %     pass(x, intro_to_ai)
 % )
 % and
-% (   
-%     not(pass(x, homework1)) or 
-%     not(pass(x, homework2)) or 
-%     not(pass(x, exam1)) or 
-%     not(pass(x, alternate_exam)) or 
+% (
+%     not(pass(x, homework1)) or
+%     not(pass(x, homework2)) or
+%     not(pass(x, exam1)) or
+%     not(pass(x, alternate_exam)) or
 %     not(student(x)) or
 %     pass(x, intro_to_ai)
-% ) 
+% )
 % and
-% (   
-%     not(pass(x, homework1)) or 
-%     not(pass(x, homework2)) or 
-%     not(pass(x, exam2)) or 
-%     not(pass(x, alternate_exam)) or 
+% (
+%     not(pass(x, homework1)) or
+%     not(pass(x, homework2)) or
+%     not(pass(x, exam2)) or
+%     not(pass(x, alternate_exam)) or
 %     not(student(x)) or
 %     pass(x, intro_to_ai)
 % )
@@ -306,7 +306,7 @@ pass(passing_student, alternate_exam).
 pass(no_hw_student, exam1).
 pass(no_hw_student, exam2).
 
-student(good_student).
-student(passing_student).
-student(no_hw_student).
-student(failing_student). % passes nothing
+student(good_student). % passes intro_to_ai
+student(passing_student). % passes intro_to_ai
+student(no_hw_student). % missing required hw1 and hw2 passing grades, fails intro_to_ai
+student(failing_student). % missing all required passing grades, fails intro_to_ai
