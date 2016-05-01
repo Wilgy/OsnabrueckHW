@@ -94,6 +94,7 @@ raining(rochester).
 raining(rainforest). % Should NOT be slippery in the rainforest
 freezing(osnabrueck).
 freezing(rochester).
+freezing(antarctica). % Should NOT be slippery in antarctica
 
 %-----------------------------------------------
 % 2. w is true if and only if v is true. (2 points)
