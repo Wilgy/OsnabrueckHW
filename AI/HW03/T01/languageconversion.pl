@@ -168,23 +168,20 @@ kilmandscharo.
 % 6. Every human being has exactly one mother. (2 points)
 %
 % a) Predicate Logic Form
-% all h: human(h) and ex x: mother(x, h) and (all y: mother(y, x) -> (y = h))
+% all h: human(h) and ex m: mother(m, h) and (all y: mother(y, h) -> (y = m))
 %
 % b) Conjuctive Normal Form
-% (not(human(h)) or not(mother(m(h), h)) or mother(y, h)) and human(h) and mother(m(h)) 
+% not(human(h)) or not(mother(Sm,h)) or not(mother(y,h)) or y=Sm
 % 
 % c) Prolog Code
-mother(Y, H) :-  human(H), Y = mother1(H), mother(mother1(H), H).
 
-%
+% m is a skolemized function representing the mother
+mother(m(H), H) :- human(H).
+
 % d) Verification of Prolog Code
 
-% mother1 is a skolemized function representing the mother
-mother(mother1(child1), child1).
-mother(mother1(child2), child2).
-
-human(child1).
-human(child2).
+human(child1). % child1's mother should be m(child1)
+human(child2). % child2's mother should be m(child2)
 
 %-----------------------------------------------
 % 7.  A thing is a railway station if it has tracks,
