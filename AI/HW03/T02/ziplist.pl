@@ -45,28 +45,32 @@ and discuss the result
 */
 
 %%
-% zip_list(-L, +L1, +L2) - given to lists, 'zips' the contents of both lists 
-% and put the result in a final list
+% zip_list(-L, +L1, +L2) - given two lists, 'zips' the contents of both lists
+% and puts the result in a final list
 %
 % -L : The resulting zip list
 % +L1 : The first list
 % +L2 : The second list
 %%
 zip_list(L, L1, L2 ) :-
-    zip_list_left(L, L1, L2). %Start with the first element of the first list
+    zip_list_left(L, L1, L2). % Start with the first element of the first list
 
-% Base case, if L2 is empty, put the rest of L1 into the result list and end
+% Base cases, if either L1 or L2 is empty,
+% put the rest of the non-empty list into the result list and end
+zip_list_left(L, [], L).
 zip_list_left(L, L, []).
 
 % The recursive call that grabs the first element of L1, places it at the head 
 % of the return list and then calls zip_list_right
-zip_list_left([H1|R],  [H1|R1], L2) :-
+zip_list_left([H1|R], [H1|R1], L2) :-
     zip_list_right(R, R1, L2).
 
-% Base case, if L1 is empty, put the rest of L2 into the result list end end
+% Base cases, if either L1 or L2 is empty,
+% put the rest of the non-empty list into the result list and end
 zip_list_right(L, [], L).
+zip_list_right(L, L, []).
 
 % The recursive call that grabs the first element of L2, places it at the head 
-% of the return list and then calls zip_list_right
+% of the return list and then calls zip_list_left
 zip_list_right([H2|R], L1, [H2|R2]) :-
     zip_list_left(R, L1, R2).

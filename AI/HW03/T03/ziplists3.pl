@@ -44,8 +44,8 @@ cannot be divided by 4 without a remainder!
 */
 
 %%
-% zip_list(-L, +L1, +L2) - given to lists, 'zips' the contents of both lists 
-% and put the result in a final list; EXCEPT it grabs three elements from the 
+% zip_list(-L, +L1, +L2) - given two lists, 'zips' the contents of both lists
+% and puts the result in a final list; EXCEPT it grabs three elements from the
 % first list and then one element from the second list
 %
 % -L : The resulting zip list
