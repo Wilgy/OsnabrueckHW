@@ -2,7 +2,7 @@
 % Defines a predicate that checks the contents of two lists and compares
 % them to the contents of a third in various ways
 %
-% Author: T. Wilgenbusch, K. Hipkin, T, Fairman, B. Dell
+% Author: T. Wilgenbusch, K. Hipkin, T. Fairman, B. Dell
 
 /*
 Define a predicate:

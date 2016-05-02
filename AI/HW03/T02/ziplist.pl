@@ -1,7 +1,7 @@
 % ziplist.pl - Prolog file for HW03, Task 2
 % Defines a predicate that 'zips' two lists together into one 
 %
-% Author: T. Wilgenbusch, K. Hipkin, T, Fairman, B. Dell
+% Author: T. Wilgenbusch, K. Hipkin, T. Fairman, B. Dell
 
 /*
 Define a predicate:

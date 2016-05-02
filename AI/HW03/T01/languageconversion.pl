@@ -2,14 +2,14 @@
 % Series of questions for converting a natural language sentence into 
 % predicate, clausal, and prolog sentences
 %
-% Author: T. Wilgenbusch, K. Hipkin, T, Fairman, B. Dell
+% Author: T. Wilgenbusch, K. Hipkin, T. Fairman, B. Dell
 
 /*
 Transform the following natural language sentences
 
 a) into predicate logic (as closely to the nl-formulation as possible),
 
-b) into clausal form (conjuctive normal form without quantifiers).
+b) into clausal form (conjunctive normal form without quantifiers).
 
 c) if possible, try to formulate the statements as prolog programs
 
@@ -77,7 +77,7 @@ over(tt2,p3).
 % a) Predicate Logic Form
 % all x: (raining(x) and freezing(x)) -> slippery(x) 
 %
-% b) Conjuctive Normal Form
+% b) Conjunctive Normal Form
 % not(raining(x)) or not(freezing(x)) or slippery(x)
 %
 % c) Prolog Code
@@ -102,7 +102,7 @@ freezing(antarctica). % Should NOT be slippery in antarctica
 % a) Predicate Logic Form
 % (w -> v) and (v -> w)
 %
-% b) Conjuctive Normal Form
+% b) Conjunctive Normal Form
 % (not w or v) and (not v or w)
 %
 % c) Prolog Code
@@ -119,7 +119,7 @@ freezing(antarctica). % Should NOT be slippery in antarctica
 % a) Predicate Logic Form
 % ex x: all y: (man(x) and man(y) and x\=y) -> wiser(x,y)
 %
-% b) Conjuctive Normal Form
+% b) Conjunctive Normal Form
 % not man(Sx) or not man(y) or Sx=y or wiser(Sx,y)
 %
 % c) Prolog Code
@@ -138,7 +138,7 @@ man(smartass).
 % a) Predicate Logic Form
 % all x: man(x) -> not(wiser(x, x))
 %
-% b) Conjuctive Normal Form
+% b) Conjunctive Normal Form
 % not man(x) or not(wiser(x, x))
 %
 % c) Prolog Code
@@ -154,7 +154,7 @@ not_wiser(X, X) :- man(X).
 % a) Predicate Logic Form
 % ex x: kilimandscharo(x) and all y: not(x=y) and not(kilmandscharo(y))
 %
-% b) Conjuctive Normal Form
+% b) Conjunctive Normal Form
 % kilmandscharo(thing) and not(thing=Y) and not(kilmandscharo(y))
 
 % c) Prolog Code
@@ -170,7 +170,7 @@ kilmandscharo.
 % a) Predicate Logic Form
 % all h: human(h) and ex m: mother(m, h) and (all y: mother(y, h) -> (y = m))
 %
-% b) Conjuctive Normal Form
+% b) Conjunctive Normal Form
 % not(human(h)) or not(mother(Sm,h)) or not(mother(y,h)) or y=Sm
 % 
 % c) Prolog Code
@@ -195,7 +195,7 @@ human(child2). % child2's mother should be m(child2)
 %         has_waiting_room(x)) ->
 %            railway_station(x)
 %
-% b) Conjuctive Normal Form
+% b) Conjunctive Normal Form
 % not has_tracks(x) or not has_ticket_window(x) or not has_departure_plan(x)
 %     or not has_waiting_room(x) or railway_station(x)
 %
@@ -248,7 +248,7 @@ has_waiting_room(flughofen).
 %        )
 % 
 %
-% b) Conjuctive Normal Form
+% b) Conjunctive Normal Form
 % (
 %     not(pass(x, homework1)) or
 %     not(pass(x, homework2)) or
