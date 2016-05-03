@@ -1,0 +1,122 @@
+\documentclass[11pt]{article}
+%%% style file you will need for some commands%%%%%%%%%%%%%%%%%%%%%%
+%% aahomework is the style file I have used to typeset many commands, feel free to use them in your solutions.
+%% bear in mind that if you need to define your command then you will have to make sure that it is not in conflict to my pre-defined command. Otherwise you will need to either use
+%% commands defined by me or edit the style file appropriately.
+\usepackage{aahomework}
+\usepackage{tikz}
+\usepackage{scrextend}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+%%%the \circled command has been used to create text inside circle for grading table.
+
+%%%\geometry{letterpaper, textwidth=17cm, textheight=22cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% the following is for the cover sheet--FILL IN appropriately%%
+\newcommand{\mycourse}{Introduction to Computer Linguistics 8.1008}
+\newcommand{\semesteryear}{Spring 2016}
+\newcommand{\myname}{Timothy Fairman, Kaitlin Hipkin, Tyler Wilgenbusch}  %%<<<<<<<<<<<<<<<|========================================= (please put your name here)==========
+\newcommand{\hwnumber}{3} %%<<<<<<<<<<<<<<<|========================================= (please put HW number here, e.g. 1,2,3...)==========
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% following is NOT to be edited, DO NOT type anything here, it will receive inputs from what you fill above%%%%%%%%%%%%%%%%%%
+\title{Homework \hwnumber} %% DO NOT type in HW number here
+\author{\myname} %% DO NOT type in your name here.
+\date{\textbf{\mycourse} \hfill {\today} \hfill \textbf{\semesteryear}} %% DO NOT TYPE in mycourse and/or quarteryear values
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setlength{\parindent}{0pt} %% paragraphs will not be indented
+\setlength{\parskip}{.25cm} %% space between paragraphs
+\linespread{1.1}
+
+\begin{document}
+\thispagestyle{empty} %%this is to supress the page number on the cover page
+
+\clearpage %% these are to reset the page number for the first page of your homework to 1.
+\pagenumbering{arabic} %% these are to reset the page number for the first page of your homework to 1.
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% you may start typing below%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% In my style file aahomework.sty I have defined two environments "problem" and "solution" that can be used to type in your question and answer respectively as shown below.%%
+
+\begin{problem}{1}
+\textbf{Grammer Writing}
+
+\begin{description}
+    \item[a.] Write a simple CFG that generates at least the following sentences, but (ideally) no ungrammatical sentences. If you can't avoid generating ungrammatical sentences, give examples of such ungrammatical sentences that your grammar generates and comment briefly on why it is hard to avoid them. \\
+
+    \begin{addmargin}[2em]{2em}
+    Bert admires Mary. \\
+    Charles eats hot chips with a fork. \\
+    John pets the small cat. \\
+    \end{addmargin}
+
+    The terminal symbols of your grammar must be words, not phrases.
+    Provide a formal specification of the grammar in Chomsky normal form, giving
+
+    \begin{itemize}
+        \item the set of non-terminal symbols,
+        \item the set of terminal symbols,
+        \item the start symbol,
+        \item and the set of production rules (same format as used in Exercise 2 below).
+    \end{itemize}
+
+    Use the following non-terminal symbols: S, NP, VP, PP, V, N' (a nominal expression that
+    contains a noun; e.g., an adjective plus a noun; pronounced: ``N-bar''), N, P (preposition), Adj
+    (adjective), D (determiner), PN (proper name)
+    There are many possible solutions. Pls. provide only one. (No extra credit for additional
+    solutions!)
+
+    \item[b.] Draw the trees that your grammar generates for the three above sentences.
+
+\end{description}
+
+\end{problem}
+
+\begin{solution}
+Solution for Problem \#1
+\end{solution}
+
+\vspace*{0.5cm} %% this is to put some vertical space betwen the next problem and the previous solution. You can change the value to something more appropriate.
+
+\begin{problem}{2}
+\textbf{CYK Parsing}
+Consider the context-free grammar $G = <N,  \Sigma , S, P>$ in Chomsky normal form, defined as
+follows:
+
+\begin{tabular}{l | l}
+$N$ & $\{S, G, O, L, E\}$ \\
+$\Sigma$ & $\{$p, e, m, o$\}$ \\
+$S$ & $S \epsilon N$ \\
+ & \\
+$P$ & 
+    \begin{tabular} {| l l l |} \hline
+    $S$ & $\rightarrow$ & $OO$ \\
+    $G$ & $\rightarrow$ & $LG\mid$ m \\
+    $O$ & $\rightarrow$ & $EG\mid$ o \\
+    $L$ & $\rightarrow$ & $EE\mid$ p \\
+    $E$ & $\rightarrow$ & $LL\mid$ e \\ \hline
+    \end{tabular}
+    \\
+\end{tabular}
+
+Does the grammar $G$ generate both the strings (``sentences'') peepmo and peppmo,
+(consisting of the ``words'' p, e, m, and o)? \\
+
+The task is focussed on making you familiar with the CYK algorithm, without letting any grammatical intuitions interfere. This is the reason for choosing a somewhat abstract example that has nothing to do with natural language. \\
+
+Use the CYK algorithm to answer this question and document your solution step by step for each of the two strings.
+
+\begin{description}
+    \item[a.] Set up the two charts and fill in the words (lexical chart fill, as on lecture slides)
+
+    \item[b.] Perform the syntactic chart fill (as on lecture slides). Make sure that you include in the CYK charts all possible constituents that the grammar provides for these strings, not only the ones that form part of a complete analysis.
+
+\end{description}
+
+\end{problem}
+
+\begin{solution}
+Solution for Problem \#2
+\end{solution}
+
+\end{document}
