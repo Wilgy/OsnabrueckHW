@@ -24,4 +24,16 @@ a symbol 'i' for each match.
 
 Hint: you may use 'subst_element'
 */
-move(...)...
+subst_element(E1, E2, [E1|R1], [E2|R1]).
+
+subst_element(E1, E2, [H|R1], [H|R2]) :-
+	subst_element(E1, E2, R1, R2).
+
+
+move(S1, S2) :-
+	subst_element(L1, L2, S1, S2),
+	take_from(L1, L2).
+
+take_from([i|R], R).
+take_from([i|R1], R2) :-
+	take_from(R1, R2).
