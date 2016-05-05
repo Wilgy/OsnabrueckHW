@@ -25,3 +25,21 @@ L = [blue, [sky, law]];
 false
 
 */
+
+binpart(A, [B1, B2]) :-
+	append(A1, A2, A),
+	A1 \= [],
+	A2 \= [],
+	binhelper(A1, B1),
+	binhelper(A2, B2).
+
+
+
+binhelper([B], B) :- atom(B).
+binhelper(A, [B1, B2]) :-
+	append(A1, A2, A),
+	A1 \= [],
+	A2 \= [],
+	binhelper(A1, B1),
+	binhelper(A2, B2).
+
