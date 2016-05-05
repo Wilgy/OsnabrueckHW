@@ -22,4 +22,7 @@ Example:
  
 Example query: subst_element(c,1,[a,c,b,c,d],L2)
 */
-subst_element(..)...
+subst_element(E1, E2, [E1|R1], [E2|R1]).
+
+subst_element(E1, E2, [H|R1], [H|R2]) :-
+	subst_element(E1, E2, R1, R2).
