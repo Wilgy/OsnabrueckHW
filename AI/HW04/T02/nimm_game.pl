@@ -37,10 +37,9 @@ Hint: you may use 'subst_element'
 % NOTE: This predicate was copied from Task 1 
 %%
 
-subst_element(E1, E2, [E1|R1], [E2|R1]).
-
-subst_element(E1, E2, [H|R1], [H|R2]) :-
-	subst_element(E1, E2, R1, R2).
+subst_element(E1, E2, L1, L2) :-
+	append(A,[E1|B],L1),
+	append(A,[E2|B],L2).
 
 %%
 % move(?S1, ?S2) - determines if S1 can be turned into S2 through a valid move 
