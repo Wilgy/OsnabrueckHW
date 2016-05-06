@@ -33,12 +33,7 @@ Example query: subst_element(c,1,[a,c,b,c,d],L2)
 % ?L2 - the final produced list
 %%
 
-% "Base" Case: We are able to produce the second list when we find E1 and E2 at 
-% the same index in L1 and L2, respectively
-subst_element(E1, E2, [E1|R1], [E2|R1]).
-
-% Recursive Case: We keep going through L1, appending the head element to the
-% front L2 (essentially copying the list), until we finish processing the 
-% entire list or find a swap element
-subst_element(E1, E2, [H|R1], [H|R2]) :-
-	subst_element(E1, E2, R1, R2).
+% Matches if, for an instance of E1 anywhere in L1, that instance is replaced by E2 to form L2.
+subst_element(E1, E2, L1, L2) :-
+	append(A,[E1|B],L1),
+	append(A,[E2|B],L2).
