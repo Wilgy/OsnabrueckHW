@@ -5,6 +5,7 @@
 %% commands defined by me or edit the style file appropriately.
 \usepackage{aahomework}
 \usepackage{tikz}
+\usepackage{qtree}
 \usepackage{scrextend}
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
             \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
@@ -73,7 +74,79 @@
 \end{problem}
 
 \begin{solution}
-Solution for Problem \#1
+
+\begin{description}
+    \item[a.] Below is the definition of the context free grammar, with the production rules in Chomsky Normal Form
+
+    \begin{tabular}{l | l}
+    $N$ & $\{$S, NP, VP, PP, V, N', N, P, Adj, D, PN $\}$ \\
+    $\Sigma$ & $\{$Bert, Mary, Charles, John, chips, fork, cat, \\
+    & admires, eats, pets, a, the, hot, small, with$\}$ \\
+    $S$ & $S \epsilon N$ \\
+     & \\
+    $P$ & 
+        \begin{tabular} {| l l l |} \hline
+        S & $\rightarrow$ & PN VP \\
+        VP & $\rightarrow$ & V PN $\mid$ V NP $\mid$ V N' \\
+        NP & $\rightarrow$ & N' PP \\
+        PP & $\rightarrow$ & P N' \\
+        N' & $\rightarrow$ & D N $\mid$ Adj N $\mid$ \textbf{D N'} \\ \hline
+        PN & $\rightarrow$ & Bert $\mid$ Mary $\mid$ Charles $\mid$ John \\
+        N & $\rightarrow$ &  \textbf{chips} $\mid$ fork $\mid$ cat\\
+        V & $\rightarrow$ &  admires $\mid$ eats $\mid$ pets\\
+        D & $\rightarrow$ &  a $\mid$ the\\
+        Adj & $\rightarrow$ & hot $\mid$ small \\
+        P & $\rightarrow$ & with \\ \hline
+        \end{tabular}
+        \\
+    \end{tabular}
+
+    \textbf{NOTE:} The two rules in bold above can cause ungrammatical sentences: 
+    \begin{itemize}
+        \item \textbf{N' $\rightarrow$ D N'} This rule can create sentences like \textit{Bob pets the the cat} or \textit{Mary admires the hot a fork}. This can be easily solved by removing the entire production rule for N' rule and adding the following production rules: \\ 
+        \begin{tabular}{| l l l |} \hline
+        N' & $\rightarrow$ & D AN $\mid$ AN \\
+        AN & $\rightarrow$ & Adj AN $\mid$ N \\ \hline
+        \end{tabular}
+        \\
+        However, in the instructions we were told to use \textit{only} the above symbols, and so this problem cannot be easily avoided.
+        \item \textbf{N $\rightarrow$ chips} Since this word is plural, we can create sentences like \textit{Bob admires a chips}, which is ungrammatical.  This is not easily avoided, since we can only use one production rule for all types of noun proper nouns.  A few more production rules could be added to separate the definite and indefinite determiners, as well as the plural and singular nouns in order to avoid this problem. 
+    \end{itemize}
+
+\newpage
+
+    \item[b.] The trees for the example sentences are as follows:
+    
+    \begin{itemize}
+
+        \item Bert admires Mary
+
+        \Tree[.S [.PN [. Bert ]] 
+                 [.VP [.V [. admires ] ] 
+                      [.PN [. Mary ]]]]
+
+        \item Charles eats hot chips with a fork
+
+        \Tree[.S [.PN [. Charles ]] 
+                 [.VP [.V [. eats ]] 
+                      [.NP [.N\1 [.Adj [. hot ]] 
+                                 [.N [. chips ]]] 
+                           [.PP [.P [. with ]] 
+                                [.N\1 [.D [. a ]]
+                                      [.N [. fork ]]]]]]]
+
+        \item John pets the small cat
+
+        \Tree[.S [.PN [. John ]] 
+                 [.VP [.V [. pets ]]
+                      [.N\1 [.D [. the ]] 
+                           [.N\1 [.Adj [. small ]]
+                                 [.N [. cat ]]]]]]
+
+    \end{itemize}
+
+\end{description}
+
 \end{solution}
 
 \vspace*{0.5cm} %% this is to put some vertical space betwen the next problem and the previous solution. You can change the value to something more appropriate.
