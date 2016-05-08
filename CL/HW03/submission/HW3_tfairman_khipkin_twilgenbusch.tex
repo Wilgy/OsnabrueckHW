@@ -3,12 +3,34 @@
 %% aahomework is the style file I have used to typeset many commands, feel free to use them in your solutions.
 %% bear in mind that if you need to define your command then you will have to make sure that it is not in conflict to my pre-defined command. Otherwise you will need to either use
 %% commands defined by me or edit the style file appropriately.
+\usepackage[dvipsnames]{xcolor}
 \usepackage{aahomework}
 \usepackage{tikz}
 \usepackage{qtree}
+\usepackage{color}
 \usepackage{scrextend}
+\usepackage{pbox}
+\usepackage{xparse}
+\usepackage[thinlines]{easytable}
+\usetikzlibrary{matrix}
+
+\tikzset{ 
+table/.style={
+  matrix of nodes,
+  row sep=-\pgflinewidth,
+  column sep=-\pgflinewidth,
+  nodes={rectangle,text width=3em,align=left},
+  text depth=4ex,
+  text height=4ex,
+  nodes in empty cells
+} }
+
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
             \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+
+\DeclareDocumentCommand{\mybox}{ O{\hphantom} O{\hphantom} O{\hphantom} O{NavyBlue} }{\pbox{2cm}{\textsf{ \textcolor{black}{#1} } \\ \textsf{ \textcolor{gray}{#2}} \\ \textsf{ \textcolor{#4}{#3}} } }
+
 %%%the \circled command has been used to create text inside circle for grading table.
 
 %%%\geometry{letterpaper, textwidth=17cm, textheight=22cm}
@@ -188,8 +210,190 @@ Use the CYK algorithm to answer this question and document your solution step by
 
 \end{problem}
 
+\newpage
+
 \begin{solution}
-Solution for Problem \#2
+
+\begin{description}
+
+\item[a.]  The following are the initial charts for running the CYK algorithm. Note that the words in black are the terminal symbols of the grammar, while the words in \textcolor{blue}{blue} are the variable symbols. \\
+
+
+\begin{itemize}
+
+    \item \textbf{peepmo} \\
+    \begin{tikzpicture}
+    % the matrix entries
+    \matrix (mat) [table]
+    {
+        i\textbackslash j& 0 & 1 & 2 & 3 & 4 & 5 \\
+        0 & \mybox[p][][L] &   &   &   &   &   \\
+        1 &  &  \mybox[e][][E]  &   &   &   &   \\
+        2 &  &   &  \mybox[e][][E]  &   &   &   \\
+        3 &  &   &   &  \mybox[p][][L]   &   &   \\
+        4 &  &   &   &   &  \mybox[m][][G]   &   \\
+        5 &  &   &   &   &   &  \mybox[o][][O] \\
+    };
+    % the matrix rules
+    \foreach \x in {1,...,6}
+    {
+      \draw 
+        ([xshift=-.5\pgflinewidth]mat-\x-1.south west) --   
+        ([xshift=-.5\pgflinewidth]mat-\x-7.south east);
+      }
+    \foreach \x in {1,...,6}
+    {
+      \draw 
+        ([yshift=.5\pgflinewidth]mat-1-\x.north east) -- 
+        ([yshift=.5\pgflinewidth]mat-7-\x.south east);
+    }    
+    \end{tikzpicture} 
+
+\newpage
+
+    \item \textbf{peppmo} \\
+
+    \begin{tikzpicture}
+    % the matrix entries
+    \matrix (mat) [table]
+    {
+        i\textbackslash j& 0 & 1 & 2 & 3 & 4 & 5 \\
+        0 & \mybox[p][][L]  &   &   &   &   &   \\
+        1 &  &  \mybox[e][][E]  &   &   &   &   \\
+        2 &  &   &  \mybox[p][][L]  &   &   &   \\
+        3 &  &   &   &  \mybox[p][][L]   &   &   \\
+        4 &  &   &   &   &  \mybox[m][][G]   &   \\
+        5 &  &   &   &   &   &  \mybox[o][][O] \\  
+    };
+    % the matrix rules
+    \foreach \x in {1,...,6}
+    {
+      \draw 
+        ([xshift=-.5\pgflinewidth]mat-\x-1.south west) --   
+        ([xshift=-.5\pgflinewidth]mat-\x-7.south east);
+      }
+    \foreach \x in {1,...,6}
+    {
+      \draw 
+        ([yshift=.5\pgflinewidth]mat-1-\x.north east) -- 
+        ([yshift=.5\pgflinewidth]mat-7-\x.south east);
+    }    
+    \end{tikzpicture}
+
+
+\end{itemize}
+
+\item[b.] The tables below are the result of following the CYK algorithm. The \textcolor{Green}{green symbols} are the intermittent transitions, while the \textcolor{Gray}{gray symbols} are those symbols that are not used during this trace of the algorithm to generate/validate the final word. Note that this does \textbf{not} mean that these symbols are not part of the language, but just that they are not used in this particular trace.
+
+\newpage
+
+\begin{itemize}
+
+    \item \textbf{peepmo} \\
+
+    \begin{tikzpicture}
+    % the matrix entries
+    \matrix (mat) [table]
+    {
+        i\textbackslash j& 0 & 1 & 2 & 3 & 4 & 5 \\
+        0 & \mybox[p][][L] & \mybox[][pe][]  & \mybox[pee][][E][Green]  & \mybox[][peep][]  & \mybox[peepm][][O][Green]  & \mybox[peepmo][][S][Red]  \\
+        1 &  &  \mybox[e][][E]  & \mybox[ee][][L][Green]   & \mybox[][eel][]   & \mybox[][eelm][]   & \mybox[][eelmo][]   \\
+        2 &  &   &  \mybox[e][][E]  & \mybox[][ep][]   & \mybox[][epm][]   & \mybox[][epmo][]   \\
+        3 &  &   &   &  \mybox[p][][L]   & \mybox[pm][][G][Green]   & \mybox[][pmo][]   \\
+        4 &  &   &   &   &  \mybox[m][][G]   & \mybox[][mo][]  \\
+        5 &  &   &   &   &   &  \mybox[o][][O] \\
+    };
+    % the matrix rules
+    \foreach \x in {1,...,6}
+    {
+      \draw 
+        ([xshift=-.5\pgflinewidth]mat-\x-1.south west) --   
+        ([xshift=-.5\pgflinewidth]mat-\x-7.south east);
+      }
+    \foreach \x in {1,...,6}
+    {
+      \draw 
+        ([yshift=.5\pgflinewidth]mat-1-\x.north east) -- 
+        ([yshift=.5\pgflinewidth]mat-7-\x.south east);
+    }    
+    % the arrows
+    \begin{scope}
+
+    \draw[ForestGreen, ->, style=thick]  ([xshift=15]mat-7-7.center) -- ([xshift=15]mat-2-7.center) ;
+    \draw[ForestGreen, ->, style=thick]  ([xshift=10]mat-2-6.center) -- ([xshift=-10]mat-2-7.center) ;
+    \draw[ForestGreen, ->, style=thick]  ([xshift=15]mat-5-6.center) -- ([xshift=15, yshift=-5]mat-2-6.center) ;
+    
+    \draw[ForestGreen, ->, style=thick]  ([xshift=15]mat-6-6.center) -- ([xshift=15, yshift=-5]mat-5-6.center) ;
+    \draw[ForestGreen, ->, style=thick]  ([xshift=10]mat-5-5.center) -- ([xshift=-10, yshift=0]mat-5-6.center) ;
+
+    \draw[ForestGreen, ->, style=thick]  ([xshift=15]mat-4-4.center) -- ([xshift=15, yshift=-5]mat-3-4.center) ;
+    \draw[ForestGreen, ->, style=thick]  ([xshift=10]mat-3-3.center) -- ([xshift=-10, yshift=0]mat-3-4.center) ;
+
+
+    \draw[ForestGreen, ->, style=thick]  ([xshift=10]mat-2-2.center) -- ([xshift=-10, yshift=0]mat-2-4.center) ;
+    \draw[ForestGreen, ->, style=thick]  ([xshift=15]mat-3-4.center) -- ([xshift=15, yshift=-5]mat-2-4.center) ;
+
+    \draw[ForestGreen, ->, style=thick]  ([xshift=10]mat-2-4.center) -- ([xshift=-10, yshift=0]mat-2-6.center) ;
+
+    \end{scope}
+    \end{tikzpicture}
+
+\newpage
+
+    \item \textbf{peppmo} \\
+    \begin{tikzpicture}
+    % the matrix entries
+    \matrix (mat) [table]
+    {
+        i\textbackslash j& 0 & 1 & 2 & 3 & 4 & 5 \\
+        0 & \mybox[p][][L] & \mybox[][pe][]  & \mybox[][pep][]  & \mybox[pepp][][E][Green]  & \mybox[peppm][][O][Green]  & \mybox[peppmo][][S][Red]  \\
+        1 &  &  \mybox[e][][E]  & \mybox[][ep][]   & \mybox[epp][][L][Green]   & \mybox[][eppm][]   & \mybox[][eppmo][]   \\
+        2 &  &   &  \mybox[p][][L]  & \mybox[pp][][E][Green]   & \mybox[][ppm][]   & \mybox[][ppmo][]   \\
+        3 &  &   &   &  \mybox[p][][L]   & \mybox[][pm][]   & \mybox[][pmo][]   \\
+        4 &  &   &   &   &  \mybox[m][][G]   & \mybox[][mo][]  \\
+        5 &  &   &   &   &   &  \mybox[o][][O] \\
+    };
+    % the matrix rules
+    \foreach \x in {1,...,6}
+    {
+      \draw 
+        ([xshift=-.5\pgflinewidth]mat-\x-1.south west) --   
+        ([xshift=-.5\pgflinewidth]mat-\x-7.south east);
+      }
+    \foreach \x in {1,...,6}
+    {
+      \draw 
+        ([yshift=.5\pgflinewidth]mat-1-\x.north east) -- 
+        ([yshift=.5\pgflinewidth]mat-7-\x.south east);
+    }    
+    % the arrows
+    \begin{scope}
+
+    \draw[ForestGreen, ->, style=thick]  ([xshift=15]mat-7-7.center) -- ([xshift=15]mat-2-7.center) ;
+    \draw[ForestGreen, ->, style=thick]  ([xshift=10]mat-2-6.center) -- ([xshift=-10]mat-2-7.center) ;
+    \draw[ForestGreen, ->, style=thick]  ([xshift=15]mat-6-6.center) -- ([xshift=15, yshift=-5]mat-2-6.center) ;
+    
+    \draw[ForestGreen, ->, style=thick]  ([xshift=15]mat-5-5.center) -- ([xshift=15, yshift=-5]mat-4-5.center) ;
+    \draw[ForestGreen, ->, style=thick]  ([xshift=10]mat-4-4.center) -- ([xshift=-10, yshift=0]mat-4-5.center) ;
+
+    \draw[ForestGreen, ->, style=thick]  ([xshift=15]mat-4-5.center) -- ([xshift=15, yshift=-5]mat-3-5.center) ;
+    \draw[ForestGreen, ->, style=thick]  ([xshift=10]mat-3-3.center) -- ([xshift=-10, yshift=0]mat-3-5.center) ;
+
+
+    \draw[ForestGreen, ->, style=thick]  ([xshift=10]mat-2-2.center) -- ([xshift=-10, yshift=0]mat-2-5.center) ;
+    \draw[ForestGreen, ->, style=thick]  ([xshift=15]mat-3-5.center) -- ([xshift=15, yshift=-5]mat-2-5.center) ;
+
+    \draw[ForestGreen, ->, style=thick]  ([xshift=10]mat-2-5.center) -- ([xshift=-10, yshift=0]mat-2-6.center) ;
+    \end{scope}
+    \end{tikzpicture} \\
+    Using the CYK algorithm, we can successfully determine that both \textbf{peepmo} and \textbf{peppmo} are part of the above defined CFG.
+
+
+
+\end{itemize}
+
+\end{description}
+
 \end{solution}
 
 \end{document}
