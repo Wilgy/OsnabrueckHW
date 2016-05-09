@@ -30,7 +30,51 @@
 %----------------------------------------------------
 %
 
-s --> ...
+% Only birds can fly.
+s --> birds,[fly].
+
+% Herbivores don't eat other beings.
+% Mind that "eating" can, but not necessarily does, take an object.
+s --> beings,[eat].
+s --> carnivores,[eat],beings.
+
+% Fishes and mammals can swim (but not birds).
+s --> fishes,[swim].
+s --> mammals,[swim].
+
+% Mammals and birds can drown (but not fishes).
+% Mind that "drowning" can, but not necessarily does, take an object.
+% The object (not the subject) of "drowning" is the being that drowns.
+s --> mammals,[drown].
+s --> birds,[drown].
+s --> beings,[drown],mammals.
+s --> beings,[drown],birds.
+
+% All beings are either herbivores or carnivores.
+% (Additionally, all beings are either birds, fishes, or mammals.)
+% (Only one of these facts is needed to represent all possible beings.)
+beings --> herbivores.
+beings --> carnivores.
+
+% Sharks, hawks, and boys are carnivores.
+carnivores --> [sharks].
+carnivores --> [hawks].
+carnivores --> [boys].
+
+% Goldfishes and finches are herbivores.
+herbivores --> [goldfishes].
+herbivores --> [finches].
+
+% Hawks and finches are birds.
+birds --> [hawks].
+birds --> [finches].
+
+% Sharks and goldfishes are fishes.
+fishes --> [sharks]. % verified by google.com
+fishes --> [goldfishes].
+
+% Boys are mammals.
+mammals --> [boys].
 
 %----------------------------------------------------
 % 2 (5 points). On an ancient scroll written in an even more
