@@ -29,7 +29,7 @@ table/.style={
             \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
 
 
-\DeclareDocumentCommand{\mybox}{ O{\hphantom} O{\hphantom} O{\hphantom} O{NavyBlue} }{\pbox{2cm}{\textsf{ \textcolor{black}{#1} } \\ \textsf{ \textcolor{gray}{#2}} \\ \textsf{ \textcolor{#4}{#3}} } }
+\DeclareDocumentCommand{\mybox}{ O{\hphantom} O{\hphantom} O{\hphantom} O{NavyBlue} O{} }{\pbox{2cm}{\textsf{ \textcolor{black}{#1} } \\ \textsf{ \textcolor{gray}{#2}} \\ \textsf{ \textcolor{#4}{#3} \textcolor{gray}{#5}} } }
 
 %%%the \circled command has been used to create text inside circle for grading table.
 
@@ -70,7 +70,7 @@ table/.style={
     \begin{addmargin}[2em]{2em}
     Bert admires Mary. \\
     Charles eats hot chips with a fork. \\
-    John pets the small cat. \\
+    John pets the small cat.
     \end{addmargin}
 
     The terminal symbols of your grammar must be words, not phrases.
@@ -194,10 +194,9 @@ $P$ &
     \\
 \end{tabular}
 
-Does the grammar $G$ generate both the strings (``sentences'') peepmo and peppmo,
-(consisting of the ``words'' p, e, m, and o)? \\
+Does the grammar $G$ generate both the strings (``sentences'') peepmo and peppmo, (consisting of the ``words'' p, e, m, and o)?
 
-The task is focussed on making you familiar with the CYK algorithm, without letting any grammatical intuitions interfere. This is the reason for choosing a somewhat abstract example that has nothing to do with natural language. \\
+The task is focussed on making you familiar with the CYK algorithm, without letting any grammatical intuitions interfere. This is the reason for choosing a somewhat abstract example that has nothing to do with natural language.
 
 Use the CYK algorithm to answer this question and document your solution step by step for each of the two strings.
 
@@ -216,12 +215,10 @@ Use the CYK algorithm to answer this question and document your solution step by
 
 \begin{description}
 
-\item[a.]  The following are the initial charts for running the CYK algorithm. Note that the words in black are the terminal symbols of the grammar, while the words in \textcolor{blue}{blue} are the variable symbols. \\
+\item[a.]  The following are the initial charts for running the CYK algorithm. Note that the words in black are the terminal symbols of the grammar, while the words in \textcolor{blue}{blue} are the variable symbols.
 
+    \textbf{peepmo}
 
-\begin{itemize}
-
-    \item \textbf{peepmo} \\
     \begin{tikzpicture}
     % the matrix entries
     \matrix (mat) [table]
@@ -251,7 +248,7 @@ Use the CYK algorithm to answer this question and document your solution step by
 
 \newpage
 
-    \item \textbf{peppmo} \\
+    \textbf{peppmo}
 
     \begin{tikzpicture}
     % the matrix entries
@@ -281,24 +278,20 @@ Use the CYK algorithm to answer this question and document your solution step by
     \end{tikzpicture}
 
 
-\end{itemize}
-
 \item[b.] The tables below are the result of following the CYK algorithm. The \textcolor{Green}{green symbols} are the intermittent transitions, while the \textcolor{Gray}{gray symbols} are those symbols that are not used during this trace of the algorithm to generate/validate the final word. Note that this does \textbf{not} mean that these symbols are not part of the language, but just that they are not used in this particular trace.
 
 \newpage
 
-\begin{itemize}
-
-    \item \textbf{peepmo} \\
+    \textbf{peepmo}
 
     \begin{tikzpicture}
     % the matrix entries
     \matrix (mat) [table]
     {
         i\textbackslash j& 0 & 1 & 2 & 3 & 4 & 5 \\
-        0 & \mybox[p][][L] & \mybox[][pe][]  & \mybox[pee][][E][Green]  & \mybox[][peep][]  & \mybox[peepm][][O][Green]  & \mybox[peepmo][][S][Red]  \\
-        1 &  &  \mybox[e][][E]  & \mybox[ee][][L][Green]   & \mybox[][eel][]   & \mybox[][eelm][]   & \mybox[][eelmo][]   \\
-        2 &  &   &  \mybox[e][][E]  & \mybox[][ep][]   & \mybox[][epm][]   & \mybox[][epmo][]   \\
+        0 & \mybox[p][][L]  & \mybox[][pe][]  & \mybox[pee][][E][Green]  & \mybox[][peep][][Green][E,L]  & \mybox[peepm][][O][Green][,G]   & \mybox[peepmo][][S][Red]  \\
+        1 &  &  \mybox[e][][E]  & \mybox[ee][][L][Green]   & \mybox[][eep][][Green][E]   & \mybox[][eepm][][Green][G, O]   & \mybox[][eepmo][][Green][S]   \\
+        2 &  &   &  \mybox[e][][E]  & \mybox[][ep][]   & \mybox[][epm][][Green][O]   & \mybox[][epmo][][Green][S]   \\
         3 &  &   &   &  \mybox[p][][L]   & \mybox[pm][][G][Green]   & \mybox[][pmo][]   \\
         4 &  &   &   &   &  \mybox[m][][G]   & \mybox[][mo][]  \\
         5 &  &   &   &   &   &  \mybox[o][][O] \\
@@ -340,16 +333,16 @@ Use the CYK algorithm to answer this question and document your solution step by
 
 \newpage
 
-    \item \textbf{peppmo} \\
+    \textbf{peppmo} \\
     \begin{tikzpicture}
     % the matrix entries
     \matrix (mat) [table]
     {
         i\textbackslash j& 0 & 1 & 2 & 3 & 4 & 5 \\
-        0 & \mybox[p][][L] & \mybox[][pe][]  & \mybox[][pep][]  & \mybox[pepp][][E][Green]  & \mybox[peppm][][O][Green]  & \mybox[peppmo][][S][Red]  \\
-        1 &  &  \mybox[e][][E]  & \mybox[][ep][]   & \mybox[epp][][L][Green]   & \mybox[][eppm][]   & \mybox[][eppmo][]   \\
-        2 &  &   &  \mybox[p][][L]  & \mybox[pp][][E][Green]   & \mybox[][ppm][]   & \mybox[][ppmo][]   \\
-        3 &  &   &   &  \mybox[p][][L]   & \mybox[][pm][]   & \mybox[][pmo][]   \\
+        0 & \mybox[p][][L] & \mybox[][pe][]  & \mybox[][pep][][Green][E]  & \mybox[pepp][][E][Green][,L]  & \mybox[peppm][][O][Green][,G]  & \mybox[peppmo][][S][Red]  \\
+        1 &  &  \mybox[e][][E]  & \mybox[][ep][]   & \mybox[epp][][L][Green]   & \mybox[][eppm][][Green][O,G]   & \mybox[][eppmo][][Green][S]   \\
+        2 &  &   &  \mybox[p][][L]  & \mybox[pp][][E][Green]   & \mybox[][ppm][][Green][O,G]   & \mybox[][ppmo][][Green][S]   \\
+        3 &  &   &   &  \mybox[p][][L]   & \mybox[][pm][][Green][G]   & \mybox[][pmo][]   \\
         4 &  &   &   &   &  \mybox[m][][G]   & \mybox[][mo][]  \\
         5 &  &   &   &   &   &  \mybox[o][][O] \\
     };
@@ -385,12 +378,10 @@ Use the CYK algorithm to answer this question and document your solution step by
 
     \draw[ForestGreen, ->, style=thick]  ([xshift=10]mat-2-5.center) -- ([xshift=-10, yshift=0]mat-2-6.center) ;
     \end{scope}
-    \end{tikzpicture} \\
+    \end{tikzpicture}
+
     Using the CYK algorithm, we can successfully determine that both \textbf{peepmo} and \textbf{peppmo} are part of the above defined CFG.
 
-
-
-\end{itemize}
 
 \end{description}
 
