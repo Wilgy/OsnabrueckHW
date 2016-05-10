@@ -107,6 +107,35 @@ mammals --> [boys].
 %----------------------------------------------------
 %
 
+unique([]).
+unique([X|R]) :-
+    maplist(dif(X), R),
+    unique(R).
+
 translation(Nqrrroah, Nqblubh, Nqflua, Nqdwingi,
             Nqlhalha, Ukahama, Mhboa, Sharabrab, Falup) :-
-...
+    s([Nqblubh,Mhboa], []),
+    s([Nqrrroah,Ukahama,Nqblubh], []),
+    s([Nqlhalha,Falup], []),
+    s([Nqlhalha,Ukahama], []),
+    s([Nqlhalha,Ukahama,Nqflua], []),
+    s([Nqflua,Sharabrab], []),
+    s([Nqblubh,Falup,Nqdwingi], []),
+    s([Nqflua,Ukahama,Nqdwingi], []),
+    s([Nqdwingi,Falup,Nqflua], []),
+    unique([Nqrrroah, Nqblubh, Nqflua, Nqdwingi,
+            Nqlhalha, Ukahama, Mhboa, Sharabrab, Falup]).
+
+% Translation results:
+%           ? translation(Nqrrroah, Nqblubh, Nqflua, Nqdwingi,
+%                       Nqlhalha, Ukahama, Mhboa, Sharabrab, Falup).
+% 	Falup = drown,
+% 	Mhboa = swim,
+% 	Nqblubh = goldfishes,
+% 	Nqdwingi = finches,
+% 	Nqflua = hawks,
+% 	Nqlhalha = boys,
+% 	Nqrrroah = sharks,
+% 	Sharabrab = fly,
+% 	Ukahama = eat
+% 	false
