@@ -107,6 +107,49 @@ mammals --> [boys].
 %----------------------------------------------------
 %
 
+%%
+% unique(+List) - predicate that verifies that all elements in
+% the given list are unique; intended for use with flat lists,
+% but this expectation is not a requirement
+%
+% +List - the list
+%%
+unique([]).
+unique([X|R]) :-
+    maplist(dif(X), R),
+    unique(R).
+
+%%
+% translation(...) - predicate that takes all of the Pthu words and
+% attempts to instantiate them with English words such that all
+% of the Pthu sentences translate to meaningful English sentences
+%
+% ... - the Pthu words to be translated
+%%
 translation(Nqrrroah, Nqblubh, Nqflua, Nqdwingi,
             Nqlhalha, Ukahama, Mhboa, Sharabrab, Falup) :-
-...
+    s([Nqblubh,Mhboa], []),
+    s([Nqrrroah,Ukahama,Nqblubh], []),
+    s([Nqlhalha,Falup], []),
+    s([Nqlhalha,Ukahama], []),
+    s([Nqlhalha,Ukahama,Nqflua], []),
+    s([Nqflua,Sharabrab], []),
+    s([Nqblubh,Falup,Nqdwingi], []),
+    s([Nqflua,Ukahama,Nqdwingi], []),
+    s([Nqdwingi,Falup,Nqflua], []),
+    unique([Nqrrroah, Nqblubh, Nqflua, Nqdwingi,
+            Nqlhalha, Ukahama, Mhboa, Sharabrab, Falup]).
+
+% Translation results:
+%   ? translation(Nqrrroah, Nqblubh, Nqflua, Nqdwingi,
+%                 Nqlhalha, Ukahama, Mhboa, Sharabrab, Falup).
+% 	Falup = drown,
+% 	Mhboa = swim,
+% 	Nqblubh = goldfishes,
+% 	Nqdwingi = finches,
+% 	Nqflua = hawks,
+% 	Nqlhalha = boys,
+% 	Nqrrroah = sharks,
+% 	Sharabrab = fly,
+% 	Ukahama = eat
+% 	false
