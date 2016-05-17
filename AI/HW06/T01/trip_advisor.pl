@@ -1,5 +1,6 @@
 % trip_advisor.pl - File for HW06, T01
-% Adds cuts to existing program to give only unique solutions
+% Adds cuts to existing program such that there's only
+% one solution for each city that's worth a visit.
 %
 % Author: T. Wilgenbusch, K. Hipkin, T. Fairman, B. Dell
 
