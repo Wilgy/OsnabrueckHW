@@ -4,13 +4,13 @@
 % Author: T. Wilgenbusch, K. Hipkin, T. Fairman, B. Dell
 
 %% Define the operators:
-%%		~ (for 'not', high precedence)
+%%		~ (for 'not', low precedence)
 %%		&& (for 'and', medium precedence)
-%%		|| (for 'or', low precedence)
+%%		v (for 'or', high precedence)
 %% so that they can be used for prolog queries and clauses.
 %% Parentheses for overriding precedence should work!
 
 %% Example:
 
 %% visit(City) :-
-%%		(poi(City,beach) || poi(City,mountain)) && ~poi(City, nuclear_power_plant).
+%%		(poi(City,beach) v poi(City,mountain)) && ~poi(City, nuclear_power_plant).
