@@ -23,10 +23,10 @@ poi(meppen, townhall).
 %
 % A city is worth a visit if it has a castle
 %
-visit(City, has_castle) :- poi(City, castle).
+visit(City, has_castle) :- poi(City, castle), !.
 
 % Bramsche is worth a visit for its own rights (Task 1)
-visit(bramsche, is_bramsche).
+visit(bramsche, is_bramsche) :- !.
 
 % A city is worth a visit
 % if it has two points of interest
@@ -34,4 +34,4 @@ visit(bramsche, is_bramsche).
 visit(City, has_2_poi(X,Y)) :-
     poi(City, X),
     poi(City, Y),
-    X \= Y.
+    X \= Y, !.

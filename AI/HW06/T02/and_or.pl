@@ -11,6 +11,12 @@
 %% Parentheses for overriding precedence should work!
 
 %% Example:
+:- op(100, fx, ~).
+:- op(200, xfx, &&).
+:- op(300, xfx, v).
 
-%% visit(City) :-
-%%		(poi(City,beach) v poi(City,mountain)) && ~poi(City, nuclear_power_plant).
+~ X:- not(X).
+
+X1 && X2 :- X1, X2.
+
+X1 v X2 :- X1; X2.
