@@ -34,4 +34,38 @@ visit(bramsche, is_bramsche).
 visit(City, has_2_poi(X,Y)) :-
     poi(City, X),
     poi(City, Y),
+    !,
     X \= Y.
+
+% Tests:
+% ?- visit(C, R).
+% C = osnabrueck,
+% R = has_castle ;
+% C = muenster,
+% R = has_castle ;
+% C = hannover,
+% R = has_castle ;
+% C = fuerstenau,
+% R = has_castle ;
+% C = bramsche,
+% R = is_bramsche ;
+% false.
+%
+% ?- visit(osnabrueck, _).
+% true.
+%
+% ?- visit(muenster, _).
+% true.
+%
+% ?- visit(hannover, _).
+% true.
+%
+% ?- visit(fuerstenau, _).
+% true.
+%
+% ?- visit(bramsche, _).
+% true.
+%
+% ?- visit(meppen, _).
+% false.
+
