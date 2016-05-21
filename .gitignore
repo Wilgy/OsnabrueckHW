@@ -1,3 +1,5 @@
+AI/**/*.BAK
+
 CL/template/*.aux
 CL/template/*.log
 CL/template/*.pdf
