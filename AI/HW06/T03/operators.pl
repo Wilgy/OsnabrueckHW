@@ -36,116 +36,113 @@ Who = she
 % Operator definitions to help define the 'syntax' of the pseudo-nl-sentences
 
 %-------------------------------------------------------------------------------
-% DATABASE MANIPULATION AND VIEWING
+% OPERATORS FOR DATABASE MANIPULATION AND VIEWING
 %-------------------------------------------------------------------------------
 
 %%
-% The '??' operator 'queries' has the highest precedence of our 'language';
+% The '??' operator ('queries') has the highest precedence in our 'language'.
 %
-% The expression being evaluated appears on the left of the functor
+% This operator is of the postfix operator type.
 %%
-:- op(700, yf, ??).
+:- op(700, xf, ??).
 
 %%
-% The '#' operator h
-% Has the highest precedence in our 'language' (equal to the ??
-% operator, meaning that # and ?? cannot be used at the same time); 
+% The '#' operator ('asserts') has the highest precedence in our 'language'
+% (the same precedence as the ?? operator).
 %
-% The expression being evaluated appears on the right of the functor
+% This operator is of the prefix operator type.
 %%
-:- op(700, fy, #).
+:- op(700, fx, #).
+
 %-------------------------------------------------------------------------------
-% PSEUDO-NL-SENTENCES STRUCTURE DEFINITIONS
-%-------------------------------------------------------------------------------
-
-%%
-% The 'her' functor has less precedence than 'visited'; 
-%
-% The expression appears  at the right of the functor (i.e. 'brother')
-%%
-:- op(450, fx, her).
-
-%%
-% The 'visited' functor 
-% Has higher precedence than 'her'; 
-%
-% The expression on the right is the person doing the visiting (i.e. 'she'), 
-% the expression on the right is the person being visited (i.e. 'her brother');
-%%
-:- op(500, xfy, visited).
-
+% OPERATORS FOR PSEUDO-NL-SENTENCES STRUCTURE
 %-------------------------------------------------------------------------------
 
 %%
-% The 'where' functor 
-% Has higher precedence than both 'visited' and 'traveled'; 
+% The 'from' operator has the lowest precedence in our 'language'.
+% (Has lower precedence than 'to'.)
 %
-% The expression on the left is the 'traveled' fact being added and 
-% the expression on the right is the 'visited' fact being added
-%%
-:- op(600, xfx, where). 
-%-------------------------------------------------------------------------------
-
-%%
-% The 'from' functor 
-% Has lower precedence than 'to'; 
-%
-% The expression is on the the right of the functor (i.e. 'berlin')
+% This operator is of the prefix operator type.
 %%
 :- op(450, fx, from).
 
 %%
-% The 'to' operator
-% Has higher precedence than 'from', but lower precedence than 'traveled'
+% The 'her' operator has the lowest precedence in our 'language'.
+% (Has lower precedence than 'visited'.)
 %
-% The expression on the left original location (i.e 'from berlin') and 
-% the expression on the right is the destination (i.e. 'hamburg') 
+% This operator is of the prefix operator type.
+%%
+:- op(450, fx, her).
+
+%%
+% The 'to' operator has medium-low precedence in our 'language'.
+% (Has higher precedence than 'from' but lower precedence than 'traveled'.)
+%
+% This operator is of the non-associative operator type.
 %%
 :- op(475, xfx, to).
 
 %%
-% The 'traveled' operator
-% Has higher precedence than 'to' and  'from'
+% The 'visited' operator has medium precedence in our 'language'.
+% (Has higher precedence than 'her' and lower precedence than 'where'.)
 %
-% The expression on the right is the person traveling (i.e. 'mary') and 
-% The expression on the left is the travel plan (i.e. 'from berlin to hamburg')
+% This operator is of the non-associative operator type.
 %%
-:- op(500, xfy, traveled).
+:- op(500, xfx, visited).
+
+%%
+% The 'traveled' operator has medium precedence in our 'language'.
+% (Has higher precedence than 'to' and 'from' and lower precedence than 'where'.)
+%
+% This operator is of the non-associative operator type.
+%%
+:- op(500, xfx, traveled).
+
+%%
+% The 'where' operator has high precedence in our 'language'.
+% (Has higher precedence than both 'visited' and 'traveled' but
+% lower precedence than any database manipulation/viewing operators.)
+%
+% This operator is of the non-associative operator type.
+%%
+:- op(600, xfx, where).
+
+%-------------------------------------------------------------------------------
+% OPERATOR PREDICATES
+%
+% NOTE: Most of the operators for our pseudo-nl-sentences do not need predicates
+% because they only define a structure. The only exception is 'where'.
 %-------------------------------------------------------------------------------
 
-% Operator declarations (what the operators actually do);
-% NOTE: The operators for our pseudo-nl-sentences do not need to be declared, 
-% since they do not do anything other than define a structure that our 'facts' 
-% database has (excluding 'where', which breaks up the facts)
-%-------------------------------------------------------------------------------
+% Necessary to change the predicate definition while the code is running.
+:- dynamic(facts/1).
+
 %%
-% +X where +Y - takes two facts and asserts them into our database, then 
-% displays the new facts to the user, separated by new lines;
+% +X where +Y - takes two facts and asserts them into our database
+% using the 'facts' predicate, then prints each fact on its own line.
 %
-% +X - the first fact being asserted (i.e. 'traveled(...)')
-% +Y - the second fact being asserted (i.e. 'visited(...)')
+% +X - the first fact
+% +Y - the second fact
 %%
-X where Y :- 
-    assert(facts(X)), 
-    assert(facts(Y)), 
-    display(X), nl, 
+X where Y :-
+    asserta(facts(X)),
+    asserta(facts(Y)),
+    display(X), nl,
     display(Y), nl.
 
 %%
-% # +X where +Y - 'helper' function to assert two new facts
-% 
-% +X - the first fact being asserted (i.e. 'traveled(...)')
-% +Y - the second fact being asserted (i.e. 'visited(...)')
+% # +X - adds facts to the database
+%
+% +X - the fact being asserted
 %%
-# X where Y :- where(X, Y).
+# X :- X.
 
 %%
-% +Action ?? - displays information about a fact that is already in our 
-% database
+% +X ?? - queries the facts already in the database
 %
-% +Action - the fact being queried (i.e. 'Who visited her brother ??')
+% +X - the fact being queried
 %%
-Action ?? :- facts(Action).
+X ?? :- facts(X).
 %-------------------------------------------------------------------------------
 
 % this line will be processed as if it were entered as a query:
