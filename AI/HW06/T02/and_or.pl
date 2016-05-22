@@ -10,46 +10,63 @@
 %% so that they can be used for prolog queries and clauses.
 %% Parentheses for overriding precedence should work!
 
+%% Example:
+
+%% visit(City) :-
+%%		(poi(City,beach) v poi(City,mountain)) && ~poi(City, nuclear_power_plant).
 
 % Operation definitions for the boolean operators
 %-------------------------------------------------------------------------------
-% The NOT operator has the lowest precedence;  The functor comes before the 
-% variable/expression being evaluated
-:- op(100, fx, ~).
+% The ~ (NOT) operator has low precedence and
+% is of the prefix operator type.
+:- op(400, fx, ~).
 
-% The AND operator has higher precedence than NOT, but less than OR; The 
-% expressions being evaluated are on the left and right of the functor
-:- op(200, xfx, &&).
+% The && (AND) operator has medium precedence and
+% is of the left associative operator type.
+:- op(500, yfx, &&).
 
-% The OR operator has the highest precedence; The expressions being evaluated 
-% are on the left and right of the functor
-:- op(300, xfx, v).
+% The v (OR) operator has high precedence and
+% is of the left associative operator type.
+:- op(600, yfx, v).
 %-------------------------------------------------------------------------------
 
-
-% Operator declarations (what the operators actually do)
+% Predicates for the boolean operators
 %-------------------------------------------------------------------------------
 %%
-% ~ +X - predicate will evaluate to true if the expression being evaluated 
-% cannot be proven true
+% ~ +X - maps to prolog's not operator; true if the expression is not provable.
 %
-% +X - the expression being 'negated'
+% +X - the expression being tested
 %%
-~ X:- not(X).
-%%
-% +X1 && +X2 - predicate will evaluate to true when both X1 and X2 are true
-%
-% +X1 - the first (left-side) expression being evaluated
-% +X2 - the second (right-side) expression being evaluated
-%%
-X1 && X2 :- X1, X2.
+~ X :- not(X).
 
 %%
-% +X1 v +X2 - predicate will evaluate to true when either X1 is true or X2 is 
-% true (or both are true)
+% +X && +Y - true if both X and Y are true
 %
-% +X1 - the first (left-side) expression being evaluated
-% +X2 - the second (right-side) expression being evaluated
+% +X - the first (left-side) expression being evaluated
+% +Y - the second (right-side) expression being evaluated
 %%
-X1 v X2 :- X1; X2.
+X && Y :- X, Y.
+
+%%
+% +X v +Y - true if X is true, otherwise if Y is true
+%
+% +X - the first (left-side) expression being evaluated
+% +Y - the second (right-side) expression being evaluated
+%%
+X v Y :- X ; Y.
 %-------------------------------------------------------------------------------
+
+/*
+Test queries:
+
+	true && true && true && false. // false
+	false v false v false v true. // true
+	~ true. // false
+	~ false. // true
+	~ true && false. // false
+	~ (true && false). // true
+
+	display(x v y && ~ z). // v(x, &&(y, ~(z)))
+	display(~ x && y v ~ z). // v(&&(~(x), y), ~(z))
+	display(~ (x && y) v ~ z). // v(~(&&(x, y)), ~(z))
+*/
