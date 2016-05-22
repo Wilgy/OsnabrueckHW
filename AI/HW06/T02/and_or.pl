@@ -15,23 +15,46 @@
 %% visit(City) :-
 %%		(poi(City,beach) v poi(City,mountain)) && ~poi(City, nuclear_power_plant).
 
-% ~ operator: (for 'not')
-%		low precedence
-%		prefix operator type
-:- op(400,fx,~).
-~ X :- not(X). % map ~ to prolog's not operator
+% Operation definitions for the boolean operators
+%-------------------------------------------------------------------------------
+% The ~ (NOT) operator has low precedence and
+% is of the prefix operator type.
+:- op(400, fx, ~).
 
-% && operator: (for 'and')
-%		medium precedence
-%		left associative operator type
-:- op(500,yfx,&&).
-X && Y :- X, Y. % true if X and Y are true
+% The && (AND) operator has medium precedence and
+% is of the left associative operator type.
+:- op(500, yfx, &&).
 
-% v operator: (for 'or')
-%		high precedence
-%		left associative operator type
-:- op(600,yfx,v).
-X v Y :- X ; Y. % true if X is true, otherwise if Y is true
+% The v (OR) operator has high precedence and
+% is of the left associative operator type.
+:- op(600, yfx, v).
+%-------------------------------------------------------------------------------
+
+% Predicates for the boolean operators
+%-------------------------------------------------------------------------------
+%%
+% ~ +X - maps to prolog's not operator; true if the expression is not provable.
+%
+% +X - the expression being tested
+%%
+~ X :- not(X).
+
+%%
+% +X && +Y - true if both X and Y are true
+%
+% +X - the first (left-side) expression being evaluated
+% +Y - the second (right-side) expression being evaluated
+%%
+X && Y :- X, Y.
+
+%%
+% +X v +Y - true if X is true, otherwise if Y is true
+%
+% +X - the first (left-side) expression being evaluated
+% +Y - the second (right-side) expression being evaluated
+%%
+X v Y :- X ; Y.
+%-------------------------------------------------------------------------------
 
 /*
 Test queries:
