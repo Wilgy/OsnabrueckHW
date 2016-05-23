@@ -22,18 +22,18 @@ assume that different letters represent different digits and leading digits are 
 
 Use generate and test as a first approach. Do not use a constraint logic programming library like clpfd here!
 
-Check the efficency with the predicate 'time'.
+Check the efficiency with the predicate 'time'.
 
 b) Try to define an improved program 'man_bit_monkey_i'.
 
 Try to minimize the number of inferences,
-but try to use principles, which may be applied to similar problems! 
+but try to use principles, which may be applied to similar problems!
 Do not use special properties of this problem.
 Do not use a constraint logic programming library like clpfd here!
 
 Hint:
-select(?X,+L,-L1) 
-selects an element X from the list L and binds L1 to L whithout X. 
+select(?X,+L,-L1)
+selects an element X from the list L and binds L1 to L without X.
 may be used to select a digit from a set of available digits
 to solve the 'all different' condition.
 */
