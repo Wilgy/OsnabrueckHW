@@ -4,7 +4,7 @@
 % Author: T. Wilgenbusch, K. Hipkin, T. Fairman, B. Dell
 
 /*
-Solve this riddle: 
+Solve this riddle:
 
 [code]
  M A N *  B I T = M O N K E Y

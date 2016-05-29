@@ -1,5 +1,5 @@
 % global_counter.pl - File for HW07, T03
-% Adds several predicates to increase the functionality of a global counter
+% Adds several predicates (w/ tests) to improve a global counter implementation
 %
 % Author: T. Wilgenbusch, K. Hipkin, T. Fairman, B. Dell
 
@@ -15,7 +15,7 @@ reached (value to be set >= maximum), an exception is generated. Provide
 suitable unit tests for the maximum value feature. (6 points)
 
 */
- 
+
 % counter(?Name, ?Value) provides read access to the counters
 % if not counter exists, prolog would raise an exception
 % this exception is caught by catch/3.
@@ -62,11 +62,11 @@ create_counter(Name, Value) :-
     \+ counter(Name,_), % make sure counter does not exist already
     (integer(Value) -> assert(global__counter__(Name,Value))
                     ; throw(error(counter_error(non_integer),Value))).
-    
+
 % destroy_counter(+Name, -Value) destroys a counter
 destroy_counter(Name,Value) :-
     retract(global__counter__(Name, Value)).
-    
+
 % list_counters(-List) constructs a list of all currently used counters
 %
 list_counters(List) :-
@@ -140,7 +140,7 @@ test(nonexistingcounter, [cleanup(eraseall), fail]) :-
 % test if creating a counter with
 test(nonintvalue, [error(counter_error(non_integer)), cleanup(eraseall)]) :-
     create_counter(foo, bar).
-    
+
 % test if creating a new counter (implicitly initialized with 0) works
 test(createcounter, [cleanup(eraseall)]) :-
     create_counter(foo),
