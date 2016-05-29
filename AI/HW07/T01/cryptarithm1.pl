@@ -13,12 +13,12 @@
 
 a) Define a predicate
 
-   man_bit_monkey([M, A, N], [ B, I, T], [M, O, N, K, E ,Y])
+   man_bit_monkey([M, A, N], [B, I, T], [M, O, N, K, E ,Y])
 
 that computes a solution (assigning the digits to the letters)
-such that the this multiplication task is correct.
+such that this multiplication task is correct.
 
-assume that different letters represent different digits and leading digits are not zero.
+Assume that different letters represent different digits and leading digits are not zero.
 
 Use generate and test as a first approach. Do not use a constraint logic programming library like clpfd here!
 
@@ -27,7 +27,7 @@ Check the efficiency with the predicate 'time'.
 b) Try to define an improved program 'man_bit_monkey_i'.
 
 Try to minimize the number of inferences,
-but try to use principles, which may be applied to similar problems!
+but try to use principles which may be applied to similar problems!
 Do not use special properties of this problem.
 Do not use a constraint logic programming library like clpfd here!
 
