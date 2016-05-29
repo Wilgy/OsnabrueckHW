@@ -37,3 +37,47 @@ selects an element X from the list L and binds L1 to L without X.
 may be used to select a digit from a set of available digits
 to solve the 'all different' condition.
 */
+
+%-------------------------------------------------------------------------------
+% PART A
+
+generate(L) :-
+    select_unique(L, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]).
+
+select_unique([], []).
+select_unique([L|LRest], Digits) :-
+    select(D, Digits, DRest),
+    L = D,
+    select_unique(LRest, DRest).
+
+%                           ( M*100 + A*10 + N )
+% *                         ( B*100 + I*10 + T )
+% ==============================================
+% M*100000 + O*10000 + N*1000 + K*100 + E*10 + Y
+test([M, A, N, B, I, T, O, K, E, Y]) :-
+    M \= 0,
+    B \= 0,
+    Man is (M*100) + (A*10) + N,
+    Bit is (B*100) + (I*10) + T,
+    Monkey is (M*100000) + (O*10000) + (N*1000) + (K*100) + (E*10) + Y,
+    Monkey is Man * Bit.
+
+man_bit_monkey([M, A, N], [B, I, T], [M, O, N, K, E ,Y]) :-
+    generate([M, A, N, B, I, T, O, K, E, Y]),
+    test([M, A, N, B, I, T, O, K, E, Y]).
+
+% ?- time(man_bit_monkey([M, A, N], [B, I, T], [M, O, N, K, E ,Y])).
+% % 4,983,458 inferences, 0.702 CPU in 0.704 seconds (100% CPU, 7098898 Lips)
+% M = 1,
+% A = 3,
+% N = 9,
+% B = 7,
+% I = 8,
+% T = 6,
+% O = 0,
+% K = 2,
+% E = 5,
+% Y = 4 ;
+%
+% % 43,115,730 inferences, 7.784 CPU in 7.800 seconds (100% CPU, 5538700 Lips)
+% false.
