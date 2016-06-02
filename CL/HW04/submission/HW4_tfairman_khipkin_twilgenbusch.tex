@@ -1,0 +1,97 @@
+\documentclass[11pt]{article}
+%%% style file you will need for some commands%%%%%%%%%%%%%%%%%%%%%%
+%% aahomework is the style file I have used to typeset many commands, feel free to use them in your solutions.
+%% bear in mind that if you need to define your command then you will have to make sure that it is not in conflict to my pre-defined command. Otherwise you will need to either use
+%% commands defined by me or edit the style file appropriately.
+\usepackage{aahomework}
+\usepackage{tikz}
+\usepackage{stmaryrd}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+%%%the \circled command has been used to create text inside circle for grading table.
+
+%%%\geometry{letterpaper, textwidth=17cm, textheight=22cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% the following is for the cover sheet--FILL IN appropriately%%
+\newcommand{\mycourse}{Introduction to Computer Linguistics 8.1008}
+\newcommand{\semesteryear}{Spring 2016}
+\newcommand{\myname}{Timothy Fairman, Kaitlin Hipkin, Tyler Wilgenbusch}  %%<<<<<<<<<<<<<<<|========================================= (please put your name here)==========
+\newcommand{\hwnumber}{4} %%<<<<<<<<<<<<<<<|========================================= (please put HW number here, e.g. 1,2,3...)==========
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% following is NOT to be edited, DO NOT type anything here, it will receive inputs from what you fill above%%%%%%%%%%%%%%%%%%
+\title{Homework \hwnumber} %% DO NOT type in HW number here
+\author{\myname} %% DO NOT type in your name here.
+\date{\textbf{\mycourse} \hfill {\today} \hfill \textbf{\semesteryear}} %% DO NOT TYPE in mycourse and/or quarteryear values
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setlength{\parindent}{0pt} %% paragraphs will not be indented
+\setlength{\parskip}{.25cm} %% space between paragraphs
+\linespread{1.1}
+
+\begin{document}
+\thispagestyle{empty} %%this is to suppress the page number on the cover page
+
+\clearpage %% these are to reset the page number for the first page of your homework to 1.
+\pagenumbering{arabic} %% these are to reset the page number for the first page of your homework to 1.
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% you may start typing below%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% In my style file aahomework.sty I have defined two environments "problem" and "solution" that can be used to type in your question and answer respectively as shown below.%%
+
+\begin{problem}{1}
+\begin{description}
+    \item[a.] Suppose the denotation of ``and'' and ``or'' are described with the help of lambda abstraction, that is $\llbracket$and$\rrbracket$ and $\llbracket$or$\rrbracket$ are both members of D$_{<t,<t,t>>}$ . They are functions that map truth values into functions from truth values to truth values. Specify the two functions using the $\lambda$-notation.
+
+    \item[b.] Try to formulate the denotation for ``while'', also in lambda notation, for those uses of ``while'' where it is used to connect two sentences expressing an opposition, as in ``Jan works, while Mary sleeps'' (you can ignore the temporal meaning that is given in the paraphrase ``Jan works at a time where Mary sleeps''). Do this with the formal means that you already know, and if they are not sufficient, add informal comments in English. Note that we only look at the contribution that the denotation of words makes to the truth conditions of sentences in which they occur, and not at any other aspects of meaning.
+
+    \item[c.] Comment informally on how $\llbracket$while$\rrbracket$ differs from $\llbracket$and$\rrbracket$.
+\end{description}
+\end{problem}
+
+\begin{solution}
+Solution for Problem \#1
+\end{solution}
+
+\vspace*{0.5cm} %% this is to put some vertical space between the next problem and the previous solution. You can change the value to something more appropriate.
+
+\begin{problem}{2}
+Replace the ``?'' in each of the following statements (you may want to review our definitions of semantic types before tackling this exercise):
+
+\begin{description}
+    \item[(a)]$[\lambda f \in D_{<e,t>} . [\lambda x \in D_{e}.$ $f(x) =$ 1 and $x$ is fast]] $\in D_{<\textbf{?}>}$
+
+    \item[(b)] $[\lambda f \in D_{<e,<e,t>>} . [\lambda x \in D_{e}.$ $f(x)($Ann$) = 1]] \in D_{<\textbf{?}>}$
+    
+    \item[(c)] $[\lambda f \in D_{<e,t>}.$ there is some $x$ $\in D_{e}$ s.t. $f(x) = 1] \in D_{<\textbf{?}>}$
+    
+    \item[(d)] $[\lambda y \in D_{e}.$ $[\lambda f \in D_{<e,t>} . [\lambda x \in D_{e}. f(x) =1$ and $x$ is in y$]]] \in D_{<\textbf{?}>}$
+    
+    \item[(e)] $[\lambda f \in D_{<e,t>}.$ Mary $] \in D_{<\textbf{?}>}$
+    
+    \item[(f)] $[\lambda f \in D_{<e,t>} . [\lambda g \in D_{<e,t>}.$ there is no $x \in D_{e}$ s.t. $f(x) = 1$ and $g(x) = 1]] \in D_{<\textbf{?}>}$
+
+\end{description}
+
+\end{problem}
+
+\begin{solution}
+Solution for Problem \#2
+\end{solution}
+
+\vspace*{0.5cm}
+
+\begin{problem}{3}
+\begin{description}
+    \item[a] Try to find a clear and unambiguous description in plain English, or in set-theoretic terms, of the semantic effect that the adjective ``former'' has on the denotation of a noun that it combines with, as , e.g., in ``former doctor''.
+
+    \item[b] If you can manage, give also a formalization that could be used as a formal lexical entry. If not, don't worry.
+
+    \item[c] Compare the semantic effect that ``former'' has to the effect of ``grey'' and ``good''. What are the differences?
+\end{description}
+\end{problem}
+
+\begin{solution}
+Solution for Problem \#3
+\end{solution}
+
+\end{document}
