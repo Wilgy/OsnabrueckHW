@@ -41,7 +41,7 @@ Use [J1,J2,J3] as state representation
 % (define end, expand and test_it)
 
 test_it(Strategy,Sol) :-
-   .....
+   .
 
 %---------------------------------------------------------------------------
 % skeleton of the general uninformed search algorithm
@@ -72,7 +72,7 @@ exp_path([_X|R],P,Ps) :-
 
 % you have to add strategy specific code here
 strategy(breadth_first,Agenda,Pathes,Agenda1) :-
-      ......
+      .
 
 strategy(depth_first,Agenda,Pathes,Agenda1) :-
-      ......
+      .
