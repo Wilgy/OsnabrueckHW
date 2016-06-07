@@ -49,7 +49,23 @@
 \end{problem}
 
 \begin{solution}
-Solution for Problem \#1
+\begin{description}
+    \item[a.] Lambda-notation for $\llbracket$and$\rrbracket$ and $\llbracket$or$\rrbracket$  
+
+        \begin{itemize}
+            \item $\llbracket$and$\rrbracket = \lambda x: x \in $ D$_{t}.$ $[ \lambda y: y \in $ D$_{t}.$ $(x $ and $ y)]= 1$ iff $(x=1$ and $y=1)$.
+
+            \item $\llbracket$or$\rrbracket = \lambda x: x \in $ D$_{t}.$ $[ \lambda y: y \in $ D$_{t}.$ $(x $ or $ y)]= 1$ iff $(x=1$ or $y=1)$.
+        \end{itemize}
+
+    \item[b.] The $\llbracket$while$\rrbracket$ denotation is very similar to the $\llbracket$and$\rrbracket$ and $\llbracket$or$\rrbracket$, and are part of the same domain class D$_{<t, <t, t>>}$.  The difference is that this denotation is true when the two sub-sentences are true, AND the two sub sentences are not equivalent to one another.  For example, ``Jan works while Mary sleeps'' is true, but ``Jan works while Mary works'' is false, since the two sub-sentences are equivalent.
+
+    $\llbracket$while$\rrbracket = \lambda x: x \in $ D$_{t}.$ $[ \lambda y: y \in $ D$_{t}.$ $(x $ while $ y)].$ $= 1$ iff $x=1$ and $y=1$ \textbf{and $x \not\equiv y$}.
+
+    \item[c.]  As explained in [b.], $\llbracket$while$\rrbracket$ is different from $\llbracket$and$\rrbracket$ since in order for $\llbracket$while$\rrbracket$ to be true, it also needs to be the case that the two sub-sentences are not equivalent, while with $\llbracket$and$\rrbracket$ this does not need to be the case.
+
+\end{description}
+
 \end{solution}
 
 \vspace*{0.5cm} %% this is to put some vertical space between the next problem and the previous solution. You can change the value to something more appropriate.
@@ -75,23 +91,41 @@ Replace the ``?'' in each of the following statements (you may want to review ou
 \end{problem}
 
 \begin{solution}
-Solution for Problem \#2
-\end{solution}
+\begin{description}
+    \item[(a)]$[\lambda f \in D_{<e,t>} . [\lambda x \in D_{e}.$ $f(x) =$ 1 and $x$ is fast]] $\in D_{<<e, t>, <e, t>>}$
+
+    \item[(b)] $[\lambda f \in D_{<e,<e,t>>} . [\lambda x \in D_{e}.$ $f(x)($Ann$) = 1]] \in D_{<<e, <e, t>>, <e, t>>}$
+    
+    \item[(c)] $[\lambda f \in D_{<e,t>}.$ there is some $x$ $\in D_{e}$ s.t. $f(x) = 1] \in D_{<<e, t>, <e, t>>}$
+    
+    \item[(d)] $[\lambda y \in D_{e}.$ $[\lambda f \in D_{<e,t>} . [\lambda x \in D_{e}. f(x) =1$ and $x$ is in y$]]] \in D_{<e, <<e, t>, <e, t>>>}$
+    
+    \item[(e)] $[\lambda f \in D_{<e,t>}.$ Mary $] \in D_{<<e, t>, e>}$
+    
+    \item[(f)] $[\lambda f \in D_{<e,t>} . [\lambda g \in D_{<e,t>}.$ there is no $x \in D_{e}$ s.t. $f(x) = 1$ and $g(x) = 1]] \in D_{<<e, t>, <<e,t>, t>>}$
+
+\end{description}\end{solution}
 
 \vspace*{0.5cm}
 
 \begin{problem}{3}
 \begin{description}
-    \item[a] Try to find a clear and unambiguous description in plain English, or in set-theoretic terms, of the semantic effect that the adjective ``former'' has on the denotation of a noun that it combines with, as , e.g., in ``former doctor''.
+    \item[a.] Try to find a clear and unambiguous description in plain English, or in set-theoretic terms, of the semantic effect that the adjective ``former'' has on the denotation of a noun that it combines with, as , e.g., in ``former doctor''.
 
-    \item[b] If you can manage, give also a formalization that could be used as a formal lexical entry. If not, don't worry.
+    \item[b.] If you can manage, give also a formalization that could be used as a formal lexical entry. If not, don't worry.
 
-    \item[c] Compare the semantic effect that ``former'' has to the effect of ``grey'' and ``good''. What are the differences?
+    \item[c.] Compare the semantic effect that ``former'' has to the effect of ``grey'' and ``good''. What are the differences?
 \end{description}
 \end{problem}
 
 \begin{solution}
-Solution for Problem \#3
+\begin{description}
+    \item[a.] The adjective ``former'' can be described as ``A person/thing who was once a NOUN(i.e. doctor) but is no longer''.  In terms of set-theory, you can say $\llbracket$former N$\rrbracket \cap$$\llbracket$N$\rrbracket = \emptyset$. 
+
+    \item[b.]
+
+    \item[c.]
+\end{description}
 \end{solution}
 
 \end{document}
