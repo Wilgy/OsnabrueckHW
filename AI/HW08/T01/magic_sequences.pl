@@ -123,6 +123,5 @@ permutation(CurrentIndex, List, FinalList, Size) :-
 % -S - The magic sequences returned
 %%
 magic_sequence(N,Sequence) :-
-    N1 is div(N, 2), % NOTE: SHOULD PROVE WHY THIS IS TRUE (IF IT IS)
-    permutation(N, [], Sequence, N1),
+    permutation(N, [], Sequence, N),
     test_sequence(0, Sequence, Sequence).
