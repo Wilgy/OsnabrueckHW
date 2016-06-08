@@ -39,9 +39,13 @@ Use [J1,J2,J3] as state representation
 ****************************************************************/
 % your problem specification goes here:
 % (define end, expand and test_it)
+start([3, 5, 9]).
+
+goal([_, _, 8]).
 
 test_it(Strategy,Sol) :-
-   .
+  start(X),
+  search(X, goal, [], Strategy, Sol).
 
 %---------------------------------------------------------------------------
 % skeleton of the general uninformed search algorithm
@@ -70,9 +74,46 @@ exp_path([X|R],P,[[X|P]|Ps]) :-
 exp_path([_X|R],P,Ps) :-
      exp_path(R,P,Ps).
 
-% you have to add strategy specific code here
-strategy(breadth_first,Agenda,Pathes,Agenda1) :-
-      .
+move_water(JFrom, JTo, MaxValue, NewJFromValue, NewJToValue) :-
+  JFrom =< MaxValue - JTo,
+  NewJFromValue is 0,
+  NewJToValue is JTo + JFrom.
 
-strategy(depth_first,Agenda,Pathes,Agenda1) :-
-      .
+move_water(JFrom, JTo, MaxValue, NewJFromValue, NewJToValue) :-
+  JFrom > MaxValue - JTo,
+  NewJFromValue is JFrom - (MaxValue - JTo),
+  NewJToValue is JTo + (MaxValue - JTo).
+
+
+create_paths([[J1, J2, J3]|_R], NewPathes) :-
+  
+  %Generate all the moved water values
+  % Move J1 contents to J2 and J3
+  move_water(J1, J2, 5, NJ1A, NJ2A),
+  move_water(J1, J3, 9, NJ1B, NJ3B),
+
+  % Move J2 contents to J1 and J3
+  move_water(J2, J3, 9, NJ2C, NJ3C),
+  move_water(J2, J1, 3, NJ2D, NJ1D),
+
+  % Move J3 contents to J1 and J2
+  move_water(J3, J1, 3, NJ3E, NJ1E),
+  move_water(J3, J2, 5, NJ3F, NJ2F),
+
+  append([[3, J2, J3], [J1, 5, J3], [J1, J2, 9], % Fill in each jug
+    [0, J2, J3], [J1, 0, J3], [J1, J2, 0], % Empty each jug 
+    [NJ1A, NJ2A, J3], [NJ1B, J2, NJ3B], % Fill in the moved contents
+    [J1, NJ2C, NJ3C], [NJ1D, NJ2D, J3], 
+    [NJ1E, J2, NJ3E], [J1, NJ2F, NJ3F]], [], NewPathes), !. 
+
+
+
+
+% you have to add strategy specific code here
+strategy(breadth_first,Agenda,Paths,Agenda1) :-
+  create_paths(Agenda, NewPaths),
+  append(Paths, NewPaths, Agenda1).
+
+strategy(depth_first,Agenda,Paths,Agenda1) :-
+  create_paths(Agenda, NewPaths),
+  append(NewPaths, Paths, Agenda1).
