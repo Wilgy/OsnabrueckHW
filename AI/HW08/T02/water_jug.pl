@@ -45,7 +45,7 @@ goal([_, _, 8]).
 
 test_it(Strategy,Sol) :-
   start(X),
-  search(X, goal, [], Strategy, Sol).
+  search(X, goal, create_paths, Strategy, Sol).
 
 %---------------------------------------------------------------------------
 % skeleton of the general uninformed search algorithm
@@ -85,7 +85,7 @@ move_water(JFrom, JTo, MaxValue, NewJFromValue, NewJToValue) :-
   NewJToValue is JTo + (MaxValue - JTo).
 
 
-create_paths([[J1, J2, J3]|_R], NewPathes) :-
+create_paths([J1, J2, J3], NewPathes) :-
   
   %Generate all the moved water values
   % Move J1 contents to J2 and J3
@@ -111,9 +111,7 @@ create_paths([[J1, J2, J3]|_R], NewPathes) :-
 
 % you have to add strategy specific code here
 strategy(breadth_first,Agenda,Paths,Agenda1) :-
-  create_paths(Agenda, NewPaths),
-  append(Paths, NewPaths, Agenda1).
+  append(Agenda, Paths, Agenda1).
 
 strategy(depth_first,Agenda,Paths,Agenda1) :-
-  create_paths(Agenda, NewPaths),
-  append(NewPaths, Paths, Agenda1).
+  append(Paths, Agenda, Agenda1).
