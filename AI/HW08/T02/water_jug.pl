@@ -51,8 +51,7 @@ goal([_, _, 8]).
 % -Sol - The resulting list that contains the solution steps
 %%
 test_it(Strategy,Sol) :-
-  start(X),
-  search(X, goal, create_paths, Strategy, Sol).
+  search([3, 5, 9], goal, create_paths, Strategy, Sol).
 
 %---------------------------------------------------------------------------
 % skeleton of the general uninformed search algorithm
