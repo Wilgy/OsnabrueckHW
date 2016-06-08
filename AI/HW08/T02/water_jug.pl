@@ -39,10 +39,17 @@ Use [J1,J2,J3] as state representation
 ****************************************************************/
 % your problem specification goes here:
 % (define end, expand and test_it)
-start([3, 5, 9]).
 
+% The goal state of the solution
 goal([_, _, 8]).
 
+%%
+% test_it(+Strategy, -Sol) - predicate that runs the search program with the 
+% given strategy
+%
+% +Strategy - either breadth_first or depth_first
+% -Sol - The resulting list that contains the solution steps
+%%
 test_it(Strategy,Sol) :-
   start(X),
   search(X, goal, create_paths, Strategy, Sol).
@@ -74,19 +81,38 @@ exp_path([X|R],P,[[X|P]|Ps]) :-
 exp_path([_X|R],P,Ps) :-
      exp_path(R,P,Ps).
 
+%%
+% move_water(+JFrom, +JTo, +MaxValue, -NewJFromValue, -NewJToValue) - helper
+% predicate that simulates moving water from one jug to another
+%
+% +JFrom - the amount of water in the jar we are taking water FROM
+% +JTo -   the amount of water in the jar we are moving water TO
+% +MaxValue - the max amount of water allowed in the JTo jar
+% -NewJFromValue - the new amount of water in the JFrom jar
+% -NewJToValue - the new amount of water in the JTo jar
+%%
+
+% Case 1: All of the water in JFrom can go into JTo
 move_water(JFrom, JTo, MaxValue, NewJFromValue, NewJToValue) :-
   JFrom =< MaxValue - JTo,
   NewJFromValue is 0,
   NewJToValue is JTo + JFrom.
 
+% Case 2: Some (or none) of the water in JFrom can go into JTo
 move_water(JFrom, JTo, MaxValue, NewJFromValue, NewJToValue) :-
   JFrom > MaxValue - JTo,
   NewJFromValue is JFrom - (MaxValue - JTo),
   NewJToValue is JTo + (MaxValue - JTo).
 
-
-create_paths([J1, J2, J3], NewPathes) :-
-  
+%%
+% create_paths(+State, -NewPaths) - predicate to create all the existing paths 
+% from the current state
+%
+% +State - the current state of the jars
+% -NewPaths - the list to contain all of the possible new states from the given
+%   state
+%%
+create_paths([J1, J2, J3], NewPaths) :-
   %Generate all the moved water values
   % Move J1 contents to J2 and J3
   move_water(J1, J2, 5, NJ1A, NJ2A),
@@ -104,14 +130,15 @@ create_paths([J1, J2, J3], NewPathes) :-
     [0, J2, J3], [J1, 0, J3], [J1, J2, 0], % Empty each jug 
     [NJ1A, NJ2A, J3], [NJ1B, J2, NJ3B], % Fill in the moved contents
     [J1, NJ2C, NJ3C], [NJ1D, NJ2D, J3], 
-    [NJ1E, J2, NJ3E], [J1, NJ2F, NJ3F]], [], NewPathes), !. 
-
-
-
+    [NJ1E, J2, NJ3E], [J1, NJ2F, NJ3F]], [], NewPaths), 
+  !. % We add a cut so that every call to create_paths only generates one list 
 
 % you have to add strategy specific code here
+
+% Bread First: Treat Agenda1 as a queue
 strategy(breadth_first,Agenda,Paths,Agenda1) :-
   append(Agenda, Paths, Agenda1).
 
+% Depth First: Treat Agenda1 as a stack
 strategy(depth_first,Agenda,Paths,Agenda1) :-
   append(Paths, Agenda, Agenda1).
