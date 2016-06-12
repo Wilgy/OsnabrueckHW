@@ -40,7 +40,8 @@ Use [J1,J2,J3] as state representation
 % your problem specification goes here:
 % (define end, expand and test_it)
 
-% The goal state of the solution
+% The goal state of the solution; we have reached the goal when there is 8 
+% liters of water in the final jug
 goal([_, _, 8]).
 
 %%
@@ -51,7 +52,8 @@ goal([_, _, 8]).
 % -Sol - The resulting list that contains the solution steps
 %%
 test_it(Strategy,Sol) :-
-  search([3, 5, 9], goal, create_paths, Strategy, Sol).
+  % The starting configuration is with all jugs empty
+  search([0, 0, 0], goal, create_paths, Strategy, Sol).
 
 %---------------------------------------------------------------------------
 % skeleton of the general uninformed search algorithm
@@ -111,8 +113,13 @@ move_water(JFrom, JTo, MaxValue, NewJFromValue, NewJToValue) :-
 % -NewPaths - the list to contain all of the possible new states from the given
 %   state
 %%
-create_paths([J1, J2, J3], NewPaths) :-
-  %Generate all the moved water values
+create_paths([J1, J2, J3], 
+  [[3, J2, J3], [J1, 5, J3], [J1, J2, 9], 
+  [0, J2, J3], [J1, 0, J3], [J1, J2, 0], 
+  [NJ1A, NJ2A, J3], [NJ1B, J2, NJ3B], [J1, NJ2C, NJ3C], 
+  [NJ1D, NJ2D, J3], [NJ1E, J2, NJ3E], [J1, NJ2F, NJ3F]] ) :-
+  
+  % Generate all the moved water values
   % Move J1 contents to J2 and J3
   move_water(J1, J2, 5, NJ1A, NJ2A),
   move_water(J1, J3, 9, NJ1B, NJ3B),
@@ -123,16 +130,7 @@ create_paths([J1, J2, J3], NewPaths) :-
 
   % Move J3 contents to J1 and J2
   move_water(J3, J1, 3, NJ3E, NJ1E),
-  move_water(J3, J2, 5, NJ3F, NJ2F),
-
-  append([[3, J2, J3], [J1, 5, J3], [J1, J2, 9], % Fill in each jug
-    [0, J2, J3], [J1, 0, J3], [J1, J2, 0], % Empty each jug 
-    [NJ1A, NJ2A, J3], [NJ1B, J2, NJ3B], % Fill in the moved contents
-    [J1, NJ2C, NJ3C], [NJ1D, NJ2D, J3], 
-    [NJ1E, J2, NJ3E], [J1, NJ2F, NJ3F]], [], NewPaths), 
-  !. % We add a cut so that every call to create_paths only generates one list 
-
-% you have to add strategy specific code here
+  move_water(J3, J2, 5, NJ3F, NJ2F).
 
 % Bread First: Treat Agenda1 as a queue
 strategy(breadth_first,Agenda,Paths,Agenda1) :-
