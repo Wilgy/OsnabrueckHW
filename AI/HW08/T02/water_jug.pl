@@ -40,8 +40,20 @@ Use [J1,J2,J3] as state representation
 % your problem specification goes here:
 % (define end, expand and test_it)
 
+% The goal state of the solution; we have reached the goal when there is 8 
+% liters of water in the final jug
+goal([_, _, 8]).
+
+%%
+% test_it(+Strategy, -Sol) - predicate that runs the search program with the 
+% given strategy
+%
+% +Strategy - either breadth_first or depth_first
+% -Sol - The resulting list that contains the solution steps
+%%
 test_it(Strategy,Sol) :-
-   .....
+  % The starting configuration is with all jugs empty
+  search([0, 0, 0], goal, create_paths, Strategy, Sol).
 
 %---------------------------------------------------------------------------
 % skeleton of the general uninformed search algorithm
@@ -70,9 +82,60 @@ exp_path([X|R],P,[[X|P]|Ps]) :-
 exp_path([_X|R],P,Ps) :-
      exp_path(R,P,Ps).
 
-% you have to add strategy specific code here
-strategy(breadth_first,Agenda,Pathes,Agenda1) :-
-      ......
+%%
+% move_water(+JFrom, +JTo, +MaxValue, -NewJFromValue, -NewJToValue) - helper
+% predicate that simulates moving water from one jug to another
+%
+% +JFrom - the amount of water in the jar we are taking water FROM
+% +JTo -   the amount of water in the jar we are moving water TO
+% +MaxValue - the max amount of water allowed in the JTo jar
+% -NewJFromValue - the new amount of water in the JFrom jar
+% -NewJToValue - the new amount of water in the JTo jar
+%%
 
-strategy(depth_first,Agenda,Pathes,Agenda1) :-
-      ......
+% Case 1: All of the water in JFrom can go into JTo
+move_water(JFrom, JTo, MaxValue, NewJFromValue, NewJToValue) :-
+  JFrom =< MaxValue - JTo,
+  NewJFromValue is 0,
+  NewJToValue is JTo + JFrom.
+
+% Case 2: Some (or none) of the water in JFrom can go into JTo
+move_water(JFrom, JTo, MaxValue, NewJFromValue, NewJToValue) :-
+  JFrom > MaxValue - JTo,
+  NewJFromValue is JFrom - (MaxValue - JTo),
+  NewJToValue is JTo + (MaxValue - JTo).
+
+%%
+% create_paths(+State, -NewPaths) - predicate to create all the existing paths 
+% from the current state
+%
+% +State - the current state of the jars
+% -NewPaths - the list to contain all of the possible new states from the given
+%   state
+%%
+create_paths([J1, J2, J3], 
+  [[3, J2, J3], [J1, 5, J3], [J1, J2, 9], 
+  [0, J2, J3], [J1, 0, J3], [J1, J2, 0], 
+  [NJ1A, NJ2A, J3], [NJ1B, J2, NJ3B], [J1, NJ2C, NJ3C], 
+  [NJ1D, NJ2D, J3], [NJ1E, J2, NJ3E], [J1, NJ2F, NJ3F]] ) :-
+  
+  % Generate all the moved water values
+  % Move J1 contents to J2 and J3
+  move_water(J1, J2, 5, NJ1A, NJ2A),
+  move_water(J1, J3, 9, NJ1B, NJ3B),
+
+  % Move J2 contents to J1 and J3
+  move_water(J2, J3, 9, NJ2C, NJ3C),
+  move_water(J2, J1, 3, NJ2D, NJ1D),
+
+  % Move J3 contents to J1 and J2
+  move_water(J3, J1, 3, NJ3E, NJ1E),
+  move_water(J3, J2, 5, NJ3F, NJ2F).
+
+% Bread First: Treat Agenda1 as a queue
+strategy(breadth_first,Agenda,Paths,Agenda1) :-
+  append(Agenda, Paths, Agenda1).
+
+% Depth First: Treat Agenda1 as a stack
+strategy(depth_first,Agenda,Paths,Agenda1) :-
+  append(Paths, Agenda, Agenda1).
