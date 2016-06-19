@@ -89,10 +89,17 @@ transitions([[A,B,C],[D,E,F],[?,H,I]],[
 
 end([[a,b,c],[d,e,f],[g,h,?]]).
 
-search_idastar(N,P,L) :-
+get_f_max(L) :- 
+    f_max(L).
+
+get_f_max(L) :- get_f_max(L).
+
+search_ida_star(N,P) :-
    start(N,X),
    h(X, L),
-   searchidah([X],P,0,0,L).
+   assert(f_max(L)),
+   get_f_max(L2),
+   searchidah([X],P,0,0,L2).
 
 searchidah([X|P],[X|P],_G,_F,_L) :-
    end(X).
@@ -103,10 +110,17 @@ searchidah([X|P],P1,G,_F,L) :-
    not(member(Y,[X|P])),
    once(h(Y,H,0)),
    F1 is H + G1,
-   F1 =< L,
+   f_in_limit(F1, L),
    % F1 = G1,
    searchidah([Y,X|P],P1,G1,F1,L).
 
+f_in_limit(F, L) :- F =< L.
+f_in_limit(F, L) :- 
+    f_max(L2),
+    F < L2,
+    retract(f_max(L2)),
+    assert(f_max(F)).
+    
 % compute h* value of a board
 % h(+board,-H)
 % keep track of the coordinates of tiles
@@ -167,3 +181,5 @@ p(f,2,1).
 p(g,0,2).
 p(h,1,2).
 p(?,2,2).
+
+:- dynamic f_max/1.
