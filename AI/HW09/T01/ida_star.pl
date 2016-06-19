@@ -114,12 +114,24 @@ searchidah([X|P],P1,G,_F,L) :-
    % F1 = G1,
    searchidah([Y,X|P],P1,G1,F1,L).
 
+% returns the same truth value as F =< L
+% with the side effect that if F is higher than the current limit and lower than 
+% the next fmax, then the fmax is replaced with F in the database
+% case 1: F value is below the limit, so return true
 f_in_limit(F, L) :- F =< L.
-f_in_limit(F, L) :- 
-    f_max(L2),
-    F < L2,
-    retract(f_max(L2)),
-    assert(f_max(F)).
+% case 2: F value is above the limit and not the next fmax, so leave the database\
+% unchanged and return false
+f_in_limit(F, _) :- 
+   f_max(L),
+   F >= L,
+   !, fail.
+% case 3: F value is above the limit and is the next fmax, so modify the database
+% and return false (indicate that this current search should end)
+f_in_limit(F, _) :-
+   retract(f_max(_)),
+   assert(f_max(F)),
+   fail.
+
     
 % compute h* value of a board
 % h(+board,-H)
