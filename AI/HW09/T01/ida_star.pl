@@ -88,3 +88,82 @@ transitions([[A,B,C],[D,E,F],[?,H,I]],[
            [[A,B,C],[?,E,F],[D,H,I]]]).
 
 end([[a,b,c],[d,e,f],[g,h,?]]).
+
+search_idastar(N,P,L) :-
+   start(N,X),
+   h(X, L),
+   searchidah([X],P,0,0,L).
+
+searchidah([X|P],[X|P],_G,_F,_L) :-
+   end(X).
+searchidah([X|P],P1,G,_F,L) :-
+   G1 is G+1,
+   transitions(X,S),
+   member(Y,S),
+   not(member(Y,[X|P])),
+   once(h(Y,H,0)),
+   F1 is H + G1,
+   F1 =< L,
+   % F1 = G1,
+   searchidah([Y,X|P],P1,G1,F1,L).
+
+% compute h* value of a board
+% h(+board,-H)
+% keep track of the coordinates of tiles
+h(X,H) :- h(X,H,0).
+
+% h(+board, -H, +Y)
+% Y = y-coordinate of the current row
+h([],0,_).
+h([A|R],H,Y) :-
+   h1(A,H1,0,Y), % h* of a row
+   Y1 is Y+1,
+   h(R,H2,Y1),
+   H is H1+H2.   % sum over all rows
+
+% compute h* of a row
+% h1(+tiles_of_row),-H,+X,+Y)
+%  (X,Y) coordinates of the current tile
+h1([],0,_,_).
+h1([A|R],H,X,Y) :-
+   p(A,X0,Y0),     % lookup target coordinates of tile
+   d1(M,X0,Y0,X,Y),% compare to target coordinates
+   X1 is X+1,
+   h1(R,H1,X1,Y),
+   H is H1+M.      % sum over all tiles in a row
+
+% in a functional language:
+%
+%   h([],_)    = 0
+%   h([A|R],Y) = h1(A,0,Y) + h(R,Y+1)
+%
+%   h1([],_,_)    = 0
+%   h1([A|R],X,Y) = d1(p(A),(X,Y)) + h1(R,X+1,Y)
+%
+% for a functional extension of prolog see GRIPS:
+%   http://www.j-paine.org/prolog/library.html
+
+% compare coordinates: equality (count misplaced tiles)
+d(0,X,Y,X,Y) :- ! .
+d(1,_X0,_Y0,_X,_Y).
+
+% compare coordinates: Manhaten distance
+d1(M,X0,Y0,X,Y) :- M is abs(X0-X) + abs(Y0-Y) .
+
+% compare coordinates: Manhaten distance (MHD) + (MHD-1)
+% idea: if MHD>1 other tiles must be moved
+d2(M,X0,Y0,X,Y) :-
+   M0 is abs(X0-X) + abs(Y0-Y),
+   % M is M0.
+   (M0>1 -> M is  M0 + (M0 - 1) ; M is M0).
+   %(M0>1 -> M is  M0 + (M0 - 1) + (M0 - 2) ; M is M0).
+
+p(a,0,0).
+p(b,1,0).
+p(c,2,0).
+p(d,0,1).
+p(e,1,1).
+p(f,2,1).
+p(g,0,2).
+p(h,1,2).
+p(?,2,2).
