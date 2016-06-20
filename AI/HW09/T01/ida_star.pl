@@ -89,15 +89,31 @@ transitions([[A,B,C],[D,E,F],[?,H,I]],[
 
 end([[a,b,c],[d,e,f],[g,h,?]]).
 
-:- dynamic f_max/1.
+:- dynamic(f_max/1).
+:- dynamic(next_max/1).
 
+% set_next_max(+L) - sets the next_max() predicate in the database to L, which
+% is the next value f_max will be changed to if the search fails
+%
+% +L - the value to set next_max() to
 set_next_max(L) :- retract(next_max(_)), assert(next_max(L)).
 
-get_f_max(L) :- f_max(L).
+% get_f_max(-L) - determines the next value of f_max and sets the f_max() predicate
+% in the database
+%
+% -L - the current value of f_max()
 get_f_max(L) :- next_max(L), set_f_max(L).
 
+% set_f_max(+L) - changes the value of f_max to L
+%
+% +L - the new value for f_max()
 set_f_max(L) :- retract(f_max(_)), assert(f_max(L)).
 
+% search_ida_star(+N, -P) - solves a tile puzzle with the iterative deepening A* algorithm.
+%
+% +N - the number/id of the puzzle
+% -P - the list of state configurations of the puzzle from it's initial state to its
+% solution
 search_ida_star(N,P) :-
    start(N,X),
    h(X, L),
@@ -106,6 +122,14 @@ search_ida_star(N,P) :-
    get_f_max(L2),
    searchidah([X],P,0,0,L2).
 
+% searchidah(-L1, -L2, +G, +F, + L) - helper predicate for IDA*. Performs an A* search
+% within a specified limit.
+%
+% -L1 - The path determined by the search
+% -L2 - An accumulating list for the path
+% +G - The number of steps from the start state. G function for A*
+% +F - The current path estimation function (Cost used so far plus estimated cost to goal)
+% +L - The current limit for F to be under
 searchidah([X|P],[X|P],_G,_F,_L) :-
    end(X).
 searchidah([X|P],P1,G,_F,L) :-
@@ -119,7 +143,7 @@ searchidah([X|P],P1,G,_F,L) :-
    % F1 = G1,
    searchidah([Y,X|P],P1,G1,F1,L).
 
-% returns the same truth value as F =< L
+% f_in_limit(+F, +L) returns the same truth value as F =< L
 % with the side effect that if F is higher than the current limit and lower than
 % the next fmax, then the fmax is replaced with F in the database
 % case 1: F value is below the limit, so return true
@@ -197,4 +221,3 @@ p(f,2,1).
 p(g,0,2).
 p(h,1,2).
 p(?,2,2).
-
