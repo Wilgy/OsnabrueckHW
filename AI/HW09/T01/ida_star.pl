@@ -89,15 +89,20 @@ transitions([[A,B,C],[D,E,F],[?,H,I]],[
 
 end([[a,b,c],[d,e,f],[g,h,?]]).
 
-get_f_max(L) :- 
-    f_max(L).
+:- dynamic f_max/1.
 
-get_f_max(L) :- get_f_max(L).
+set_next_max(L) :- retract(next_max(_)), assert(next_max(L)).
+
+get_f_max(L) :- f_max(L).
+get_f_max(L) :- next_max(L), set_f_max(L).
+
+set_f_max(L) :- retract(f_max(_)), assert(f_max(L)).
 
 search_ida_star(N,P) :-
    start(N,X),
    h(X, L),
    assert(f_max(L)),
+   assert(next_max(L)), % initialize in the database
    get_f_max(L2),
    searchidah([X],P,0,0,L2).
 
@@ -115,24 +120,23 @@ searchidah([X|P],P1,G,_F,L) :-
    searchidah([Y,X|P],P1,G1,F1,L).
 
 % returns the same truth value as F =< L
-% with the side effect that if F is higher than the current limit and lower than 
+% with the side effect that if F is higher than the current limit and lower than
 % the next fmax, then the fmax is replaced with F in the database
 % case 1: F value is below the limit, so return true
 f_in_limit(F, L) :- F =< L.
 % case 2: F value is above the limit and not the next fmax, so leave the database\
 % unchanged and return false
-f_in_limit(F, _) :- 
-   f_max(L),
+f_in_limit(F, _) :-
+   next_max(L),
    F >= L,
    !, fail.
 % case 3: F value is above the limit and is the next fmax, so modify the database
 % and return false (indicate that this current search should end)
 f_in_limit(F, _) :-
-   retract(f_max(_)),
-   assert(f_max(F)),
+   set_next_max(F),
    fail.
 
-    
+
 % compute h* value of a board
 % h(+board,-H)
 % keep track of the coordinates of tiles
@@ -194,4 +198,3 @@ p(g,0,2).
 p(h,1,2).
 p(?,2,2).
 
-:- dynamic f_max/1.
