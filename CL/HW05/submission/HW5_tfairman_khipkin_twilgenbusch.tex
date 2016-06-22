@@ -1,0 +1,140 @@
+\documentclass[11pt]{article}
+%%% style file you will need for some commands%%%%%%%%%%%%%%%%%%%%%%
+%% aahomework is the style file I have used to typeset many commands, feel free to use them in your solutions.
+%% bear in mind that if you need to define your command then you will have to make sure that it is not in conflict to my pre-defined command. Otherwise you will need to either use
+%% commands defined by me or edit the style file appropriately.
+\usepackage{aahomework}
+\usepackage{tikz}
+\usepackage{stmaryrd}
+\usepackage{ulem}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+%%%the \circled command has been used to create text inside circle for grading table.
+
+%%%\geometry{letterpaper, textwidth=17cm, textheight=22cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% the following is for the cover sheet--FILL IN appropriately%%
+\newcommand{\mycourse}{Introduction to Computer Linguistics 8.1008}
+\newcommand{\semesteryear}{Spring 2016}
+\newcommand{\myname}{Timothy Fairman, Kaitlin Hipkin, Tyler Wilgenbusch}  %%<<<<<<<<<<<<<<<|========================================= (please put your name here)==========
+\newcommand{\hwnumber}{5} %%<<<<<<<<<<<<<<<|========================================= (please put HW number here, e.g. 1,2,3...)==========
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% following is NOT to be edited, DO NOT type anything here, it will receive inputs from what you fill above%%%%%%%%%%%%%%%%%%
+\title{Homework \hwnumber} %% DO NOT type in HW number here
+\author{\myname} %% DO NOT type in your name here.
+\date{\textbf{\mycourse} \hfill {\today} \hfill \textbf{\semesteryear}} %% DO NOT TYPE in mycourse and/or quarteryear values
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setlength{\parindent}{0pt} %% paragraphs will not be indented
+\setlength{\parskip}{.25cm} %% space between paragraphs
+\linespread{1.1}
+
+\begin{document}
+\thispagestyle{empty} %%this is to supress the page number on the cover page
+
+\clearpage %% these are to reset the page number for the first page of your homework to 1.
+\pagenumbering{arabic} %% these are to reset the page number for the first page of your homework to 1.
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% you may start typing below%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% In my style file aahomework.sty I have defined two environments "problem" and "solution" that can be used to type in your question and answer respectively as shown below.%%
+
+\begin{problem}{1}
+\textbf{Entailment, presupposition, implicature}
+
+For each of the following pairs of sentences, determine whether the relation between them is one of entailment, presupposition, or implicature, or if none of these relations hold. Give your reasons for making your choice.
+
+\begin{tabular}{l l l}
+    A & i. & Steven knows that the Red Sox won the World Series. \\
+    & ii. & The Red Sox won the World Series. \\
+    & & \\
+    B & i. & Maude believes that IBM built telephones. \\
+    & ii. & IBM built telephones. \\
+    & & \\
+    C & i. & Parker proved that the defendant was related to the victim. \\
+    & ii. & The defendant was related to the victim. \\
+    & & \\
+    D & i. & Maren didn’t tell many of her friends that she was pregnant. \\
+    & ii. & Some of Maren's friends were told about her pregnancy. \\
+    & & \\
+    E & i. & We forgot to inform the fire inspector in our town about the party. \\
+    & ii. & Our town has a fire inspector. \\
+    & & \\
+    F & i. & Maren told some of her friends about her pregnancy. \\
+    & ii. & Maren didn't tell all of her friends about her pregnancy. \\
+\end{tabular}
+
+\end{problem}
+
+\begin{solution}
+Solution for Problem \#1
+\end{solution}
+
+\vspace*{0.5cm} %% this is to put some vertical space betwen the next problem and the previous solution. You can change the value to something more appropriate.
+
+\begin{problem}{2}
+\textbf{Conversational implicatures (1)}
+
+Give three examples of your own of conversational implicatures that are defeated by a coherent continuation of the discourse, as, e.g. in 
+
+Some of the students passed the exam \textbf{[implicature: Not all of the students passed]}, in fact all of them did \textbf{[implicature defeated]}.
+
+
+\end{problem}
+
+\begin{solution}
+Solution for Problem \#2
+\end{solution}
+
+\vspace*{0.5cm}
+
+\begin{problem}{3}
+\textbf{ Conversational implicatures (2)}
+
+Suppose someone A says ``Fred brought two bottles of wine''. Show how the
+implicature that Fred brought no more than two bottles of wine can be derived
+logically from (a) what is said, (b) Gricean maxims, plus, if needed, (c) further
+assumptions about the conversational context.
+\end{problem}
+
+\begin{solution}
+Solution for Problem \#3
+\end{solution}
+
+\vspace*{0.5cm}
+
+\begin{problem}{4}
+\textbf{Definite Reference}
+
+Consider the following two sentences:
+
+\begin{tabular}{l l}
+(i) & The German President met the King of France yesterday. \\
+(ii) & The King of France met the German President yesterday. \\
+\end{tabular}
+
+\begin{description}
+    \item[(a)] Compute a complete derivation of the denotations for each sentence \uline{on the assumption that each constituent has a denotation}. Assuming further that ``German President'' and ``King of France'' are complex predicates of type $<e,t>$, as assumed in the lecture; and that 
+
+    \begin{center}
+    $\llbracket$yesterday$\rrbracket$ = $\lambda$P. yesterday(P) 
+    \end{center}
+
+    Where P is of type $<e,t>$ and the denotation of the adverb ``yesterday'' is of type $<<e,t>,<e,t>>$.
+
+    Note that these derivations are supposed to be derivations of the two \uline{sentences}, not for any \uline{utterances} of these sentences that are made at particular times!  These derivations should be as detailed as those given in the lectures for, e.g., ``a man left''.
+
+    \item[(b)] If uttered today, which truth value would result for any assertions made by uttering sentence (i) or (ii) ?
+    \item[(c)] Explain your answer to (b) in no more than 100 words. At which step(s) in the respective derivation is the derivation blocked, and why?
+    \item[(d)] Comment in no more than 100 words on how the result reported under (b) corresponds
+to your \uline{intuitions} on the truth of utterances of (i) or (ii) , as made today.
+    
+\end{description}
+
+\end{problem}
+
+\begin{solution}
+Solution for Problem \#4
+\end{solution}
+
+\end{document}
