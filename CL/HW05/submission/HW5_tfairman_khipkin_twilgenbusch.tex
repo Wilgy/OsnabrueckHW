@@ -7,6 +7,8 @@
 \usepackage{tikz}
 \usepackage{stmaryrd}
 \usepackage{ulem}
+\usepackage{qtree}
+
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
             \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
 %%%the \circled command has been used to create text inside circle for grading table.
@@ -66,6 +68,8 @@ For each of the following pairs of sentences, determine whether the relation bet
 
 \end{problem}
 
+\newpage
+
 \begin{solution}
 First, we begin by defining the terms above:
 \begin{itemize}
@@ -93,6 +97,7 @@ First, we begin by defining the terms above:
 \end{solution}
 
 \vspace*{0.5cm} %% this is to put some vertical space betwen the next problem and the previous solution. You can change the value to something more appropriate.
+\newpage
 
 \begin{problem}{2}
 \textbf{Conversational implicatures (1)}
@@ -117,6 +122,7 @@ Some of the students passed the exam \textbf{[implicature: Not all of the studen
 \end{solution}
 
 \vspace*{0.5cm}
+\newpage
 
 \begin{problem}{3}
 \textbf{ Conversational implicatures (2)}
@@ -146,6 +152,7 @@ We first assume that person A is speaking \textit{rationally}, and therefore can
 \end{solution}
 
 \vspace*{0.5cm}
+\newpage
 
 \begin{problem}{4}
 \textbf{Definite Reference}
@@ -178,7 +185,44 @@ to your \uline{intuitions} on the truth of utterances of (i) or (ii) , as made t
 \end{problem}
 
 \begin{solution}
-Solution for Problem \#4
+\begin{description}
+    \item[(a)]  We start by defining the denotation for each of the words used in both sentences:
+
+    $\llbracket$met$\rrbracket = $ $\lambda$y:y$\in$D.[$\lambda$x:x$\in$D. x met y] \\
+    $\llbracket$the$\rrbracket = $ $\lambda$f $\in$ D$_{<e,t>} \&$ $\exists$x(f(x) $\&$ $\neg\exists$y(f(y)$\rightarrow$x$\neq$y))=1. $\iota$y[f(y)=1] \\
+
+    The other terms have already been defined in the problem description.  Now we can begin constructing the semantic parse tree. Note that $\llbracket$met$\rrbracket$ $\in$ $<e,<e, t>>$ and $\llbracket$the$\rrbracket$ $\in$ $<<e, t>, e>$.  In the parse trees, ``German President'' is shortened to ``GP'' and ``King of France'' is shortened to ``KoF''.
+
+    \begin{description}
+        \item[(i)]  The German President met the King of France yesterday.
+
+        \Tree[.S$_{<t>}$ [.DP$_{<e>}$ [.D$_{<<e, t>, e>}$ The ] 
+                      [.NP$_{<e, t>}$ [. GP ]]] 
+                 [.VP$_{<e, t>}$ [.V\1$_{<e,t>}$ [.V$_{<e, <e, t>>}$ [. met ]] 
+                            [.DP$_{<e>}$ [.D$_{<<e, t>, e>}$ [. the ]] 
+                                 [.NP$_{<e, t>}$ [. KoF ]]]] 
+                      [.ADV$_{<<e, t>,<e, t>>}$ [. yesterday ]]]] \\
+
+
+        \item[(ii)] The King of France met the German President yesterday.
+
+        \Tree[.S$_{<t>}$ [.DP$_{<e>}$ [.D$_{<<e, t>, e>}$ The ] 
+                      [.NP$_{<e, t>}$ [. KoF ]]] 
+                 [.VP$_{<e, t>}$ [.V\1$_{<e,t>}$ [.V$_{<e, <e, t>>}$ [. met ]] 
+                            [.DP$_{<e>}$ [.D$_{<<e, t>, e>}$ [. the ]] 
+                                 [.NP$_{<e, t>}$ [. GP ]]]] 
+                      [.ADV$_{<<e, t>,<e, t>>}$ [. yesterday ]]]]
+
+    \end{description}
+
+    \item[(b)] If following Russel's logic, both (i) and (ii) result to \textbf{false}.
+
+    \item[(c)] It is blocked when trying to derive $\llbracket$the King of France$\rrbracket$, since the existence check for the King of France returns false, since there is no current king.
+
+    \item[(d)] Intuitavely, one would not claim the (i) as false, since it is not possible for the German President to meet a non-existing person.  For (ii) one would not say true \textbf{or} false, since the negation of (ii) also does not make intuitive sense.
+    
+\end{description}
+
 \end{solution}
 
 \end{document}
